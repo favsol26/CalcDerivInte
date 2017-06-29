@@ -17,15 +17,13 @@ import java.util.ArrayList;
 public class Trigonometricas extends CDI {
 
     static ExpresionAlgebraica[] exp;
+    
 
-    /**
-     * @param args the command line arguments
-     */
     public static ArrayList correr(ArrayList expr) {
 
         String salida;
         int id;
-        for (int i = 0; i < expr.size() - 1; i++) {
+        for (int i = 0; i < expr.size(); i++) {
             switch (expr.get(i).toString().toLowerCase().substring(0, expr.get(i).toString().indexOf("("))) {
                 case "sen":
                     salida = expr.get(i).toString();
@@ -60,6 +58,9 @@ public class Trigonometricas extends CDI {
             }
 
         }
+        expr.stream().forEach((expr1) -> {
+            System.out.println(expr1.toString());
+        });
         return expr;
     }
 
