@@ -37,6 +37,7 @@ public class Enrrutar extends CDI {
         } else {
     for (int i = 0; i < Segmentos.size(); i++) {
                 if (Signos.isEmpty()) {
+                    System.out.println("");
                     if (Segmentos.get(0).toString().length() > 3) {
                         switch (Segmentos.get(0).toString().toLowerCase().substring(0, Segmentos.get(0).toString().indexOf("("))) {
                             case "ln":
