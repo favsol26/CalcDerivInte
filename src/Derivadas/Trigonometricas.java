@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class Trigonometricas extends CDI {
 
     static ExpresionAlgebraica[] exp;
-    
 
     public static ArrayList correr(ArrayList expr) {
 
