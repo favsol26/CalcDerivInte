@@ -16,25 +16,38 @@ public class Revisar {
     public static ExpresionAlgebraica[] revisarFuncion(String cad, String op) {
         String letra = "";
         String compara;
-        String enunciado = "";
+        String enunciado = "Valido";
+        boolean parentecis = false;
         for (int i = 0; i < cad.length(); i++) {
+            parentecis = false;
             letra = String.valueOf(cad.charAt(i));
-            if ((letra.hashCode() >= 97 && letra.hashCode() <= 122) || (letra.hashCode() >= 65 && letra.hashCode() <= 90)) {
+            if ("(".equals(letra)) {
+                parentecis = true;
                 break;
             }
         }
-        compara = letra;
-        for (int i = 0; i < cad.length(); i++) {
-            letra = String.valueOf(cad.charAt(i));
-            if ((letra.hashCode() >= 97 && letra.hashCode() <= 122) || (letra.hashCode() >= 65 && letra.hashCode() <= 90)) {
-                if (!letra.equals(compara)) {
-                    enunciado = "Expresión no valida...";
+
+        if (!parentecis) {
+            for (int i = 0; i < cad.length(); i++) {
+                letra = String.valueOf(cad.charAt(i));
+                if ((letra.hashCode() >= 97 && letra.hashCode() <= 122) || (letra.hashCode() >= 65 && letra.hashCode() <= 90)) {
                     break;
-                } else {
-                    enunciado = "Expresión valida...";
+                }
+            }
+            compara = letra;
+            for (int i = 0; i < cad.length(); i++) {
+                letra = String.valueOf(cad.charAt(i));
+                if ((letra.hashCode() >= 97 && letra.hashCode() <= 122) || (letra.hashCode() >= 65 && letra.hashCode() <= 90)) {
+                    if (!letra.equals(compara)) {
+                        enunciado = "Expresión no valida...";
+                        break;
+                    } else {
+                        enunciado = "Expresión valida...";
+                    }
                 }
             }
         }
+
         System.out.println(enunciado);
         cad = Estructurar(cad);
         if (!"Expresión no valida...".equals(enunciado)) {
@@ -57,7 +70,7 @@ public class Revisar {
                 u = i + 1;
             }
         }
-        
+
         return res;
     }
 }

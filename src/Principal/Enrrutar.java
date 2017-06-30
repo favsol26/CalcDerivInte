@@ -35,7 +35,7 @@ public class Enrrutar extends CDI {
         if (!op.toUpperCase().equals("D")) {
             System.out.println("Integrales !!!!");
         } else {
-    for (int i = 0; i < Segmentos.size(); i++) {
+            for (int i = 0; i < Segmentos.size(); i++) {
                 if (Signos.isEmpty()) {
                     if (Segmentos.get(0).toString().length() > 3) {
                         switch (Segmentos.get(0).toString().toLowerCase().substring(0, Segmentos.get(0).toString().indexOf("("))) {
@@ -43,22 +43,22 @@ public class Enrrutar extends CDI {
                                 resultado = PDL.proceso(Segmentos, Signos, op);
                                 break;
                             case "sen":
-                                Trigonometricas.correr(Segmentos);
+                                expz = Trigonometricas.correr(Segmentos);
                                 break;
                             case "cos":
-                                Trigonometricas.correr(Segmentos);
+                                expz = Trigonometricas.correr(Segmentos);
                                 break;
                             case "tan":
-                                Trigonometricas.correr(Segmentos);
+                                expz = Trigonometricas.correr(Segmentos);
                                 break;
                             case "cot":
-                                Trigonometricas.correr(Segmentos);
+                                expz = Trigonometricas.correr(Segmentos);
                                 break;
                             case "sec":
-                                Trigonometricas.correr(Segmentos);
+                                expz = Trigonometricas.correr(Segmentos);
                                 break;
                             case "csc":
-                                Trigonometricas.correr(Segmentos);
+                                expz = Trigonometricas.correr(Segmentos);
                                 break;
                         }
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {

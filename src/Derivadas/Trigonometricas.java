@@ -18,8 +18,8 @@ public class Trigonometricas extends CDI {
 
     static ExpresionAlgebraica[] exp;
 
-    public static ArrayList correr(ArrayList expr) {
-
+    public static ArrayList correr(ArrayList expre) {
+        ArrayList expr = expre;
         String salida;
         int id;
         for (int i = 0; i < expr.size(); i++) {
@@ -57,9 +57,7 @@ public class Trigonometricas extends CDI {
             }
 
         }
-        expr.stream().forEach((expr1) -> {
-            System.out.println(expr1.toString());
-        });
+
         return expr;
     }
 
