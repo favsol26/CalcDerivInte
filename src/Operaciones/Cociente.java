@@ -24,6 +24,9 @@ public class Cociente extends CDI {
 
     /**
      *
+     * @param mult1
+     * @param mult2
+     * @return
      */
     public static ExpresionAlgebraica[] CocienteVariables(ExpresionAlgebraica mult1[], ExpresionAlgebraica mult2[]) {
 

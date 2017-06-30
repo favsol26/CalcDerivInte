@@ -34,7 +34,7 @@ public class Producto extends CDI {
         for (ExpresionAlgebraica mult11 : mult1) {
             for (ExpresionAlgebraica mult21 : mult2) {
                 mult11.setVariable(mult11.getVariable().toLowerCase());
-                mult21.setVariable(mult21.getVariable().toLowerCase());                
+                mult21.setVariable(mult21.getVariable().toLowerCase());
                 if (mult11.getSimbolo().equals(mult21.getSimbolo())) {
                     signAUX = "+";
                     if (mult11.getVariable().equals(mult21.getVariable())) {
@@ -63,7 +63,7 @@ public class Producto extends CDI {
                 v++;
             }
         }
-        
+
         Segmento.clear();
         Signo.clear();
         for (ExpresionAlgebraica expreAUX1 : expreAUX) {
