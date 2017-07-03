@@ -50,7 +50,7 @@ public class Enrrutar extends CDI {
                     if (Segmentos.get(0).toString().length() > 3 && parentesis) {
                         switch (Segmentos.get(0).toString().toLowerCase().substring(0, Segmentos.get(0).toString().indexOf("("))) {
                             case "e^":
-                                System.out.println("\nAl derivar se obtiene: " + Exponencial.exponencial(Segmentos.get(0).toString()));//
+                                resultado=Exponencial.exponencial(Segmentos.get(0).toString());
                                 expon = true;
                                 break;
                             case "ln":

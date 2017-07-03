@@ -7,12 +7,9 @@ package Procesos;
 
 import static Principal.CDI.llenado;
 import static Principal.CDI.mul1;
-import static Principal.CDI.mul2;
 import Principal.Enrrutar;
 import Principal.ExpresionAlgebraica;
-import Principal.ProcesarFunciones;
 import Principal.Revisar;
-import Principal.SintaxisExpresiones;
 import java.util.ArrayList;
 
 /**

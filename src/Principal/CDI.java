@@ -57,6 +57,8 @@ public class CDI {
                     if (finalizado1 != null) {
                         if (finalizado1.getSimbolo().equals("&")) {
                             cad = cad + "*";
+                        } else  if (finalizado1.getCoeficiente() == 0) {
+
                         } else if (finalizado1.getSimbolo().equals("/")) {
                             cad = cad + "/";
                         } else if (finalizado1.getExponente().equals("0.0")) {
@@ -81,6 +83,8 @@ public class CDI {
                     if (finalizado1 != null) {
                         if (finalizado1.getSimbolo().equals("&")) {
                             cad = cad + "*";
+                        } else if (finalizado1.getCoeficiente() == 0) {
+                           
                         } else if (finalizado1.getSimbolo().equals("/")) {
                             cad = cad + "/";
                         } else if (finalizado1.getExponente().equals("0.0")) {
