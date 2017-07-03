@@ -244,9 +244,23 @@ public class Trigonometricas extends CDI {
 
         cad = cad + " ";
         cad = cad.concat(ExpExter);
-        //  cad = cad.concat(ExpInter);
 
         return cad;
     }
+ private static String logN(String cad) { 
 
+        String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
+
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d");
+
+        cad = "";
+
+        for (ExpresionAlgebraica exp1 : exp) {
+            cad = cad.concat(String.format("%s%s%s^%s", exp1.getSimbolo(),
+                    exp1.getCoeficiente(), exp1.getVariable(), exp1.getExponente()));
+        }
+        
+        
+        return cad;
+    }
 }

@@ -26,7 +26,7 @@ public class Enrrutar extends CDI {
     public static ExpresionAlgebraica[] Enrrutador(ArrayList partes, ArrayList delimitador, String op) {
         ArrayList Segmentos;
         ArrayList Signos;
-        boolean parentesis= false;
+        boolean parentesis = false;
         Segmentos = partes;
         ExpresionAlgebraica[] terminos;
         Signos = delimitador;
@@ -39,43 +39,43 @@ public class Enrrutar extends CDI {
         } else {
 
             for (int i = 0; i < Segmentos.size(); i++) {
-                for (int l = 0; l < Segmentos.get(i).toString().length(); l++) {
+                for (int l = 2; l < Segmentos.get(i).toString().length(); l++) {
                     if (Segmentos.get(i).toString().charAt(l) == '(') {
                         parentesis = true;
+                        System.err.println("Si");
                         break;
                     }
                 }
                 if (Signos.isEmpty()) {
-                    if (Segmentos.get(0).toString().length() > 3) {
-                        if (parentesis) {
-                            switch (Segmentos.get(0).toString().toLowerCase().substring(0, Segmentos.get(0).toString().indexOf("("))) {
-                                case "e^":
-                                    System.out.println("\nAl derivar se obtiene: " + Exponencial.exponencial(Segmentos.get(0).toString()));//
-                                    expon = true;
-                                    break;
-                                case "ln":
-                                    resultado = PDL.proceso(Segmentos, Signos, op);
-                                    break;
-                                case "sen":
-                                    expz = Trigonometricas.correr(Segmentos);
-                                    break;
-                                case "cos":
-                                    expz = Trigonometricas.correr(Segmentos);
-                                    break;
-                                case "tan":
-                                    expz = Trigonometricas.correr(Segmentos);
-                                    break;
-                                case "cot":
-                                    expz = Trigonometricas.correr(Segmentos);
-                                    break;
-                                case "sec":
-                                    expz = Trigonometricas.correr(Segmentos);
-                                    break;
-                                case "csc":
-                                    expz = Trigonometricas.correr(Segmentos);
-                                    break;
-                            }
+                    if (Segmentos.get(0).toString().length() > 3 && parentesis) {
+                        switch (Segmentos.get(0).toString().toLowerCase().substring(0, Segmentos.get(0).toString().indexOf("("))) {
+                            case "e^":
+                                System.out.println("\nAl derivar se obtiene: " + Exponencial.exponencial(Segmentos.get(0).toString()));//
+                                expon = true;
+                                break;
+                            case "ln":
+                                resultado = PDL.proceso(Segmentos, Signos, op);
+                                break;
+                            case "sen":
+                                expz = Trigonometricas.correr(Segmentos);
+                                break;
+                            case "cos":
+                                expz = Trigonometricas.correr(Segmentos);
+                                break;
+                            case "tan":
+                                expz = Trigonometricas.correr(Segmentos);
+                                break;
+                            case "cot":
+                                expz = Trigonometricas.correr(Segmentos);
+                                break;
+                            case "sec":
+                                expz = Trigonometricas.correr(Segmentos);
+                                break;
+                            case "csc":
+                                expz = Trigonometricas.correr(Segmentos);
+                                break;
                         }
+
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
                         if (Segmentos.size() == 1) {
                             derivadaValorAbsoluto.ValorAbsoluto(Segmentos.get(i).toString().substring(1, Segmentos.get(i).toString().length() - 1), op);
@@ -93,6 +93,7 @@ public class Enrrutar extends CDI {
                         break;
                     } else {
                         resultado = derivadaPotencia.derivada_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos));
+                        
                         break;
                     }
                 } else if (!Signos.isEmpty()) {
