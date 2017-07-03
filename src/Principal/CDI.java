@@ -15,20 +15,22 @@ import java.util.Scanner;
  */
 public class CDI {
 
-    public static ExpresionAlgebraica[] resultado = null;
+    public static ExpresionAlgebraica[] resultado;
 
     //float x = 1;
     public static ExpresionAlgebraica[] Exp;
     public static ExpresionAlgebraica[] llenado;
-    public static ExpresionAlgebraica[] mult1;
-    public static ExpresionAlgebraica[] mult1d;
-    public static ExpresionAlgebraica[] mult2;
-    public static ExpresionAlgebraica[] mult2d;
+    public static ExpresionAlgebraica[] mul1;
+    public static ExpresionAlgebraica[] mul2;
+    public static ExpresionAlgebraica[] der1;
+    public static ExpresionAlgebraica[] der2;
     public static ExpresionAlgebraica[] mult2C;
     public static ExpresionAlgebraica[] producto;
     public static DecimalFormat df = new DecimalFormat("###.##");
     public static String result = "";
-    public static ArrayList expz;
+    public static ArrayList expz = new ArrayList();
+    static boolean trigo2;
+    static boolean expon;
 
     /**
      * @param args the command line arguments
@@ -74,6 +76,7 @@ public class CDI {
                 re = expz.get(i).toString().substring(0, expz.get(i).toString().indexOf(" "));
                 Revisar.revisarFuncion(re, "d");
                 trigo = llenado;
+
                 for (ExpresionAlgebraica finalizado1 : trigo) {
                     if (finalizado1 != null) {
                         if (finalizado1.getSimbolo().equals("&")) {
@@ -91,7 +94,7 @@ public class CDI {
                 }
                 cad = cad + expz.get(i).toString().substring(expz.get(i).toString().indexOf(" "), expz.get(i).toString().length());
             }
-            System.out.print("Al derivar se optiene: ");
+            System.out.print("Al derivar se optiene:  ");
 
         }
         if (cad.equals("")) {

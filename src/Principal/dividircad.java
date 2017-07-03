@@ -129,5 +129,4 @@ public class dividircad extends OrdenarString {
         armado = reunir(posi, posilet, nega, negalet);
         return armado;
     }
-
 }

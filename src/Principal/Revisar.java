@@ -13,6 +13,8 @@ import java.util.ArrayList;
  */
 public class Revisar {
 
+    static ArrayList pre = new ArrayList();
+
     public static ExpresionAlgebraica[] revisarFuncion(String cad, String op) {
         String letra = "";
         String compara;
@@ -59,7 +61,6 @@ public class Revisar {
     }
 
     public static String Estructurar(String cad) {
-        ArrayList pre = new ArrayList();
         String res = cad;
         int h, u = 0;
 

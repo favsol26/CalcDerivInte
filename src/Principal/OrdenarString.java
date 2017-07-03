@@ -73,5 +73,4 @@ public class OrdenarString extends CDI{
             quicksort(A, i, der);
         }
     }
-
 }

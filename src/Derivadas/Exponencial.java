@@ -8,6 +8,7 @@ package Derivadas;
 import Principal.ExpresionAlgebraica;
 import Principal.CDI;
 import Principal.SintaxisExpresiones;
+import java.util.Scanner;
 
 /**
  *
@@ -18,15 +19,18 @@ public class Exponencial extends CDI {
     static ExpresionAlgebraica[] exp;
 
     public static void main(String[] args) {
-        String cad = "e^((x^5+2)(x^2+5))";
-//        System.out.print(deriva(exp)[0].getSimbolo()
+        Scanner sc = new Scanner(System.in);
+        System.out.println("intruduzca una funcion: ");
+        String cad = sc.nextLine();
+        //String cad = "e^((x^5+2x)(2x^3+5x))";
+//        System.out.print(deriva(exp)[0].getSimbolo() (7x^3+8x^2)(5x^7+9x^4)
 //                +deriva(exp)[0].getCoeficiente()+deriva(exp)[0].getVariable()
 //                +"^"+deriva(exp)[0].getExponente()); 
 //        
         System.out.println(exponencial(cad));
     }
 
-    private static String exponencial(String cad) {
+    public static String exponencial(String cad) {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
 

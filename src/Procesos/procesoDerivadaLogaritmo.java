@@ -6,8 +6,8 @@
 package Procesos;
 
 import static Principal.CDI.llenado;
-import static Principal.CDI.mult1;
-import static Principal.CDI.mult2;
+import static Principal.CDI.mul1;
+import static Principal.CDI.mul2;
 import static Principal.CDI.resultado;
 import Principal.Enrrutar;
 import Principal.ExpresionAlgebraica;
@@ -20,8 +20,8 @@ import java.util.ArrayList;
  */
 public class procesoDerivadaLogaritmo extends Enrrutar {
 
-    String logn="";
-    int sig, v=0, f;
+    String logn = "";
+    int sig, v = 0, f;
     ExpresionAlgebraica[] terminos;
 
     public ExpresionAlgebraica[] proceso(ArrayList Segmentos, ArrayList Signos, String op) {
@@ -39,18 +39,13 @@ public class procesoDerivadaLogaritmo extends Enrrutar {
             logn = Segmentos.get(0).toString();
         }
         if (Segmentos.get(0).toString().charAt(3) == '(') {
-            SintaxisExpresiones.Sintaxis(Segmentos.get(0).toString().substring(4, Segmentos.get(0).toString().length() - 1),op);
-            mult1 = llenado;
-            SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString().substring(1, Segmentos.get(0).toString().length() - 4),op);
-            mult2 = llenado;
-            SintaxisExpresiones.Sintaxis(logn.substring(3, logn.length() - 1),op);
-            if (Signos.isEmpty()) {
-                v = (resultado.length + mult1.length + mult2.length + 2);
-            } else {
-                v = (resultado.length + mult1.length + mult2.length + 1);
-            }
+            resultado = Enrrutar.Enrrutador(Signos, Segmentos, op);
         } else {
-            resultado=SintaxisExpresiones.Sintaxis(logn.substring(3, logn.length() - 1),op);
+            System.err.println(logn.substring(3, logn.length() - 1)+"  ** "+op);
+            resultado = SintaxisExpresiones.Sintaxis(logn.substring(3, logn.length() - 1), op);
+            for (ExpresionAlgebraica resultado1 : resultado) {
+                System.err.println(resultado1.getSimbolo() + resultado1.getCoeficiente() + resultado1.getVariable() + "^" + resultado1.getExponente());
+            }
             v = resultado.length + llenado.length + 1;
         }
         terminos = new ExpresionAlgebraica[v];
@@ -59,15 +54,15 @@ public class procesoDerivadaLogaritmo extends Enrrutar {
         }
         terminos[resultado.length] = new ExpresionAlgebraica("/", 0, null, null);
         f = resultado.length + 1;
-        if (mult1 != null) {
-            for (ExpresionAlgebraica termino : mult1) {
+        if (mul1 != null) {
+            for (ExpresionAlgebraica termino : mul1) {
                 terminos[f] = new ExpresionAlgebraica(termino.getSimbolo(),
                         termino.getCoeficiente(),
                         termino.getVariable(),
                         termino.getExponente());
                 f++;
             }
-            for (ExpresionAlgebraica termino : mult2) {
+            for (ExpresionAlgebraica termino : mul2) {
                 terminos[f] = new ExpresionAlgebraica(termino.getSimbolo(),
                         termino.getCoeficiente(),
                         termino.getVariable(),
