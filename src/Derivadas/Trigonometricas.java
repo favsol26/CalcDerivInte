@@ -57,7 +57,6 @@ public class Trigonometricas extends CDI {
             }
 
         }
-
         return expr;
     }
 
