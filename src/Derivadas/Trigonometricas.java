@@ -246,7 +246,8 @@ public class Trigonometricas extends CDI {
 
         return cad;
     }
- private static String logN(String cad) { 
+
+    private static String logN(String cad) {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
 
@@ -258,8 +259,7 @@ public class Trigonometricas extends CDI {
             cad = cad.concat(String.format("%s%s%s^%s", exp1.getSimbolo(),
                     exp1.getCoeficiente(), exp1.getVariable(), exp1.getExponente()));
         }
-        
-        
+
         return cad;
     }
 }
