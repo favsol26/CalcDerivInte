@@ -40,7 +40,7 @@ public class Exponencial extends CDI {
             cad = cad.concat(String.format("%s%s%s^%s", exp1.getSimbolo(),
                     exp1.getCoeficiente(), exp1.getVariable(), exp1.getExponente()));
         }
-
+        
         cad = cad.concat(" ");
         cad = cad.concat(ExpExter);
         //  cad = cad.concat(ExpInter);

@@ -35,7 +35,7 @@ public class Enrrutar extends CDI {
         if (!op.toUpperCase().equals("D")) {
             System.out.println("Integrales !!!!");
         } else {
-    for (int i = 0; i < Segmentos.size(); i++) {
+            for (int i = 0; i < Segmentos.size(); i++) {
                 if (Signos.isEmpty()) {
                     if (Segmentos.get(0).toString().length() > 3) {
                         switch (Segmentos.get(0).toString().toLowerCase().substring(0, Segmentos.get(0).toString().indexOf("("))) {
@@ -61,6 +61,7 @@ public class Enrrutar extends CDI {
                                 Trigonometricas.correr(Segmentos);
                                 break;
                         }
+                        break;
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
                         if (Segmentos.size() == 1) {
                             derivadaValorAbsoluto.ValorAbsoluto(Segmentos.get(i).toString().substring(1, Segmentos.get(i).toString().length() - 1), op);

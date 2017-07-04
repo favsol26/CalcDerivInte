@@ -38,7 +38,7 @@ public class CDI {
         cad = sc.nextLine();
         System.out.println("intruduzca una operación: ");
         op = sc.nextLine();
-        
+
         if (cad.charAt(0) == '+') {
             cad = cad.substring(1, cad.length());
         }
