@@ -20,51 +20,51 @@ public class derivadaCosiente extends CDI {
         ExpresionAlgebraica[] Division;
         int h = 0, k;
         String cadena = "";
-        k = (mult1.length + mult2.length) * 2;
+        k = (mul1.length + mul2.length) * 2;
 
         resultado = new ExpresionAlgebraica[k];
         String signo;
 
-        for (int i = 0; i < mult2.length; i++) {
-            for (ExpresionAlgebraica mult1d1 : mult1d) {
-                if (mult2[i].getSimbolo().equals(mult1d[i].getSimbolo())) {
+        for (int i = 0; i < mul2.length; i++) {
+            for (ExpresionAlgebraica der11 : der1) {
+                if (mul2[i].getSimbolo().equals(der1[i].getSimbolo())) {
                     signo = "+";
                 } else {
                     signo = "-";
                 }
-                resultado[h] = new ExpresionAlgebraica(signo, mult2[i].getCoeficiente() * mult1d1.getCoeficiente(), mult1[i].getVariable(), String.valueOf(Float.valueOf(mult2[i].getExponente()) + Float.valueOf(mult1d1.getExponente())));
+                resultado[h] = new ExpresionAlgebraica(signo, mul2[i].getCoeficiente() * der11.getCoeficiente(), mul1[i].getVariable(), String.valueOf(Float.valueOf(mul2[i].getExponente()) + Float.valueOf(der11.getExponente())));
                 h++;
             }
         }
-        for (int i = 0; i < mult1.length; i++) {
-            for (ExpresionAlgebraica mult2d1 : mult2d) {
-                if (mult1[i].getSimbolo().equals(mult2d[i].getSimbolo()) && mult1[i].getSimbolo().equals("-")) {
+        for (int i = 0; i < mul1.length; i++) {
+            for (ExpresionAlgebraica der21 : der2) {
+                if (mul1[i].getSimbolo().equals(der2[i].getSimbolo()) && mul1[i].getSimbolo().equals("-")) {
                     signo = "+";
                 } else {
                     signo = "-";
                 }
-                resultado[h] = new ExpresionAlgebraica(signo, mult1[i].getCoeficiente() * mult2d1.getCoeficiente(), mult1[i].getVariable(), String.valueOf(Float.valueOf(mult1[i].getExponente()) + Float.valueOf(mult2d1.getExponente())));
+                resultado[h] = new ExpresionAlgebraica(signo, mul1[i].getCoeficiente() * der21.getCoeficiente(), mul1[i].getVariable(), String.valueOf(Float.valueOf(mul1[i].getExponente()) + Float.valueOf(der21.getExponente())));
                 h++;
             }
         }
 
         FactorizarImpl fac = new FactorizarImpl();
-        if (mult2.length > 1) {
+        if (mul2.length > 1) {
             fac.limite = 2;
-            fac.todo = mult2;
+            fac.todo = mul2;
             fac.llamar(op);
         } else {
             float num;
-            num = Float.valueOf(mult2[0].getSimbolo().concat(String.valueOf(mult2[0].getCoeficiente())));
+            num = Float.valueOf(mul2[0].getSimbolo().concat(String.valueOf(mul2[0].getCoeficiente())));
             num = Float.valueOf(String.valueOf(Math.pow((double) num, 2)));
             if (num < 0) {
-                mult2[0].setSimbolo("-");
-                mult2[0].setCoeficiente(num * -1);
+                mul2[0].setSimbolo("-");
+                mul2[0].setCoeficiente(num * -1);
             } else {
-                mult2[0].setSimbolo("+");
-                mult2[0].setCoeficiente(num);
+                mul2[0].setSimbolo("+");
+                mul2[0].setCoeficiente(num);
             }
-            mult2[0].setExponente(String.valueOf(Integer.valueOf(mult2[0].getExponente()) * 2));
+            mul2[0].setExponente(String.valueOf(Integer.valueOf(mul2[0].getExponente()) * 2));
         }
         mult2C = new ExpresionAlgebraica[llenado.length];
         for (int i = 0; i < llenado.length; i++) {
@@ -89,13 +89,13 @@ public class derivadaCosiente extends CDI {
         int t = 0;
         Division = new ExpresionAlgebraica[(resultado.length * mult2C.length)];
         for (ExpresionAlgebraica resultado1 : resultado) {
-            for (ExpresionAlgebraica mult2C1 : mult2C) {
-                if (resultado1.getSimbolo().equals(mult2C1.getSimbolo())) {
+            for (ExpresionAlgebraica mul2C1 : mult2C) {
+                if (resultado1.getSimbolo().equals(mul2C1.getSimbolo())) {
                     signo = "+";
                 } else {
                     signo = "-";
                 }
-                Division[t] = new ExpresionAlgebraica(signo, resultado1.getCoeficiente() / mult2C1.getCoeficiente(), resultado1.getVariable(), String.valueOf(Float.valueOf(resultado1.getExponente()) - Float.valueOf(mult2C1.getExponente())));
+                Division[t] = new ExpresionAlgebraica(signo, resultado1.getCoeficiente() / mul2C1.getCoeficiente(), resultado1.getVariable(), String.valueOf(Float.valueOf(resultado1.getExponente()) - Float.valueOf(mul2C1.getExponente())));
                 t++;
             }
         }

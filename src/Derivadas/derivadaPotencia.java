@@ -43,8 +43,8 @@ public class derivadaPotencia extends CDI{
                 }
             } else {
                 String exponente;
-                mult1 = new ExpresionAlgebraica[1];
-                mult1[0] = new ExpresionAlgebraica(resultado[i].getSimbolo(), resultado[i].getCoeficiente(), resultado[i].getVariable(), "0");
+                mul1 = new ExpresionAlgebraica[1];
+                mul1[0] = new ExpresionAlgebraica(resultado[i].getSimbolo(), resultado[i].getCoeficiente(), resultado[i].getVariable(), "0");
                 exponente = resultado[i].getExponente();
                 ExpresionAlgebraica[] term = derivadaProducto.Derivada_Producto(null);
                 resultado[i] = new ExpresionAlgebraica(term[0].getSimbolo(), term[0].getCoeficiente(), term[0].getVariable(), term[0].getExponente());
