@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,6 +6,7 @@
  */
 package Principal;
 
+import Derivadas.Exponencial;
 import Derivadas.Trigonometricas;
 import Derivadas.derivadaPotencia;
 import Derivadas.derivadaProducto;
@@ -25,6 +27,7 @@ public class Enrrutar extends CDI {
     public static ExpresionAlgebraica[] Enrrutador(ArrayList partes, ArrayList delimitador, String op) {
         ArrayList Segmentos;
         ArrayList Signos;
+        boolean parentesis = false;
         Segmentos = partes;
         ExpresionAlgebraica[] terminos;
         Signos = delimitador;
@@ -35,33 +38,45 @@ public class Enrrutar extends CDI {
         if (!op.toUpperCase().equals("D")) {
             System.out.println("Integrales !!!!");
         } else {
+
             for (int i = 0; i < Segmentos.size(); i++) {
+                for (int l = 2; l < Segmentos.get(i).toString().length(); l++) {
+                    if (Segmentos.get(i).toString().charAt(l) == '(') {
+                        parentesis = true;
+                        System.err.println("Si");
+                        break;
+                    }
+                }
                 if (Signos.isEmpty()) {
-                    if (Segmentos.get(0).toString().length() > 3) {
+                    if (Segmentos.get(0).toString().length() > 3 && parentesis) {
                         switch (Segmentos.get(0).toString().toLowerCase().substring(0, Segmentos.get(0).toString().indexOf("("))) {
+                            case "e^":
+                                resultado=Exponencial.exponencial(Segmentos.get(0).toString());
+                                expon = true;
+                                break;
                             case "ln":
                                 resultado = PDL.proceso(Segmentos, Signos, op);
                                 break;
                             case "sen":
-                                Trigonometricas.correr(Segmentos);
+                                expz = Trigonometricas.correr(Segmentos);
                                 break;
                             case "cos":
-                                Trigonometricas.correr(Segmentos);
+                                expz = Trigonometricas.correr(Segmentos);
                                 break;
                             case "tan":
-                                Trigonometricas.correr(Segmentos);
+                                expz = Trigonometricas.correr(Segmentos);
                                 break;
                             case "cot":
-                                Trigonometricas.correr(Segmentos);
+                                expz = Trigonometricas.correr(Segmentos);
                                 break;
                             case "sec":
-                                Trigonometricas.correr(Segmentos);
+                                expz = Trigonometricas.correr(Segmentos);
                                 break;
                             case "csc":
-                                Trigonometricas.correr(Segmentos);
+                                expz = Trigonometricas.correr(Segmentos);
                                 break;
                         }
-                        break;
+
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
                         if (Segmentos.size() == 1) {
                             derivadaValorAbsoluto.ValorAbsoluto(Segmentos.get(i).toString().substring(1, Segmentos.get(i).toString().length() - 1), op);
@@ -79,6 +94,7 @@ public class Enrrutar extends CDI {
                         break;
                     } else {
                         resultado = derivadaPotencia.derivada_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos));
+                        
                         break;
                     }
                 } else if (!Signos.isEmpty()) {

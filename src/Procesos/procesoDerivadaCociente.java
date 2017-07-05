@@ -27,10 +27,10 @@ public class procesoDerivadaCociente extends Enrrutar {
             SintaxisExpresiones.Sintaxis(Segmentos.get(0).toString().substring(1, Segmentos.get(0).toString().length() - 1),op);
         }
 
-        mult1 = new ExpresionAlgebraica[llenado.length];
+        mul1 = new ExpresionAlgebraica[llenado.length];
 
         for (int j = 0; j < llenado.length; j++) {
-            mult1[j] = new ExpresionAlgebraica(llenado[j].getSimbolo(), llenado[j].getCoeficiente(), llenado[j].getVariable(), llenado[j].getExponente());
+            mul1[j] = new ExpresionAlgebraica(llenado[j].getSimbolo(), llenado[j].getCoeficiente(), llenado[j].getVariable(), llenado[j].getExponente());
         }
         if (Segmentos.get(0).toString().substring(0, 3).equals("ln(")) {
             SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString().substring(1, Segmentos.get(1).toString().length() - 2),op);
@@ -38,21 +38,21 @@ public class procesoDerivadaCociente extends Enrrutar {
             SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString().substring(1, Segmentos.get(1).toString().length() - 1),op);
         }
 
-        mult2 = new ExpresionAlgebraica[llenado.length];
+        mul2 = new ExpresionAlgebraica[llenado.length];
         for (int j = 0; j < llenado.length; j++) {
-            mult2[j] = new ExpresionAlgebraica(llenado[j].getSimbolo(), llenado[j].getCoeficiente(), llenado[j].getVariable(), llenado[j].getExponente());
+            mul2[j] = new ExpresionAlgebraica(llenado[j].getSimbolo(), llenado[j].getCoeficiente(), llenado[j].getVariable(), llenado[j].getExponente());
         }
 
-        derivadaPotencia.derivada_Potencia(mult1);
-        mult1d = new ExpresionAlgebraica[resultado.length];
+        derivadaPotencia.derivada_Potencia(mul1);
+        der1 = new ExpresionAlgebraica[resultado.length];
         for (int j = 0; j < resultado.length; j++) {
-            mult1d[j] = new ExpresionAlgebraica(resultado[j].getSimbolo(), resultado[j].getCoeficiente(), resultado[j].getVariable(), resultado[j].getExponente());
+            der1[j] = new ExpresionAlgebraica(resultado[j].getSimbolo(), resultado[j].getCoeficiente(), resultado[j].getVariable(), resultado[j].getExponente());
         }
 
-        derivadaPotencia.derivada_Potencia(mult2);
-        mult2d = new ExpresionAlgebraica[resultado.length];
+        derivadaPotencia.derivada_Potencia(mul2);
+        der2 = new ExpresionAlgebraica[resultado.length];
         for (int j = 0; j < resultado.length; j++) {
-            mult2d[j] = new ExpresionAlgebraica(resultado[j].getSimbolo(), resultado[j].getCoeficiente(), resultado[j].getVariable(), resultado[j].getExponente());
+            der2[j] = new ExpresionAlgebraica(resultado[j].getSimbolo(), resultado[j].getCoeficiente(), resultado[j].getVariable(), resultado[j].getExponente());
         }
 
         resultado = derivadaCosiente.Cosiente(op);

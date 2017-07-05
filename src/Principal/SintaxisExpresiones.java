@@ -51,14 +51,19 @@ public class SintaxisExpresiones extends CDI {
                 }
                 parte = parte.concat(String.valueOf(cadena.charAt(i)));
             }
-
         }
         if (partes.get(0).toString().charAt(0) == '-') {
             partes.set(0, partes.get(0).toString().substring(1, partes.get(0).toString().length()));
             if (!signo.isEmpty()) {
-                signo.set(0, '-');
-            } else {
+                ArrayList signo2 = signo;
+                signo.clear();
                 signo.add("-");
+                int s = signo2.size();
+                for (int i = 0; i < s; i++) {
+                    signo.add(signo2.get(i).toString());
+                }
+            } else {
+                signo.add('-');
             }
         }
         return Enrrutar.Enrrutador(partes, signo, op);
