@@ -16,6 +16,7 @@ public class SintaxisExpresiones extends CDI {
     public static ExpresionAlgebraica[] Sintaxis(String cad, String op) {
         ArrayList partes = new ArrayList();
         ArrayList signo = new ArrayList();
+        ArrayList signo2 = new ArrayList();
         String cadena = cad;
         String parte = "";
         boolean parentesis = false;
@@ -55,13 +56,13 @@ public class SintaxisExpresiones extends CDI {
         if (partes.get(0).toString().charAt(0) == '-') {
             partes.set(0, partes.get(0).toString().substring(1, partes.get(0).toString().length()));
             if (!signo.isEmpty()) {
-                ArrayList signo2 = signo;
+                signo2.add("-");
+                signo.stream().forEach((signo1) -> {
+                    signo2.add(signo1);
+                });
                 signo.clear();
-                signo.add("-");
-                int s = signo2.size();
-                for (int i = 0; i < s; i++) {
-                    signo.add(signo2.get(i).toString());
-                }
+                signo = signo2;
+                
             } else {
                 signo.add('-');
             }
