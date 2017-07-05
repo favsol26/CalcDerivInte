@@ -18,10 +18,12 @@ public class derivadaPotencia extends CDI{
         String parte;
         resultado = new ExpresionAlgebraica[deriv.length];
         boolean letra = false;
+        
         float coef;
         for (int i = 0; i < deriv.length; i++) {
             resultado[i] = new ExpresionAlgebraica(deriv[i].getSimbolo(), deriv[i].getCoeficiente(), deriv[i].getVariable(), deriv[i].getExponente());
         }
+        
         for (int i = 0; i < resultado.length; i++) {
             coef = Float.valueOf(resultado[i].getSimbolo().concat(String.valueOf(resultado[i].getCoeficiente())));
             for (int j = 0; j < resultado[i].getExponente().length(); j++) {
@@ -43,8 +45,8 @@ public class derivadaPotencia extends CDI{
                 }
             } else {
                 String exponente;
-                mult1 = new ExpresionAlgebraica[1];
-                mult1[0] = new ExpresionAlgebraica(resultado[i].getSimbolo(), resultado[i].getCoeficiente(), resultado[i].getVariable(), "0");
+                mul1 = new ExpresionAlgebraica[1];
+                mul1[0] = new ExpresionAlgebraica(resultado[i].getSimbolo(), resultado[i].getCoeficiente(), resultado[i].getVariable(), "0");
                 exponente = resultado[i].getExponente();
                 ExpresionAlgebraica[] term = derivadaProducto.Derivada_Producto(null);
                 resultado[i] = new ExpresionAlgebraica(term[0].getSimbolo(), term[0].getCoeficiente(), term[0].getVariable(), term[0].getExponente());

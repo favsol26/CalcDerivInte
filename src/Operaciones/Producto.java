@@ -57,9 +57,9 @@ public class Producto extends CDI {
                         coefAUX = mult11.getCoeficiente() * mult21.getCoeficiente();
                         expreAUX[v] = new ExpresionAlgebraica(signAUX, coefAUX, mult11.getVariable() + mult21.getVariable(), mult11.getExponente() + mult21.getExponente());
                     }
-                    
+
                 }
-                
+
                 v++;
             }
         }
@@ -67,7 +67,8 @@ public class Producto extends CDI {
         Segmento.clear();
         Signo.clear();
         for (ExpresionAlgebraica expreAUX1 : expreAUX) {
-            Segmento.add(DecForm.format(expreAUX1.getCoeficiente()) + expreAUX1.getVariable() + "^" + expreAUX1.getExponente());
+            Segmento.add(DecForm.format(expreAUX1.getCoeficiente())
+                    + expreAUX1.getVariable() + "^" + expreAUX1.getExponente());
             Signo.add(expreAUX1.getSimbolo());
         }
         if (Signo.get(0).equals("+") && Segmento.size() == Signo.size()) {

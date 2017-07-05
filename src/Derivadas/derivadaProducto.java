@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class derivadaProducto extends CDI {
 
     public static ExpresionAlgebraica[] Derivada_Producto(ArrayList mults) {
-        ExpresionAlgebraica[] der1, der2, mul1, mul2, res1, res2, res;
+        ExpresionAlgebraica[]  res1, res2, res;
         int pos;
         String cad = "";
         for (int i = 0; i < mults.size(); i++) {

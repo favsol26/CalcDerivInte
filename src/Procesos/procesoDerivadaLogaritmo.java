@@ -6,12 +6,10 @@
 package Procesos;
 
 import static Principal.CDI.llenado;
-import static Principal.CDI.mult1;
-import static Principal.CDI.mult2;
-import static Principal.CDI.resultado;
+import static Principal.CDI.mul1;
 import Principal.Enrrutar;
 import Principal.ExpresionAlgebraica;
-import Principal.SintaxisExpresiones;
+import Principal.Revisar;
 import java.util.ArrayList;
 
 /**
@@ -20,9 +18,10 @@ import java.util.ArrayList;
  */
 public class procesoDerivadaLogaritmo extends Enrrutar {
 
-    String logn="";
-    int sig, v=0, f;
+    String logn = "";
+    int sig, v = 0, f;
     ExpresionAlgebraica[] terminos;
+    ExpresionAlgebraica[] resultados;
 
     public ExpresionAlgebraica[] proceso(ArrayList Segmentos, ArrayList Signos, String op) {
         if (Segmentos.size() != 1) {
@@ -39,50 +38,52 @@ public class procesoDerivadaLogaritmo extends Enrrutar {
             logn = Segmentos.get(0).toString();
         }
         if (Segmentos.get(0).toString().charAt(3) == '(') {
-            SintaxisExpresiones.Sintaxis(Segmentos.get(0).toString().substring(4, Segmentos.get(0).toString().length() - 1),op);
-            mult1 = llenado;
-            SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString().substring(1, Segmentos.get(0).toString().length() - 4),op);
-            mult2 = llenado;
-            SintaxisExpresiones.Sintaxis(logn.substring(3, logn.length() - 1),op);
-            if (Signos.isEmpty()) {
-                v = (resultado.length + mult1.length + mult2.length + 2);
-            } else {
-                v = (resultado.length + mult1.length + mult2.length + 1);
+            Segmentos.set(0, Segmentos.get(0).toString().substring(3, Segmentos.get(0).toString().length()));
+            Segmentos.set(Segmentos.size() - 1, Segmentos.get(Segmentos.size() - 1).toString().substring(0, Segmentos.get(Segmentos.size() - 1).toString().length() - 1));
+            String cad = "";
+            for (int i = 0; i < Segmentos.size(); i++) {
+                cad = cad + Segmentos.get(i).toString();
+                if (!Signos.isEmpty() && i < Signos.size()) {
+                    cad = cad + Signos.get(i);
+                }
             }
+
+            resultados = Revisar.revisarFuncion(cad, op);
+
+            v = resultados.length + 1;
         } else {
-            resultado=SintaxisExpresiones.Sintaxis(logn.substring(3, logn.length() - 1),op);
-            v = resultado.length + llenado.length + 1;
+            resultados = Revisar.revisarFuncion(logn.substring(3, logn.length() - 1), op);
+            v = resultados.length + llenado.length + 1;
         }
         terminos = new ExpresionAlgebraica[v];
-        for (int j = 0; j < resultado.length; j++) {
-            terminos[j] = new ExpresionAlgebraica(resultado[j].getSimbolo(), resultado[j].getCoeficiente(), resultado[j].getVariable(), resultado[j].getExponente());
+        for (int j = 0; j < resultados.length; j++) {
+            terminos[j] = new ExpresionAlgebraica(resultados[j].getSimbolo(), resultados[j].getCoeficiente(), resultados[j].getVariable(), resultados[j].getExponente());
         }
-        terminos[resultado.length] = new ExpresionAlgebraica("/", 0, null, null);
-        f = resultado.length + 1;
-        if (mult1 != null) {
-            for (ExpresionAlgebraica termino : mult1) {
-                terminos[f] = new ExpresionAlgebraica(termino.getSimbolo(),
-                        termino.getCoeficiente(),
-                        termino.getVariable(),
-                        termino.getExponente());
-                f++;
+        terminos[resultados.length] = new ExpresionAlgebraica("/", 0, null, null);
+        f = resultados.length + 1;
+
+        if (mul1!=null) {
+            for (ExpresionAlgebraica termino : terminos) {
+                expz.add(termino.getSimbolo() + termino.getCoeficiente() + termino.getVariable() + "^" + termino.getExponente());
             }
-            for (ExpresionAlgebraica termino : mult2) {
-                terminos[f] = new ExpresionAlgebraica(termino.getSimbolo(),
-                        termino.getCoeficiente(),
-                        termino.getVariable(),
-                        termino.getExponente());
-                f++;
+            for (int i = 0; i < Segmentos.size(); i++) {
+                expz.add(Segmentos.get(i));
             }
-        } else {
-            for (ExpresionAlgebraica termino : llenado) {
-                terminos[f] = new ExpresionAlgebraica(termino.getSimbolo(),
-                        termino.getCoeficiente(),
-                        termino.getVariable(),
-                        termino.getExponente());
+        }else{
+            for (ExpresionAlgebraica llenado1 : llenado) {
+                terminos[f] = new ExpresionAlgebraica(llenado1.getSimbolo(), llenado1.getCoeficiente(), llenado1.getVariable(), llenado1.getExponente());
                 f++;
+            }  
+        }
+        for (int i = 0; i < expz.size(); i++) {
+            if (expz.get(i).toString().charAt(0)!='/') {
+                System.out.print(expz.get(i));
+            } else {
+                System.out.print("/");
+
             }
         }
+        System.out.println("");
         return terminos;
     }
 }
