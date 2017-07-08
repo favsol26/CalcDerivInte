@@ -31,33 +31,41 @@ public class CDI {
     public static ArrayList expz = new ArrayList();
     static boolean trigo2;
     static boolean expon;
+    public static Scanner sc = new Scanner(System.in);
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String cad, op;
+        String cad, operacion;
         ExpresionAlgebraica[] trigo;
         System.out.println("intruduzca una función: ");
         cad = sc.nextLine();
         System.out.println("intruduzca una operación: ");
-        op = sc.nextLine();
+        operacion = sc.nextLine();
 
         if (cad.charAt(0) == '+') {
             cad = cad.substring(1, cad.length());
         }
-        resultado = Revisar.revisarFuncion(cad, op);
+
+        resultado = Revisar.revisarFuncion(cad, operacion);
+
+        if (operacion.toLowerCase().equals("d")) {
+            operacion = "derivar";
+        } else {
+            operacion = "integrar";
+        }
+
         System.out.println("\n");
         if (expz.isEmpty()) {
             if (resultado != null) {
-                System.out.print("Al derivar se optiene: ");
+                System.out.print("Al " + operacion + " se obtiene: ");
                 cad = "";
                 for (ExpresionAlgebraica finalizado1 : resultado) {
                     if (finalizado1 != null) {
                         if (finalizado1.getSimbolo().equals("&")) {
                             cad = cad + "*";
-                        } else  if (finalizado1.getCoeficiente() == 0) {
+                        } else if (finalizado1.getCoeficiente() == 0) {
 
                         } else if (finalizado1.getSimbolo().equals("/")) {
                             cad = cad + "/";
@@ -84,7 +92,7 @@ public class CDI {
                         if (finalizado1.getSimbolo().equals("&")) {
                             cad = cad + "*";
                         } else if (finalizado1.getCoeficiente() == 0) {
-                           
+
                         } else if (finalizado1.getSimbolo().equals("/")) {
                             cad = cad + "/";
                         } else if (finalizado1.getExponente().equals("0.0")) {
@@ -98,7 +106,7 @@ public class CDI {
                 }
                 cad = cad + expz.get(i).toString().substring(expz.get(i).toString().indexOf(" "), expz.get(i).toString().length());
             }
-            System.out.print("Al derivar se optiene:  ");
+            System.out.print("Al " + operacion + " se obtiene: ");
 
         }
         if (cad.equals("")) {
