@@ -77,9 +77,9 @@ public class derivadaCosiente extends CDI {
             }
         }
         if (cadena.charAt(0) == '+') {
-            resultado=SintaxisExpresiones.Sintaxis(cadena.substring(1, cadena.length()), op,false);
+            resultado = SintaxisExpresiones.Sintaxis(cadena.substring(1, cadena.length()), op, false);
         } else {
-            resultado=SintaxisExpresiones.Sintaxis(cadena, op,false);
+            resultado = SintaxisExpresiones.Sintaxis(cadena, op, false);
         }
         for (int i = 0; i < llenado.length; i++) {
             resultado[i] = new ExpresionAlgebraica(llenado[i].getSimbolo(), llenado[i].getCoeficiente(), llenado[i].getVariable(), llenado[i].getExponente());

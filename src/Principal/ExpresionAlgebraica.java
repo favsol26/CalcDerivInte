@@ -78,5 +78,4 @@ public class ExpresionAlgebraica {
          * @param simbolo the simbolo to set
          */
     }
-
 }

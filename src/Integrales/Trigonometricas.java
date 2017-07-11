@@ -113,7 +113,7 @@ public class Trigonometricas {
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
 
         String ExpExter = "-cos(".concat(ExpInter) + ") + C";
-        
+
 //        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d");
         cad = "";
 //        for (ExpresionAlgebraica exp1 : exp) {
@@ -163,7 +163,6 @@ public class Trigonometricas {
         String ExpExter = "-ln |cos(".concat(ExpInter) + ")| + C";
 
 //        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d");
-
         cad = "";
 
 //        for (ExpresionAlgebraica exp1 : exp) {
@@ -201,7 +200,6 @@ public class Trigonometricas {
 //            cad = cad.concat(String.format("%s%s%s^%s", exp1.getSimbolo(),
 //                    exp1.getCoeficiente(), exp1.getVariable(), exp1.getExponente()));
 //        }
-
 //        cad = cad + " ";
         cad = cad.concat(ExpExter);
         //  cad = cad.concat(ExpInter);
@@ -213,17 +211,15 @@ public class Trigonometricas {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
 
-        String ExpExter = "ln |sec(".concat(ExpInter) + ") " + "tan(".concat(ExpInter) + ")|";
+        String ExpExter = "ln |sec(".concat(ExpInter) + ") + " + "tan(".concat(ExpInter) + ")|";
 
 //        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d");
-
         cad = "";
 
 //        for (ExpresionAlgebraica exp1 : exp) {
 //            cad = cad.concat(String.format("%s%s%s^%s", exp1.getSimbolo(),
 //                    exp1.getCoeficiente(), exp1.getVariable(), exp1.getExponente()));
 //        }
-
         cad = cad + " ";
         cad = cad.concat(ExpExter);
         //  cad = cad.concat(ExpInter);
@@ -238,7 +234,7 @@ public class Trigonometricas {
 //        if (ExpInter.charAt(0) == '-') {
 //            ExpInter = ExpInter.substring(1, ExpInter.length());
 //        }
-        String ExpExter = "-ln |csc(".concat(ExpInter) + ") " + "cot(".concat(ExpInter) + ")| + C";
+        String ExpExter = "-ln |csc(".concat(ExpInter) + ") + " + "cot(".concat(ExpInter) + ")| + C";
 
 //        for (ExpresionAlgebraica exp1 : exp) {
 //            if ("+".equals(exp1.getSimbolo())) {
@@ -253,7 +249,6 @@ public class Trigonometricas {
 //            cad = cad.concat(String.format("%s%s%s^%s", exp1.getSimbolo(),
 //                    exp1.getCoeficiente(), exp1.getVariable(), exp1.getExponente()));
 //        }
-
 //        cad = cad + " ";
         cad = cad.concat(ExpExter);
 
@@ -264,7 +259,7 @@ public class Trigonometricas {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
 
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d",true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
 
         cad = "";
 
