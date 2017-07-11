@@ -97,7 +97,7 @@ public class Trigonometricas extends CDI {
 
         String ExpExter = "cos(".concat(ExpInter) + ")";
 
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d",true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
 
         cad = "";
 
@@ -115,7 +115,7 @@ public class Trigonometricas extends CDI {
     private static String cos(String cad) {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d",true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
 
         if (ExpInter.charAt(0) == '-') {
             ExpInter = ExpInter.substring(1, ExpInter.length());
@@ -149,7 +149,7 @@ public class Trigonometricas extends CDI {
 
         String ExpExter = "sec^2(".concat(ExpInter) + ")";
 
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d",true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
 
         cad = "";
 
@@ -168,7 +168,7 @@ public class Trigonometricas extends CDI {
     private static String cot(String cad) {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d",true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
 
         if (ExpInter.charAt(0) == '-') {
             ExpInter = ExpInter.substring(1, ExpInter.length());
@@ -202,7 +202,7 @@ public class Trigonometricas extends CDI {
 
         String ExpExter = "sec(".concat(ExpInter) + ") " + "tan(".concat(ExpInter) + ")";
 
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d",true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
 
         cad = "";
 
@@ -220,7 +220,7 @@ public class Trigonometricas extends CDI {
 
     private static String csc(String cad) {
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d",true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
 
         if (ExpInter.charAt(0) == '-') {
             ExpInter = ExpInter.substring(1, ExpInter.length());
@@ -251,7 +251,7 @@ public class Trigonometricas extends CDI {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
 
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d",true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
 
         cad = "";
 

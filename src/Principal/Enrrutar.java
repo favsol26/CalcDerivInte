@@ -141,7 +141,6 @@ public class Enrrutar extends CDI {
                             resultado = integralCosiente.cosiente(Segmentos, false);
                             break;
                         }
-
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
 
                         if (Segmentos.size() == Signos.size()) {

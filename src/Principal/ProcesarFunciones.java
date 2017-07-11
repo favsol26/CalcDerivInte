@@ -7,6 +7,7 @@ package Principal;
 
 import static Principal.CDI.Exp;
 import java.util.ArrayList;
+
 /**
  *
  * @author Alexander Batista
@@ -69,7 +70,6 @@ public class ProcesarFunciones extends CDI {
             numero = false;
         }
         exponentes = dividircad.correr(exponentes);
-
         return Ordenar(exponentes, orden);
     }
 
@@ -156,7 +156,6 @@ public class ProcesarFunciones extends CDI {
                 }
             }
         }
-
         Completo.stream().filter((Completo1) -> (!"*".equals(Completo1.toString()))).forEach((Completo1) -> {
             Terminos.add(Completo1.toString());
         });
@@ -223,14 +222,13 @@ public class ProcesarFunciones extends CDI {
                     }
                 }
             }
-
             if (letra) {
                 exp = "1";
                 le = String.valueOf(Completo.get(i).toString().charAt(Completo.get(i).toString().length() - 1));
-                if (Completo.get(i).toString().length()!=1) {
+                if (Completo.get(i).toString().length() != 1) {
                     coef = Float.valueOf(Completo.get(i).toString().substring(0, Completo.get(i).toString().length() - 1));
-                }else{
-                    coef=1;
+                } else {
+                    coef = 1;
                 }
                 if (i != 0) {
                     sign = Completo.get(i - 1).toString();
@@ -247,7 +245,6 @@ public class ProcesarFunciones extends CDI {
                 Exp[x] = new ExpresionAlgebraica(sign, coef, le, exp);
                 x++;
             }
-
             potencia = false;
             letra = false;
             numero = false;
@@ -257,7 +254,6 @@ exp="";
         for (Object Completo1 : Completo) {
             cadena = cadena.concat(Completo1.toString());
         }
-
         if ("+".equals(Completo.get(0).toString())) {
             Completo.remove(0);
         }
@@ -325,7 +321,6 @@ exp="";
             System.out.print(llenado1.getSimbolo() + "" + df.format(llenado1.getCoeficiente()) + "" + llenado1.getVariable() + "^" + llenado1.getExponente());
         }
         System.out.println("");
-        
         return llenado;
     }
 }

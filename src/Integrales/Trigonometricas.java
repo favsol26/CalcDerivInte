@@ -117,6 +117,7 @@ public class Trigonometricas {
 
         String ExpExter = "-cos (".concat(ExpInter) + ") + C";
 
+
         cad = "";
         cad = cad.concat(ExpExter);
         return cad;
@@ -154,6 +155,7 @@ public class Trigonometricas {
 
         cad = "";
 
+
         cad = cad.concat(ExpExter);
 
         return cad;
@@ -163,7 +165,7 @@ public class Trigonometricas {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
 
-        String ExpExter = "ln |sec(".concat(ExpInter) + ") " + "tan(".concat(ExpInter) + ")|";
+        String ExpExter = "ln |sec(".concat(ExpInter) + ") + " + "tan(".concat(ExpInter) + ")|";
 
         cad = "";
 
@@ -175,13 +177,16 @@ public class Trigonometricas {
 
     private static String csc(String cad) {
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
+
         String ExpExter = "-ln |csc(".concat(ExpInter) + ") " + "cot(".concat(ExpInter) + ")| + C";
 
         cad = "";
+
 
         cad = cad.concat(ExpExter);
 
         return cad;
     }
+
 
 }
