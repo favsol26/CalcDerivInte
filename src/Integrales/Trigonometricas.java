@@ -264,7 +264,7 @@ public class Trigonometricas {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
 
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d");
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d",true);
 
         cad = "";
 
