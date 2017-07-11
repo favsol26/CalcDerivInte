@@ -22,26 +22,16 @@ public class procesoDerivadaCociente extends Enrrutar {
     public ExpresionAlgebraica[] proceso(ArrayList Segmentos, ArrayList Signos, String op) {
         String cadena = "";
         if (Segmentos.get(0).toString().substring(0, 3).equals("ln(")) {
-            SintaxisExpresiones.Sintaxis(Segmentos.get(0).toString().substring(4, Segmentos.get(0).toString().length() - 1),op);
+          mul1 = SintaxisExpresiones.Sintaxis(Segmentos.get(0).toString().substring(4, Segmentos.get(0).toString().length() - 1),op,false);
         } else {
-            SintaxisExpresiones.Sintaxis(Segmentos.get(0).toString().substring(1, Segmentos.get(0).toString().length() - 1),op);
-        }
-
-        mul1 = new ExpresionAlgebraica[llenado.length];
-
-        for (int j = 0; j < llenado.length; j++) {
-            mul1[j] = new ExpresionAlgebraica(llenado[j].getSimbolo(), llenado[j].getCoeficiente(), llenado[j].getVariable(), llenado[j].getExponente());
+            mul1 = SintaxisExpresiones.Sintaxis(Segmentos.get(0).toString().substring(1, Segmentos.get(0).toString().length() - 1),op,false);
         }
         if (Segmentos.get(0).toString().substring(0, 3).equals("ln(")) {
-            SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString().substring(1, Segmentos.get(1).toString().length() - 2),op);
+            mul2 = SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString().substring(1, Segmentos.get(1).toString().length() - 2),op,false);
         } else {
-            SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString().substring(1, Segmentos.get(1).toString().length() - 1),op);
+            mul2 = SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString().substring(1, Segmentos.get(1).toString().length() - 1),op,false);
         }
 
-        mul2 = new ExpresionAlgebraica[llenado.length];
-        for (int j = 0; j < llenado.length; j++) {
-            mul2[j] = new ExpresionAlgebraica(llenado[j].getSimbolo(), llenado[j].getCoeficiente(), llenado[j].getVariable(), llenado[j].getExponente());
-        }
 
         derivadaPotencia.derivada_Potencia(mul1);
         der1 = new ExpresionAlgebraica[resultado.length];
