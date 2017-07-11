@@ -25,9 +25,9 @@ public class derivadaProducto extends CDI {
         }
 
         for (int i = 0; i < mults.size() - 1; i++) {
-            der1 = SintaxisExpresiones.Sintaxis(mults.get(i).toString(), "d");
+            der1 = SintaxisExpresiones.Sintaxis(mults.get(i).toString(), "d",true);
             mul1 = llenado;
-            der2 = SintaxisExpresiones.Sintaxis(mults.get(i + 1).toString(), "d");
+            der2 = SintaxisExpresiones.Sintaxis(mults.get(i + 1).toString(), "d",true);
             mul2 = llenado;
             cad = "";
             res1 = Operaciones.Producto.ProductoVariables(mul1, der2);
@@ -49,7 +49,7 @@ public class derivadaProducto extends CDI {
             if (cad.charAt(0) == '+') {
                 cad = cad.substring(1, cad.length());
             }
-            SintaxisExpresiones.Sintaxis(cad, "d");
+            SintaxisExpresiones.Sintaxis(cad, "d",false);
             cad = "";
             for (ExpresionAlgebraica llenado1 : llenado) {
                 cad = cad + llenado1.getSimbolo() + llenado1.getCoeficiente() + llenado1.getVariable() + "^" + llenado1.getExponente();
@@ -61,8 +61,8 @@ public class derivadaProducto extends CDI {
             mults.set(i, "");
             mults.set(i + 1, cad);
         }
-        SintaxisExpresiones.Sintaxis(cad, "d");
+        
 
-        return llenado;
+        return SintaxisExpresiones.Sintaxis(cad, "d",false);
     }
 }
