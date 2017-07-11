@@ -67,6 +67,7 @@ public class SintaxisExpresiones extends CDI {
                 signo.add('-');
             }
         }
+        System.err.println(partes.get(0)+" ***");
         if (continuar) {
             return Enrrutar.Enrrutador(partes, signo, op);
         } else {

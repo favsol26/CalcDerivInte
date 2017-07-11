@@ -10,6 +10,7 @@ import Derivadas.Exponencial;
 import Derivadas.derivadaPotencia;
 import Derivadas.derivadaProducto;
 import Derivadas.derivadaValorAbsoluto;
+import Integrales.integralCosiente;
 import Integrales.integralPotencia;
 import Integrales.integralProducto;
 import Procesos.procesoDerivadaCociente;
@@ -25,6 +26,7 @@ public class Enrrutar extends CDI {
 
     static procesoDerivadaCociente PDC = new procesoDerivadaCociente();
     static procesoDerivadaLogaritmo PDL = new procesoDerivadaLogaritmo();
+    private static boolean letra = false;
 
     public static ExpresionAlgebraica[] Enrrutador(ArrayList partes, ArrayList delimitador, String op) {
         ArrayList Segmentos;
@@ -37,10 +39,40 @@ public class Enrrutar extends CDI {
         int f;
         String logn = "";
         String cad = "";
-        Scanner sc1=new Scanner(System.in);
+        Scanner sc1 = new Scanner(System.in);
         if (!op.toUpperCase().equals("D")) {
             System.out.println("Introduzca el diferencia para integrar: ");
             String diferencial = sc1.nextLine();
+            for (int i = 0; i < Segmentos.size(); i++) {
+                for (int j = 0; j < Segmentos.get(i).toString().length(); j++) {
+                    if (Segmentos.get(i).toString().charAt(j) == '(') {
+                        ExpresionAlgebraica[] ccc = SintaxisExpresiones.Sintaxis(Segmentos.get(i).toString().substring(Segmentos.get(i).toString().indexOf("(") + 1, Segmentos.get(i).toString().lastIndexOf(")")), op, false);
+                        for (ExpresionAlgebraica ccc1 : ccc) {
+                            if (ccc1.getVariable().isEmpty()) {
+                                ccc1.setVariable(diferencial.substring(1));
+                            }
+                        }
+                        String Cadena = "";
+                        for (ExpresionAlgebraica ccc1 : ccc) {
+                            Cadena = Cadena + ccc1.getSimbolo() + ccc1.getCoeficiente() + ccc1.getVariable() + "^" + ccc1.getExponente();
+                        }
+                        if (Cadena.charAt(0) == '+') {
+                            Cadena = Cadena.substring(1, Cadena.length());
+                        }
+                        Segmentos.set(i, "(" + Cadena + ")");
+                        letra = true;
+                        break;
+                    } else if (String.valueOf(Segmentos.get(i).toString().charAt(j)).toUpperCase().hashCode() >= 65
+                            && String.valueOf(Segmentos.get(i).toString().charAt(j)).toUpperCase().hashCode() <= 90) {
+                        letra = true;
+                        break;
+                    }
+                }
+                if (!letra) {
+                    Segmentos.set(i, Segmentos.get(i).toString().concat(diferencial.substring(1) + "^0"));
+                }
+            }
+
             for (int i = 0; i < Segmentos.size(); i++) {
                 for (int l = 2; l < Segmentos.get(i).toString().length(); l++) {
                     if (Segmentos.get(i).toString().charAt(l) == '(') {
@@ -100,8 +132,14 @@ public class Enrrutar extends CDI {
                     }
                 } else if (!Signos.isEmpty()) {
                     if (Signos.get(0).toString().equals("/")) {
-                       // resultado = PDC.proceso(Segmentos, Signos, op);
-                        break;
+                        if (Segmentos.get(0).toString().equals("1x^0")) {
+                            resultado = integralCosiente.cosiente(Segmentos, true);
+                            break;
+                        } else {
+                            resultado = integralCosiente.cosiente(Segmentos, false);
+                            break;
+                        }
+
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
 
                         if (Segmentos.size() == Signos.size()) {
@@ -120,13 +158,14 @@ public class Enrrutar extends CDI {
                                 }
                             }
                         }
-                        //derivadaValorAbsoluto.ValorAbsoluto(cad, op);
+                        resultado = SintaxisExpresiones.Sintaxis(cad, op, false);
                         break;
                     } else {
+
                         resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos));
                         break;
                     }
-                }
+                }//(10x^4+20x^2)/(5x+2)
             }
         } else {
 
