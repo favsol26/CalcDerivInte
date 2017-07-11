@@ -55,7 +55,6 @@ public class CDI {
         } else {
             operacion = "integrar";
         }
-
         System.out.println("\n");
         if (expz.isEmpty()) {
             if (resultado != null) {
@@ -107,7 +106,6 @@ public class CDI {
                 cad = cad + expz.get(i).toString().substring(expz.get(i).toString().indexOf(" "), expz.get(i).toString().length());
             }
             System.out.print("Al " + operacion + " se obtiene: ");
-
         }
         if (cad.equals("")) {
             cad = "0";

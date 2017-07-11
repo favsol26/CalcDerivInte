@@ -14,6 +14,6 @@ public class FactorizarImpl extends Factorizar {
 
     public void llamar(String op) {
         piramide(limite);
-        BinomioNewton(limite, todo,op);
+        BinomioNewton(limite, todo, op);
     }
 }
