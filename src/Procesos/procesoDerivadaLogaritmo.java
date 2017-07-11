@@ -47,9 +47,7 @@ public class procesoDerivadaLogaritmo extends Enrrutar {
                     cad = cad + Signos.get(i);
                 }
             }
-
             resultados = Revisar.revisarFuncion(cad, op);
-
             v = resultados.length + 1;
         } else {
             resultados = Revisar.revisarFuncion(logn.substring(3, logn.length() - 1), op);
@@ -61,26 +59,24 @@ public class procesoDerivadaLogaritmo extends Enrrutar {
         }
         terminos[resultados.length] = new ExpresionAlgebraica("/", 0, null, null);
         f = resultados.length + 1;
-
-        if (mul1!=null) {
+        if (mul1 != null) {
             for (ExpresionAlgebraica termino : terminos) {
                 expz.add(termino.getSimbolo() + termino.getCoeficiente() + termino.getVariable() + "^" + termino.getExponente());
             }
             for (int i = 0; i < Segmentos.size(); i++) {
                 expz.add(Segmentos.get(i));
             }
-        }else{
+        } else {
             for (ExpresionAlgebraica llenado1 : llenado) {
                 terminos[f] = new ExpresionAlgebraica(llenado1.getSimbolo(), llenado1.getCoeficiente(), llenado1.getVariable(), llenado1.getExponente());
                 f++;
-            }  
+            }
         }
         for (int i = 0; i < expz.size(); i++) {
-            if (expz.get(i).toString().charAt(0)!='/') {
+            if (expz.get(i).toString().charAt(0) != '/') {
                 System.out.print(expz.get(i));
             } else {
                 System.out.print("/");
-
             }
         }
         System.out.println("");

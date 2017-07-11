@@ -7,7 +7,7 @@ package Integrales;
 
 import Principal.CDI;
 import Principal.ExpresionAlgebraica;
-import Principal.ProcesarFunciones;
+//import Principal.ProcesarFunciones;
 import Principal.SintaxisExpresiones;
 import java.util.ArrayList;
 
@@ -60,7 +60,7 @@ public class integralCosiente extends CDI {
             if (cad.charAt(0) == '+') {
                 cad = cad.substring(1, cad.length() - 1);
             }
-            
+
         }
         return SintaxisExpresiones.Sintaxis(cad, "i", true);
     }

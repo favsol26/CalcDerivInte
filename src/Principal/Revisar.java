@@ -28,7 +28,6 @@ public class Revisar {
                 break;
             }
         }
-
         if (!parentecis) {
             for (int i = 0; i < cad.length(); i++) {
                 letra = String.valueOf(cad.charAt(i));
@@ -49,11 +48,10 @@ public class Revisar {
                 }
             }
         }
-
         System.out.println(enunciado);
         cad = Estructurar(cad);
         if (!"Expresión no valida...".equals(enunciado)) {
-            return SintaxisExpresiones.Sintaxis(cad, op,true);
+            return SintaxisExpresiones.Sintaxis(cad, op, true);
         } else {
             return null;
         }
@@ -63,7 +61,6 @@ public class Revisar {
     public static String Estructurar(String cad) {
         String res = cad;
         int h, u = 0;
-
         for (int i = 0; i < res.length(); i++) {
             if (res.charAt(i) == ')') {
                 h = i;
@@ -71,7 +68,6 @@ public class Revisar {
                 u = i + 1;
             }
         }
-
         return res;
     }
 }

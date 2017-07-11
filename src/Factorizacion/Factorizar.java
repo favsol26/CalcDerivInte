@@ -100,7 +100,7 @@ public class Factorizar extends CDI {
         if (cadena.charAt(0) == '+') {
             return SintaxisExpresiones.Sintaxis(cadena.substring(1, cadena.length()), op, false);
         } else {
-            return SintaxisExpresiones.Sintaxis(cadena, op,false);
+            return SintaxisExpresiones.Sintaxis(cadena, op, false);
         }
     }
 }

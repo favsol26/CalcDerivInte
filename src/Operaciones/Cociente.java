@@ -29,7 +29,6 @@ public class Cociente extends CDI {
      * @return
      */
     public static ExpresionAlgebraica[] CocienteVariables(ExpresionAlgebraica mult1[], ExpresionAlgebraica mult2[]) {
-
         int v = 0;
         ExpresionAlgebraica[] expreAUX = new ExpresionAlgebraica[mult1.length * mult2.length];
         float coefAUX;
