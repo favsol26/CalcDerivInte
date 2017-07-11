@@ -72,6 +72,7 @@ public class Enrrutar extends CDI {
                     Segmentos.set(i, Segmentos.get(i).toString().concat(diferencial.substring(1) + "^0"));
                 }
             }
+            
 
             for (int i = 0; i < Segmentos.size(); i++) {
                 for (int l = 2; l < Segmentos.get(i).toString().length(); l++) {
@@ -109,6 +110,7 @@ public class Enrrutar extends CDI {
                                 expz = Integrales.Trigonometricas.correr(Segmentos);
                                 break;
                         }
+                        break;
 
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
                         if (Segmentos.size() == 1) {
@@ -132,7 +134,7 @@ public class Enrrutar extends CDI {
                     }
                 } else if (!Signos.isEmpty()) {
                     if (Signos.get(0).toString().equals("/")) {
-                        if (Segmentos.get(0).toString().equals("1x^0")) {
+                        if (Segmentos.get(0).toString().equals("(1.0x^0)")&&Segmentos.get(1).toString().substring(Segmentos.get(1).toString().indexOf("^")+1,Segmentos.get(i).toString().length()-1).equals("1")) {
                             resultado = integralCosiente.cosiente(Segmentos, true);
                             break;
                         } else {
