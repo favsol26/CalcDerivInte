@@ -24,7 +24,7 @@ public class Exponencial extends CDI {
 
         String ExpExter = "e^(".concat(ExpInter) + ")";
 
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d");
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
         expr = new ExpresionAlgebraica[exp.length + 1];
 
         for (int i = 0; i < exp.length; i++) {

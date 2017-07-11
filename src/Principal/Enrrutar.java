@@ -7,7 +7,6 @@
 package Principal;
 
 import Derivadas.Exponencial;
-import Derivadas.Trigonometricas;
 import Derivadas.derivadaPotencia;
 import Derivadas.derivadaProducto;
 import Derivadas.derivadaValorAbsoluto;
@@ -16,6 +15,7 @@ import Integrales.integralProducto;
 import Procesos.procesoDerivadaCociente;
 import Procesos.procesoDerivadaLogaritmo;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -37,7 +37,10 @@ public class Enrrutar extends CDI {
         int f;
         String logn = "";
         String cad = "";
+        Scanner sc1 = new Scanner(System.in);
         if (!op.toUpperCase().equals("D")) {
+            System.out.println("Introduzca el diferencia para integrar: ");
+            String diferencial = sc1.nextLine();
             for (int i = 0; i < Segmentos.size(); i++) {
                 for (int l = 2; l < Segmentos.get(i).toString().length(); l++) {
                     if (Segmentos.get(i).toString().charAt(l) == '(') {
@@ -49,41 +52,41 @@ public class Enrrutar extends CDI {
                     if (Segmentos.get(0).toString().length() > 3 && parentesis) {
                         switch (Segmentos.get(0).toString().toLowerCase().substring(0, Segmentos.get(0).toString().indexOf("("))) {
                             case "e^":
-                                resultado=Exponencial.exponencial(Segmentos.get(0).toString());
-                                expon = true;
+                                //resultado = Exponencial.exponencial(Segmentos.get(0).toString());
+                                //expon = true;
                                 break;
                             case "ln":
-                                resultado = PDL.proceso(Segmentos, Signos, op);
+                                //resultado = PDL.proceso(Segmentos, Signos, op);
                                 break;
                             case "sen":
-                                expz = Trigonometricas.correr(Segmentos);
+                                expz = Integrales.Trigonometricas.correr(Segmentos);
                                 break;
                             case "cos":
-                                expz = Trigonometricas.correr(Segmentos);
+                                expz = Integrales.Trigonometricas.correr(Segmentos);
                                 break;
                             case "tan":
-                                expz = Trigonometricas.correr(Segmentos);
+                                expz = Integrales.Trigonometricas.correr(Segmentos);
                                 break;
                             case "cot":
-                                expz = Trigonometricas.correr(Segmentos);
+                                expz = Integrales.Trigonometricas.correr(Segmentos);
                                 break;
                             case "sec":
-                                expz = Trigonometricas.correr(Segmentos);
+                                expz = Integrales.Trigonometricas.correr(Segmentos);
                                 break;
                             case "csc":
-                                expz = Trigonometricas.correr(Segmentos);
+                                expz = Integrales.Trigonometricas.correr(Segmentos);
                                 break;
                         }
 
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
                         if (Segmentos.size() == 1) {
-                            derivadaValorAbsoluto.ValorAbsoluto(Segmentos.get(i).toString().substring(1, Segmentos.get(i).toString().length() - 1), op);
+                            //derivadaValorAbsoluto.ValorAbsoluto(Segmentos.get(i).toString().substring(1, Segmentos.get(i).toString().length() - 1), op);
                         } else {
                             cad = "";
                             for (Object Segmento : Segmentos) {
                                 cad = cad + (Segmento.toString());
                             }
-                            derivadaValorAbsoluto.ValorAbsoluto(cad.substring(1, cad.length() - 1), op);
+                            //derivadaValorAbsoluto.ValorAbsoluto(cad.substring(1, cad.length() - 1), op);
                         }
                         break;
                     } else if (")".equals(Segmentos.get(0).toString().substring(Segmentos.get(0).toString().length() - 1))
@@ -92,12 +95,12 @@ public class Enrrutar extends CDI {
                         break;
                     } else {
                         resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos));
-                        
+
                         break;
                     }
                 } else if (!Signos.isEmpty()) {
                     if (Signos.get(0).toString().equals("/")) {
-                        resultado = PDC.proceso(Segmentos, Signos, op);
+                        // resultado = PDC.proceso(Segmentos, Signos, op);
                         break;
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
 
@@ -117,7 +120,7 @@ public class Enrrutar extends CDI {
                                 }
                             }
                         }
-                        derivadaValorAbsoluto.ValorAbsoluto(cad, op);
+                        //derivadaValorAbsoluto.ValorAbsoluto(cad, op);
                         break;
                     } else {
                         resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos));
@@ -138,32 +141,32 @@ public class Enrrutar extends CDI {
                     if (Segmentos.get(0).toString().length() > 3 && parentesis) {
                         switch (Segmentos.get(0).toString().toLowerCase().substring(0, Segmentos.get(0).toString().indexOf("("))) {
                             case "e^":
-                                resultado=Exponencial.exponencial(Segmentos.get(0).toString());
+                                resultado = Exponencial.exponencial(Segmentos.get(0).toString());
                                 expon = true;
                                 break;
                             case "ln":
                                 resultado = PDL.proceso(Segmentos, Signos, op);
                                 break;
                             case "sen":
-                                expz = Trigonometricas.correr(Segmentos);
+                                expz = Derivadas.Trigonometricas.correr(Segmentos);
                                 break;
                             case "cos":
-                                expz = Trigonometricas.correr(Segmentos);
+                                expz = Derivadas.Trigonometricas.correr(Segmentos);
                                 break;
                             case "tan":
-                                expz = Trigonometricas.correr(Segmentos);
+                                expz = Derivadas.Trigonometricas.correr(Segmentos);
                                 break;
                             case "cot":
-                                expz = Trigonometricas.correr(Segmentos);
+                                expz = Derivadas.Trigonometricas.correr(Segmentos);
                                 break;
                             case "sec":
-                                expz = Trigonometricas.correr(Segmentos);
+                                expz = Derivadas.Trigonometricas.correr(Segmentos);
                                 break;
                             case "csc":
-                                expz = Trigonometricas.correr(Segmentos);
+                                expz = Derivadas.Trigonometricas.correr(Segmentos);
                                 break;
                         }
-
+                        break;
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
                         if (Segmentos.size() == 1) {
                             derivadaValorAbsoluto.ValorAbsoluto(Segmentos.get(i).toString().substring(1, Segmentos.get(i).toString().length() - 1), op);
@@ -181,7 +184,7 @@ public class Enrrutar extends CDI {
                         break;
                     } else {
                         resultado = derivadaPotencia.derivada_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos));
-                        
+
                         break;
                     }
                 } else if (!Signos.isEmpty()) {

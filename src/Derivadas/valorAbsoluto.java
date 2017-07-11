@@ -13,13 +13,15 @@ import Principal.ExpresionAlgebraica;
  * @author Alexander Batista
  */
 public class valorAbsoluto extends CDI {
-static ExpresionAlgebraica[] resolver;
+
+    static ExpresionAlgebraica[] resolver;
+
     public String valorabs(String args) {
 
         if (args.equals("0")) {
             System.out.println("El valor a derivar no puede ser 0");
         } else {
-            
+
         }
 
         // | u | = u/|u| (u')

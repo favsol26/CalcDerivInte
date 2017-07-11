@@ -9,7 +9,7 @@ package Principal;
  *
  * @author fav_0
  */
-public class OrdenarString extends CDI{
+public class OrdenarString extends CDI {
 
     private static void arregla(String[] pru) {
         String aux;
@@ -27,7 +27,6 @@ public class OrdenarString extends CDI{
 
     private static void burbuja(String[] a) {
         String aux;
-
         for (int i = 1; i < a.length; i++) {
             for (int j = 0; j < a.length - i; j++) {
                 if (a[j].hashCode() > a[j + 1].hashCode()) {
@@ -44,7 +43,6 @@ public class OrdenarString extends CDI{
         String X, aux;
         i = izq;
         j = der;
-        
         X = A[(izq + der) / 2];
 
         do {

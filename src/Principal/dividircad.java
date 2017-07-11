@@ -71,7 +71,6 @@ public class dividircad extends OrdenarString {
             }
         }
         data = new String[nums.size()];
-
         for (Object num : nums) {
             if (num != null) {
                 data[s] = num.toString();
@@ -108,7 +107,6 @@ public class dividircad extends OrdenarString {
                 j++;
             }
         }
-
         return aux;
     }
 

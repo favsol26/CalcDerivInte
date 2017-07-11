@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SintaxisExpresiones extends CDI {
 
-    public static ExpresionAlgebraica[] Sintaxis(String cad, String op) {
+    public static ExpresionAlgebraica[] Sintaxis(String cad, String op, boolean continuar) {
         ArrayList partes = new ArrayList();
         ArrayList signo = new ArrayList();
         ArrayList signo2 = new ArrayList();
@@ -62,11 +62,15 @@ public class SintaxisExpresiones extends CDI {
                 });
                 signo.clear();
                 signo = signo2;
-                
+
             } else {
                 signo.add('-');
             }
         }
-        return Enrrutar.Enrrutador(partes, signo, op);
+        if (continuar) {
+            return Enrrutar.Enrrutador(partes, signo, op);
+        } else {
+            return ProcesarFunciones.jeraquia(partes, signo);
+        }
     }
 }

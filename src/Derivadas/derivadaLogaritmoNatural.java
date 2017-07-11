@@ -12,8 +12,9 @@ import Principal.ExpresionAlgebraica;
  *
  * @author Alexander Batista
  */
-public class derivadaLogaritmoNatural extends CDI{
-    public static ExpresionAlgebraica[] LogaritmoNatural(){
+public class derivadaLogaritmoNatural extends CDI {
+
+    public static ExpresionAlgebraica[] LogaritmoNatural() {
         System.out.println("Logaritmos naturales");
         return null;
     }
