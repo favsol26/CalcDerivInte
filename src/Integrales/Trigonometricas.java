@@ -213,7 +213,7 @@ public class Trigonometricas {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
 
-        String ExpExter = "ln |sec(".concat(ExpInter) + ") " + "tan(".concat(ExpInter) + ")|";
+        String ExpExter = "ln |sec(".concat(ExpInter) + ") + " + "tan(".concat(ExpInter) + ")|";
 
 //        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d");
 
@@ -238,7 +238,7 @@ public class Trigonometricas {
 //        if (ExpInter.charAt(0) == '-') {
 //            ExpInter = ExpInter.substring(1, ExpInter.length());
 //        }
-        String ExpExter = "-ln |csc(".concat(ExpInter) + ") " + "cot(".concat(ExpInter) + ")| + C";
+        String ExpExter = "-ln |csc(".concat(ExpInter) + ") + " + "cot(".concat(ExpInter) + ")| + C";
 
 //        for (ExpresionAlgebraica exp1 : exp) {
 //            if ("+".equals(exp1.getSimbolo())) {
