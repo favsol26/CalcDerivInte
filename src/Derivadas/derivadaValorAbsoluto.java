@@ -18,7 +18,7 @@ public class derivadaValorAbsoluto extends CDI {
     public static ExpresionAlgebraica[] ValorAbsoluto(String Segmentos, String op) {
         String cad = Segmentos;
         int z = 0, h, s = 0;
-        ExpresionAlgebraica[] valor = SintaxisExpresiones.Sintaxis(cad, op);
+        ExpresionAlgebraica[] valor = SintaxisExpresiones.Sintaxis(cad, op,true);
 
         resultado = new ExpresionAlgebraica[valor.length + (llenado.length * 2) + 2];
         for (int i = 0; i < llenado.length; i++) {

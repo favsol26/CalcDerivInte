@@ -53,7 +53,7 @@ public class Revisar {
         System.out.println(enunciado);
         cad = Estructurar(cad);
         if (!"Expresión no valida...".equals(enunciado)) {
-            return SintaxisExpresiones.Sintaxis(cad, op);
+            return SintaxisExpresiones.Sintaxis(cad, op,true);
         } else {
             return null;
         }

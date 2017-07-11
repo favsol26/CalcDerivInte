@@ -98,10 +98,9 @@ public class Factorizar extends CDI {
         }
 
         if (cadena.charAt(0) == '+') {
-            SintaxisExpresiones.Sintaxis(cadena.substring(1, cadena.length()), op);
+            return SintaxisExpresiones.Sintaxis(cadena.substring(1, cadena.length()), op, false);
         } else {
-            SintaxisExpresiones.Sintaxis(cadena, op);
+            return SintaxisExpresiones.Sintaxis(cadena, op,false);
         }
-        return llenado;
     }
 }
