@@ -215,15 +215,13 @@ public class Trigonometricas {
 
 //        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d");
         cad = "";
-
 //        for (ExpresionAlgebraica exp1 : exp) {
 //            cad = cad.concat(String.format("%s%s%s^%s", exp1.getSimbolo(),
 //                    exp1.getCoeficiente(), exp1.getVariable(), exp1.getExponente()));
 //        }
-        cad = cad + " ";
+//      cad = cad + " ";
         cad = cad.concat(ExpExter);
         //  cad = cad.concat(ExpInter);
-
         return cad;
     }
 

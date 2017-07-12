@@ -37,7 +37,7 @@ public class Enrrutar extends CDI {
         int f;
         String logn = "";
         String cad = "";
-        Scanner sc1 = new Scanner(System.in);
+        Scanner sc1=new Scanner(System.in);
         if (!op.toUpperCase().equals("D")) {
             System.out.println("Introduzca el diferencia para integrar: ");
             String diferencial = sc1.nextLine();
@@ -100,7 +100,7 @@ public class Enrrutar extends CDI {
                     }
                 } else if (!Signos.isEmpty()) {
                     if (Signos.get(0).toString().equals("/")) {
-                        // resultado = PDC.proceso(Segmentos, Signos, op);
+                       // resultado = PDC.proceso(Segmentos, Signos, op);
                         break;
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
 
