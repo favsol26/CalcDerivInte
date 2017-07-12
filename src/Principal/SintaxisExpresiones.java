@@ -70,6 +70,7 @@ public class SintaxisExpresiones extends CDI {
         if (continuar) {
             return Enrrutar.Enrrutador(partes, signo, op);
         } else {
+            
             return ProcesarFunciones.jeraquia(partes, signo);
         }
     }
