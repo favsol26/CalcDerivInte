@@ -165,6 +165,17 @@ public class ProcesarFunciones extends CDI {
 
     public static ExpresionAlgebraica[] llenar_exp(ArrayList Completo) {
         int x = 0, s = 0, p = 0;
+        int cont=0;
+        for (int i = 0; i < Completo.size(); i++) {
+            for (int j = 0; j < Completo.get(i).toString().length(); j++) {
+                if (Completo.get(i).toString().charAt(j)=='^') {
+                    cont++;
+                }
+            }
+            if (cont > 1) {
+                Completo.set(i, Completo.get(i).toString().substring(0,Completo.get(i).toString().lastIndexOf("^")));
+            }
+        }
         float coef = 0;
         Boolean letra = false, numero = false, potencia = false;
         if (Completo.size() == 1) {
@@ -181,9 +192,9 @@ public class ProcesarFunciones extends CDI {
 
                     if (Completo.get(i).toString().charAt(j) == '^') {
                         potencia = true;
-                        exp = String.valueOf(Completo.get(i).toString().substring(j + 1, Completo.get(i).toString().length()));
-                        le = String.valueOf(Completo.get(i).toString().charAt(j - 1));
-                        if ("+".equals(Completo.get(i).toString().substring(0, j - 1)) || "".equals(Completo.get(i).toString().substring(0, j - 1))) {
+                        exp = String.valueOf(Completo.get(i).toString().substring(Completo.get(i).toString().indexOf("^")+1, Completo.get(i).toString().length()));
+                        le = String.valueOf(Completo.get(i).toString().substring(Completo.get(i).toString().indexOf("^")-1,Completo.get(i).toString().indexOf("^")));
+                        if ("+".equals(Completo.get(i).toString().substring(0, j - 1))||"".equals(Completo.get(i).toString().substring(0, j - 1))) {
                             coef = +1;
                         } else {
                             coef = Float.valueOf(Completo.get(i).toString().substring(0, j - 1));
@@ -237,6 +248,7 @@ public class ProcesarFunciones extends CDI {
             potencia = false;
             letra = false;
             numero = false;
+exp="";
         }
 
         for (Object Completo1 : Completo) {

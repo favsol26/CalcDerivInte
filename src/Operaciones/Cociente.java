@@ -29,6 +29,7 @@ public class Cociente extends CDI {
      * @return
      */
     public static ExpresionAlgebraica[] CocienteVariables(ExpresionAlgebraica mult1[], ExpresionAlgebraica mult2[]) {
+
         int v = 0;
         ExpresionAlgebraica[] expreAUX = new ExpresionAlgebraica[mult1.length * mult2.length];
         float coefAUX;
@@ -38,6 +39,7 @@ public class Cociente extends CDI {
                 mult11.setVariable(mult11.getVariable().toLowerCase());
                 mult21.setVariable(mult21.getVariable().toLowerCase());
                 if (mult11.getSimbolo().equals(mult21.getSimbolo())) {
+
                     signAUX = "+";
                     if (mult11.getVariable().equals(mult21.getVariable())) {
                         expAUX = String.valueOf(Float.valueOf(mult11.getExponente()) - Float.valueOf(mult21.getExponente()));
@@ -74,6 +76,7 @@ public class Cociente extends CDI {
         if (Signo.get(0).equals("+")) {
             Signo.remove(0);
         }
+
         return ProcesarFunciones.jeraquia(Segmento, Signo);
     }
 }

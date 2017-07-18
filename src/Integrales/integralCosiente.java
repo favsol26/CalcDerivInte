@@ -10,6 +10,7 @@ import Principal.ExpresionAlgebraica;
 //import Principal.ProcesarFunciones;
 import Principal.SintaxisExpresiones;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -25,7 +26,7 @@ public class integralCosiente extends CDI {
         String cad = "";
 
         if (cos) {
-            Expre = SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString().substring(Segmentos.get(1).toString().indexOf("("), Segmentos.get(1).toString().lastIndexOf(")")), "i", false);
+            Expre = SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString().substring(Segmentos.get(1).toString().indexOf("(")+1, Segmentos.get(1).toString().lastIndexOf(")")), "i", false);
 
             cad = "ln (";
             for (ExpresionAlgebraica finalizado1 : Expre) {
@@ -49,16 +50,19 @@ public class integralCosiente extends CDI {
             System.out.println(cad);
         } else {
             for (int i = 0; i < Segmentos.size(); i++) {
-                Segmentos.set(i, Segmentos.get(i).toString().substring(1, Segmentos.get(i).toString().length() - 1));
+                Segmentos.set(i, Segmentos.get(i).toString().substring(Segmentos.get(i).toString().indexOf("(") + 1, Segmentos.get(i).toString().lastIndexOf(")")));
             }
+
             cos1 = SintaxisExpresiones.Sintaxis(Segmentos.get(0).toString(), "i", false);
+
             cos2 = SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString(), "i", false);
+            
             Expre = Operaciones.Cociente.CocienteVariables(cos1, cos2);
             for (ExpresionAlgebraica Expre1 : Expre) {
                 cad = cad + Expre1.getSimbolo() + Expre1.getCoeficiente() + Expre1.getVariable() + "^" + Expre1.getExponente();
             }
             if (cad.charAt(0) == '+') {
-                cad = cad.substring(1, cad.length() - 1);
+                cad = cad.substring(1, cad.length());
             }
 
         }

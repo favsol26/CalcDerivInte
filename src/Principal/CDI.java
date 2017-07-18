@@ -38,7 +38,7 @@ public class CDI {
      */
     public static void main(String[] args) {
         String cad, operacion;
-        ExpresionAlgebraica[] trigo;
+        ExpresionAlgebraica[] trigo = null;
         System.out.println("intruduzca una función: ");
         cad = sc.nextLine();
         System.out.println("intruduzca una operación: ");
@@ -81,29 +81,34 @@ public class CDI {
         } else {
             cad = "";
             String re;
-            for (int i = 0; i < expz.size(); i++) {
-                re = expz.get(i).toString().substring(0, expz.get(i).toString().indexOf(" "));
-                Revisar.revisarFuncion(re, "d");
-                trigo = llenado;
+            for (Object expz1 : expz) {
+                re = expz1.toString().substring(0, expz1.toString().indexOf(" "));
+                if (!"-cos".equals(re) && !"sen".equals(re) && !"-ln".equals(re) && !"ln".equals(re)) {
+                    trigo = SintaxisExpresiones.Sintaxis(re, "d", false);
+                }
+                if (trigo != null) {
+                    for (ExpresionAlgebraica finalizado1 : trigo) {
+                        if (finalizado1 != null) {
+                            if (finalizado1.getSimbolo().equals("&")) {
+                                cad = cad + "*";
+                            } else if (finalizado1.getCoeficiente() == 0) {
 
-                for (ExpresionAlgebraica finalizado1 : trigo) {
-                    if (finalizado1 != null) {
-                        if (finalizado1.getSimbolo().equals("&")) {
-                            cad = cad + "*";
-                        } else if (finalizado1.getCoeficiente() == 0) {
-
-                        } else if (finalizado1.getSimbolo().equals("/")) {
-                            cad = cad + "/";
-                        } else if (finalizado1.getExponente().equals("0.0")) {
-                            cad = cad + finalizado1.getSimbolo() + finalizado1.getCoeficiente();
-                        } else if (finalizado1.getCoeficiente() * 100 == Math.round(finalizado1.getCoeficiente()) * 100) {
-                            cad = cad + finalizado1.getSimbolo() + Math.round(finalizado1.getCoeficiente()) + finalizado1.getVariable() + "^" + finalizado1.getExponente();
-                        } else {
-                            cad = cad + finalizado1.getSimbolo() + finalizado1.getCoeficiente() + finalizado1.getVariable() + "^" + finalizado1.getExponente();
+                            } else if (finalizado1.getSimbolo().equals("/")) {
+                                cad = cad + "/";
+                            } else if (finalizado1.getExponente().equals("0.0")) {
+                                cad = cad + finalizado1.getSimbolo() + finalizado1.getCoeficiente();
+                            } else if (finalizado1.getCoeficiente() * 100 == Math.round(finalizado1.getCoeficiente()) * 100) {
+                                cad = cad + finalizado1.getSimbolo() + Math.round(finalizado1.getCoeficiente()) + finalizado1.getVariable() + "^" + finalizado1.getExponente();
+                            } else {
+                                cad = cad + finalizado1.getSimbolo() + finalizado1.getCoeficiente() + finalizado1.getVariable() + "^" + finalizado1.getExponente();
+                            }
                         }
                     }
+                    cad = cad + expz1.toString().substring(expz1.toString().indexOf(" "), expz1.toString().length());
+                } else {
+                    cad = cad + expz1.toString();
                 }
-                cad = cad + expz.get(i).toString().substring(expz.get(i).toString().indexOf(" "), expz.get(i).toString().length());
+
             }
             System.out.print("Al " + operacion + " se obtiene: ");
         }
@@ -112,8 +117,10 @@ public class CDI {
         }
         if (cad.charAt(0) == '-') {
             System.out.println(cad);
-        } else {
+        } else if (cad.charAt(0) == '+') {
             System.out.println(cad.substring(1, cad.length()));
+        } else {
+            System.out.println(cad);
         }
         System.out.println("");
     }
