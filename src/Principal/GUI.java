@@ -5,17 +5,25 @@
  */
 package Principal;
 
+import javax.swing.JOptionPane;
+import javax.swing.text.MutableAttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+
 /**
  *
  * @author Alexander Batista
  */
 public class GUI extends javax.swing.JFrame {
 
+    boolean integrar;
+
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        
     }
 
     /**
@@ -29,18 +37,22 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtxaFuncion = new javax.swing.JTextPane();
         jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        jbtnIntegrando = new javax.swing.JButton();
+        jbtnCuadrado = new javax.swing.JButton();
+        jbtnCubo = new javax.swing.JButton();
+        jbtnPotencia = new javax.swing.JButton();
+        jbtnExponencial = new javax.swing.JButton();
+        jbtnParentecisA = new javax.swing.JButton();
+        jbtnParentecisC = new javax.swing.JButton();
+        jbtnCosiente = new javax.swing.JButton();
+        jbtnProducto = new javax.swing.JButton();
+        jbtnDerivada = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
@@ -64,93 +76,159 @@ public class GUI extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Función:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
+        jtxaFuncion.setBorder(null);
+        jtxaFuncion.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jScrollPane3.setViewportView(jtxaFuncion);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 255, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 132, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultado:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         jPanel3.setOpaque(false);
 
+        jScrollPane1.setViewportView(jList1);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 237, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 283, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operadores:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         jPanel1.setOpaque(false);
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton1.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton1.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton1.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton1.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnIntegrando.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnIntegrando.setToolTipText("Integrando");
+        jbtnIntegrando.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnIntegrando.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnIntegrando.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnIntegrando.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnIntegrando.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnIntegrandoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton2.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton2.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton2.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton2.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnCuadrado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnCuadrado.setToolTipText("Potencia Cuadrado");
+        jbtnCuadrado.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnCuadrado.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnCuadrado.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnCuadrado.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnCuadrado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCuadradoActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton3.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton3.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton3.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton3.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnCubo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnCubo.setToolTipText("Potencia Cubo");
+        jbtnCubo.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnCubo.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnCubo.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnCubo.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnCubo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCuboActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton4.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton4.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton4.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton4.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnPotencia.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnPotencia.setToolTipText("Potencia n");
+        jbtnPotencia.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnPotencia.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnPotencia.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnPotencia.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnPotencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPotenciaActionPerformed(evt);
+            }
+        });
 
-        jButton5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton5.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton5.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton5.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton5.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnExponencial.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnExponencial.setToolTipText("Función Exponencial");
+        jbtnExponencial.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnExponencial.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnExponencial.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnExponencial.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnExponencial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnExponencialActionPerformed(evt);
+            }
+        });
 
-        jButton6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton6.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton6.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton6.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton6.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnParentecisA.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnParentecisA.setToolTipText("Paréntecia Abierto");
+        jbtnParentecisA.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnParentecisA.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnParentecisA.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnParentecisA.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnParentecisA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnParentecisAActionPerformed(evt);
+            }
+        });
 
-        jButton7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton7.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton7.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton7.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton7.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnParentecisC.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnParentecisC.setToolTipText("Paréntecia Cerrado");
+        jbtnParentecisC.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnParentecisC.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnParentecisC.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnParentecisC.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnParentecisC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnParentecisCActionPerformed(evt);
+            }
+        });
 
-        jButton8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton8.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton8.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton8.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton8.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnCosiente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnCosiente.setToolTipText("Cosiente");
+        jbtnCosiente.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnCosiente.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnCosiente.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnCosiente.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnCosiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnCosienteActionPerformed(evt);
+            }
+        });
 
-        jButton9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton9.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton9.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton9.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton9.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnProducto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnProducto.setToolTipText("Producto");
+        jbtnProducto.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnProducto.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnProducto.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnProducto.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnProductoActionPerformed(evt);
+            }
+        });
 
-        jButton10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton10.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton10.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton10.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton10.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnDerivada.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnDerivada.setToolTipText("Derivada");
+        jbtnDerivada.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnDerivada.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnDerivada.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnDerivada.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnDerivada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDerivadaActionPerformed(evt);
+            }
+        });
 
         jButton11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButton11.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -244,26 +322,26 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnIntegrando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnCuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnCubo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnPotencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnExponencial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnParentecisA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnParentecisC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnCosiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnDerivada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -299,18 +377,18 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbtnIntegrando, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnCuadrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnCubo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnPotencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnExponencial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnParentecisA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnParentecisC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnCosiente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnDerivada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -361,7 +439,6 @@ public class GUI extends javax.swing.JFrame {
                     .addContainerGap()))
         );
 
-        jPanel1.getAccessibleContext().setAccessibleName("Operadores:");
         jPanel1.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -369,7 +446,7 @@ public class GUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -384,6 +461,67 @@ public class GUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtnIntegrandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIntegrandoActionPerformed
+        String dato;
+        dato = JOptionPane.showInputDialog(this, "introduce el Diferencial (una letra)", "Diferencial: ", 2);
+        this.jtxaFuncion.setText("∫()d".concat(String.valueOf(dato.charAt(0)).concat(" ")));
+        integrar = true;
+        this.jtxaFuncion.grabFocus();
+        this.jbtnDerivada.setEnabled(false);
+        this.jbtnIntegrando.setEnabled(false);
+    }//GEN-LAST:event_jbtnIntegrandoActionPerformed
+
+    private void jbtnParentecisAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnParentecisAActionPerformed
+        this.jtxaFuncion.setText(this.jtxaFuncion.getText().concat("("));
+        this.jtxaFuncion.grabFocus();
+    }//GEN-LAST:event_jbtnParentecisAActionPerformed
+
+    private void jbtnParentecisCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnParentecisCActionPerformed
+        this.jtxaFuncion.setText(this.jtxaFuncion.getText().concat(")"));
+        this.jtxaFuncion.grabFocus();
+    }//GEN-LAST:event_jbtnParentecisCActionPerformed
+
+    private void jbtnCosienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCosienteActionPerformed
+        this.jtxaFuncion.setText(this.jtxaFuncion.getText().concat("()/()"));
+        this.jtxaFuncion.grabFocus();
+    }//GEN-LAST:event_jbtnCosienteActionPerformed
+
+    private void jbtnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnProductoActionPerformed
+        this.jtxaFuncion.setText(this.jtxaFuncion.getText().concat("()()"));
+        this.jtxaFuncion.grabFocus();
+    }//GEN-LAST:event_jbtnProductoActionPerformed
+
+    private void jbtnCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCuadradoActionPerformed
+        this.jtxaFuncion.setText(this.jtxaFuncion.getText().concat("^2"));
+        this.jtxaFuncion.grabFocus();
+    }//GEN-LAST:event_jbtnCuadradoActionPerformed
+
+    private void jbtnExponencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExponencialActionPerformed
+        this.jtxaFuncion.setText(this.jtxaFuncion.getText().concat("e"));
+        this.jtxaFuncion.grabFocus();
+    }//GEN-LAST:event_jbtnExponencialActionPerformed
+
+    private void jbtnPotenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPotenciaActionPerformed
+        this.jtxaFuncion.setText(this.jtxaFuncion.getText().concat("^"));
+        this.jtxaFuncion.setFocusable(true);
+        this.jtxaFuncion.grabFocus();
+    }//GEN-LAST:event_jbtnPotenciaActionPerformed
+
+    private void jbtnDerivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDerivadaActionPerformed
+        String dato;
+        dato = JOptionPane.showInputDialog(this, "introduce el Diferencial (una letra)", "Diferencial: ", 2);
+        this.jtxaFuncion.setText(this.jtxaFuncion.getText().concat(" d".concat(" \n___".concat("()\nd".concat(String.valueOf(dato.charAt(0)))))));
+        this.jtxaFuncion.setCaretPosition(8);
+        integrar = false;
+        this.jtxaFuncion.grabFocus();
+        this.jbtnIntegrando.setEnabled(false);
+        this.jbtnDerivada.setEnabled(false);
+    }//GEN-LAST:event_jbtnDerivadaActionPerformed
+
+    private void jbtnCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCuboActionPerformed
+        this.jtxaFuncion.setText(this.jtxaFuncion.getText().concat("^3"));
+    }//GEN-LAST:event_jbtnCuboActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,19 +539,16 @@ public class GUI extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
+        //</editor-fold>
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new GUI().setVisible(true);
             }
@@ -421,8 +556,6 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
@@ -432,22 +565,28 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton jbtnCosiente;
+    private javax.swing.JButton jbtnCuadrado;
+    private javax.swing.JButton jbtnCubo;
+    private javax.swing.JButton jbtnDerivada;
+    private javax.swing.JButton jbtnExponencial;
+    private javax.swing.JButton jbtnIntegrando;
+    private javax.swing.JButton jbtnParentecisA;
+    private javax.swing.JButton jbtnParentecisC;
+    private javax.swing.JButton jbtnPotencia;
+    private javax.swing.JButton jbtnProducto;
+    private javax.swing.JTextPane jtxaFuncion;
     // End of variables declaration//GEN-END:variables
 }
