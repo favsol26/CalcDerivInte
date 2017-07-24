@@ -20,12 +20,12 @@ public class integralProducto extends CDI {
     static ExpresionAlgebraica[] mult2;
     static ExpresionAlgebraica[] res;
 
-    public static ExpresionAlgebraica[] integral_producto(ArrayList Segmentos) {
+    public static ExpresionAlgebraica[] integral_producto(ArrayList Segmentos, String Dif) {
         String cad = "";
         for (int i = 0; i < Segmentos.size() - 1; i++) {
-            mult1 = SintaxisExpresiones.Sintaxis(Segmentos.get(i).toString().substring(1, Segmentos.get(i).toString().length() - 1), "d", false);
+            mult1 = SintaxisExpresiones.Sintaxis(Segmentos.get(i).toString().substring(1, Segmentos.get(i).toString().length() - 1), "d", false, Dif);
 
-            mult2 = SintaxisExpresiones.Sintaxis(Segmentos.get(i + 1).toString().substring(1, Segmentos.get(i + 1).toString().length() - 1), "d", false);
+            mult2 = SintaxisExpresiones.Sintaxis(Segmentos.get(i + 1).toString().substring(1, Segmentos.get(i + 1).toString().length() - 1), "d", false, Dif);
 
             res = Operaciones.Producto.ProductoVariables(mult1, mult2);
             cad = "(";
@@ -42,7 +42,7 @@ public class integralProducto extends CDI {
         cad = cad.substring(1, cad.length() - 1);
         System.out.println("***" + cad + "***");
 
-        res = integralPotencia.integral_Potencia(SintaxisExpresiones.Sintaxis(cad, "d", false));
+        res = integralPotencia.integral_Potencia(SintaxisExpresiones.Sintaxis(cad, "d", false, Dif));
         return res;
     }
 

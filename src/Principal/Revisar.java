@@ -15,7 +15,7 @@ public class Revisar {
 
     static ArrayList pre = new ArrayList();
 
-    public static ExpresionAlgebraica[] revisarFuncion(String cad, String op) {
+    public static ExpresionAlgebraica[] revisarFuncion(String cad, String op, String Dif) {
         String letra = "";
         String compara;
         String enunciado = "Valido";
@@ -48,10 +48,9 @@ public class Revisar {
                 }
             }
         }
-        System.out.println(enunciado);
         cad = Estructurar(cad);
         if (!"Expresión no valida...".equals(enunciado)) {
-            return SintaxisExpresiones.Sintaxis(cad, op, true);
+            return SintaxisExpresiones.Sintaxis(cad, op, true, Dif);
         } else {
             return null;
         }

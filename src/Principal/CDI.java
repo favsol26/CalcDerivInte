@@ -29,36 +29,35 @@ public class CDI {
     public static DecimalFormat df = new DecimalFormat("###.##");
     public static String result = "";
     public static ArrayList expz = new ArrayList();
+    public static ArrayList resultados = new ArrayList();
     static boolean trigo2;
     static boolean expon;
     public static Scanner sc = new Scanner(System.in);
 
     /**
-     * @param args the command line arguments
+     * @param cad
+     * @param operacion
+     * @param Dif
+     * @return 
      */
-    public static void main(String[] args) {
-        String cad, operacion;
+    public static ArrayList CDIMaster(String cad, String operacion, String Dif) {
         ExpresionAlgebraica[] trigo = null;
-        System.out.println("intruduzca una función: ");
-        cad = sc.nextLine();
-        System.out.println("intruduzca una operación: ");
-        operacion = sc.nextLine();
 
         if (cad.charAt(0) == '+') {
             cad = cad.substring(1, cad.length());
         }
 
-        resultado = Revisar.revisarFuncion(cad, operacion);
+        resultado = Revisar.revisarFuncion(cad, operacion, Dif);
 
         if (operacion.toLowerCase().equals("d")) {
             operacion = "derivar";
         } else {
             operacion = "integrar";
         }
-        System.out.println("\n");
+        resultados.add("\n");
         if (expz.isEmpty()) {
             if (resultado != null) {
-                System.out.print("Al " + operacion + " se obtiene: ");
+                resultados.add("Al " + operacion + " se obtiene: ");
                 cad = "";
                 for (ExpresionAlgebraica finalizado1 : resultado) {
                     if (finalizado1 != null) {
@@ -84,7 +83,7 @@ public class CDI {
             for (Object expz1 : expz) {
                 re = expz1.toString().substring(0, expz1.toString().indexOf(" "));
                 if (!"-cos".equals(re) && !"sen".equals(re) && !"-ln".equals(re) && !"ln".equals(re)) {
-                    trigo = SintaxisExpresiones.Sintaxis(re, "d", false);
+                    trigo = SintaxisExpresiones.Sintaxis(re, "d", false, Dif);
                 }
                 if (trigo != null) {
                     for (ExpresionAlgebraica finalizado1 : trigo) {
@@ -110,19 +109,20 @@ public class CDI {
                 }
 
             }
-            System.out.print("Al " + operacion + " se obtiene: ");
+            resultados.add("Al " + operacion + " se obtiene: ");
         }
         if (cad.equals("")) {
             cad = "0";
         }
         if (cad.charAt(0) == '-') {
-            System.out.println(cad);
+            resultados.add(cad);
         } else if (cad.charAt(0) == '+') {
-            System.out.println(cad.substring(1, cad.length()));
+            resultados.add(cad.substring(1, cad.length()));
         } else {
-            System.out.println(cad);
+            resultados.add(cad);
         }
-        System.out.println("");
+        resultados.add("");
+        return resultados;
     }
 
 }

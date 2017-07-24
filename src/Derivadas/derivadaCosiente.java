@@ -16,7 +16,7 @@ import Principal.SintaxisExpresiones;
  */
 public class derivadaCosiente extends CDI {
 
-    public static ExpresionAlgebraica[] Cosiente(String op) {
+    public static ExpresionAlgebraica[] Cosiente(String op, String dif) {
         ExpresionAlgebraica[] Division;
         int h = 0, k;
         String cadena = "";
@@ -52,7 +52,7 @@ public class derivadaCosiente extends CDI {
         if (mul2.length > 1) {
             fac.limite = 2;
             fac.todo = mul2;
-            fac.llamar(op);
+            fac.llamar(op, dif);
         } else {
             float num;
             num = Float.valueOf(mul2[0].getSimbolo().concat(String.valueOf(mul2[0].getCoeficiente())));
@@ -77,9 +77,9 @@ public class derivadaCosiente extends CDI {
             }
         }
         if (cadena.charAt(0) == '+') {
-            resultado = SintaxisExpresiones.Sintaxis(cadena.substring(1, cadena.length()), op, false);
+            resultado = SintaxisExpresiones.Sintaxis(cadena.substring(1, cadena.length()), op, false, dif);
         } else {
-            resultado = SintaxisExpresiones.Sintaxis(cadena, op, false);
+            resultado = SintaxisExpresiones.Sintaxis(cadena, op, false, dif);
         }
         for (int i = 0; i < llenado.length; i++) {
             resultado[i] = new ExpresionAlgebraica(llenado[i].getSimbolo(), llenado[i].getCoeficiente(), llenado[i].getVariable(), llenado[i].getExponente());

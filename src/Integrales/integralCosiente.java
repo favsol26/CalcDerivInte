@@ -22,11 +22,11 @@ public class integralCosiente extends CDI {
     static ExpresionAlgebraica[] cos1;
     static ExpresionAlgebraica[] cos2;
 
-    public static ExpresionAlgebraica[] cosiente(ArrayList Segmentos, boolean cos) {
+    public static ExpresionAlgebraica[] cosiente(ArrayList Segmentos, boolean cos, String Dif) {
         String cad = "";
 
         if (cos) {
-            Expre = SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString().substring(Segmentos.get(1).toString().indexOf("(")+1, Segmentos.get(1).toString().lastIndexOf(")")), "i", false);
+            Expre = SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString().substring(Segmentos.get(1).toString().indexOf("(")+1, Segmentos.get(1).toString().lastIndexOf(")")), "i", false, Dif);
 
             cad = "ln (";
             for (ExpresionAlgebraica finalizado1 : Expre) {
@@ -53,9 +53,9 @@ public class integralCosiente extends CDI {
                 Segmentos.set(i, Segmentos.get(i).toString().substring(Segmentos.get(i).toString().indexOf("(") + 1, Segmentos.get(i).toString().lastIndexOf(")")));
             }
 
-            cos1 = SintaxisExpresiones.Sintaxis(Segmentos.get(0).toString(), "i", false);
+            cos1 = SintaxisExpresiones.Sintaxis(Segmentos.get(0).toString(), "i", false, Dif);
 
-            cos2 = SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString(), "i", false);
+            cos2 = SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString(), "i", false, Dif);
             
             Expre = Operaciones.Cociente.CocienteVariables(cos1, cos2);
             for (ExpresionAlgebraica Expre1 : Expre) {
@@ -66,6 +66,6 @@ public class integralCosiente extends CDI {
             }
 
         }
-        return SintaxisExpresiones.Sintaxis(cad, "i", true);
+        return SintaxisExpresiones.Sintaxis(cad, "i", true, Dif);
     }
 }

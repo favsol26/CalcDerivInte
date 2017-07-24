@@ -23,7 +23,7 @@ public class procesoDerivadaLogaritmo extends Enrrutar {
     ExpresionAlgebraica[] terminos;
     ExpresionAlgebraica[] resultados;
 
-    public ExpresionAlgebraica[] proceso(ArrayList Segmentos, ArrayList Signos, String op) {
+    public ExpresionAlgebraica[] proceso(ArrayList Segmentos, ArrayList Signos, String op, String dif) {
         if (Segmentos.size() != 1) {
             Segmentos.stream().map((Segmento) -> {
                 logn = logn.concat(Segmento.toString());
@@ -47,10 +47,10 @@ public class procesoDerivadaLogaritmo extends Enrrutar {
                     cad = cad + Signos.get(i);
                 }
             }
-            resultados = Revisar.revisarFuncion(cad, op);
+            resultados = Revisar.revisarFuncion(cad, op, dif);
             v = resultados.length + 1;
         } else {
-            resultados = Revisar.revisarFuncion(logn.substring(3, logn.length() - 1), op);
+            resultados = Revisar.revisarFuncion(logn.substring(3, logn.length() - 1), op, dif);
             v = resultados.length + llenado.length + 1;
         }
         terminos = new ExpresionAlgebraica[v];
