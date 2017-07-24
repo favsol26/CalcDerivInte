@@ -41,7 +41,7 @@ public class Factorizar extends CDI {
         }
     }
 
-    public static ExpresionAlgebraica[] BinomioNewton(int pos, ExpresionAlgebraica[] parte, String op) {
+    public static ExpresionAlgebraica[] BinomioNewton(int pos, ExpresionAlgebraica[] parte, String op, String dif) {
         resuelto = new ExpresionAlgebraica[pos + 1];
         int c = pos, t = 0, z = 0, signo, signo2;
         float coef;
@@ -98,9 +98,9 @@ public class Factorizar extends CDI {
         }
 
         if (cadena.charAt(0) == '+') {
-            return SintaxisExpresiones.Sintaxis(cadena.substring(1, cadena.length()), op, false);
+            return SintaxisExpresiones.Sintaxis(cadena.substring(1, cadena.length()), op, false, dif);
         } else {
-            return SintaxisExpresiones.Sintaxis(cadena, op, false);
+            return SintaxisExpresiones.Sintaxis(cadena, op, false, dif);
         }
     }
 }

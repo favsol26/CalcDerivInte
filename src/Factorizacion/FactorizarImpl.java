@@ -12,8 +12,8 @@ public class FactorizarImpl extends Factorizar {
     public int limite;
     public ExpresionAlgebraica[] todo;
 
-    public void llamar(String op) {
+    public void llamar(String op, String dif) {
         piramide(limite);
-        BinomioNewton(limite, todo, op);
+        BinomioNewton(limite, todo, op, dif);
     }
 }

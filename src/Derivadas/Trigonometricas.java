@@ -18,7 +18,7 @@ public class Trigonometricas extends CDI {
 
     static ExpresionAlgebraica[] exp;
 
-    public static ArrayList correr(ArrayList expre) {
+    public static ArrayList correr(ArrayList expre, String dif) {
         ArrayList expr = expre;
         String salida;
         int id;
@@ -27,32 +27,32 @@ public class Trigonometricas extends CDI {
                 case "sen":
                     salida = expr.get(i).toString();
                     id = 0;
-                    expr.set(i, funcion(salida, id));
+                    expr.set(i, funcion(salida, id, dif));
                     break;
                 case "cos":
                     salida = expr.get(i).toString();
                     id = 1;
-                    expr.set(i, funcion(salida, id));
+                    expr.set(i, funcion(salida, id, dif));
                     break;
                 case "tan":
                     salida = expr.get(i).toString();
                     id = 2;
-                    expr.set(i, funcion(salida, id));
+                    expr.set(i, funcion(salida, id, dif));
                     break;
                 case "cot":
                     salida = expr.get(i).toString();
                     id = 3;
-                    expr.set(i, funcion(salida, id));
+                    expr.set(i, funcion(salida, id, dif));
                     break;
                 case "sec":
                     salida = expr.get(i).toString();
                     id = 4;
-                    expr.set(i, funcion(salida, id));
+                    expr.set(i, funcion(salida, id, dif));
                     break;
                 case "csc":
                     id = 5;
                     salida = expr.get(i).toString();
-                    expr.set(i, funcion(salida, id));
+                    expr.set(i, funcion(salida, id, dif));
                     break;
             }
 
@@ -60,44 +60,44 @@ public class Trigonometricas extends CDI {
         return expr;
     }
 
-    private static String funcion(String cad, int op) {
+    private static String funcion(String cad, int op, String dif) {
         String respuesta = "";
         switch (op) {
             case 0: {
-                respuesta = sen(cad);
+                respuesta = sen(cad, dif);
             }
             break;
             case 1: {
-                respuesta = cos(cad);
+                respuesta = cos(cad, dif);
             }
             break;
             case 2: {
-                respuesta = tan(cad);
+                respuesta = tan(cad, dif);
             }
             break;
             case 3: {
-                respuesta = cot(cad);
+                respuesta = cot(cad, dif);
             }
             break;
             case 4: {
-                respuesta = sec(cad);
+                respuesta = sec(cad, dif);
             }
             break;
             case 5: {
-                respuesta = csc(cad);
+                respuesta = csc(cad, dif);
             }
             break;
         }
         return respuesta;
     }
 
-    private static String sen(String cad) {
+    private static String sen(String cad, String dif) {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
 
         String ExpExter = "cos(".concat(ExpInter) + ")";
 
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true, dif);
 
         cad = "";
 
@@ -112,10 +112,10 @@ public class Trigonometricas extends CDI {
         return cad;
     }
 
-    private static String cos(String cad) {
+    private static String cos(String cad, String dif) {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true, dif);
 
         if (ExpInter.charAt(0) == '-') {
             ExpInter = ExpInter.substring(1, ExpInter.length());
@@ -143,13 +143,13 @@ public class Trigonometricas extends CDI {
         return cad;
     }
 
-    private static String tan(String cad) {
+    private static String tan(String cad, String dif) {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
 
         String ExpExter = "sec^2(".concat(ExpInter) + ")";
 
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true, dif);
 
         cad = "";
 
@@ -165,10 +165,10 @@ public class Trigonometricas extends CDI {
         return cad;
     }
 
-    private static String cot(String cad) {
+    private static String cot(String cad, String dif) {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true, dif);
 
         if (ExpInter.charAt(0) == '-') {
             ExpInter = ExpInter.substring(1, ExpInter.length());
@@ -196,13 +196,13 @@ public class Trigonometricas extends CDI {
         return cad;
     }
 
-    private static String sec(String cad) {
+    private static String sec(String cad, String dif) {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
 
         String ExpExter = "sec(".concat(ExpInter) + ") " + "tan(".concat(ExpInter) + ")";
 
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true, dif);
 
         cad = "";
 
@@ -218,9 +218,9 @@ public class Trigonometricas extends CDI {
         return cad;
     }
 
-    private static String csc(String cad) {
+    private static String csc(String cad, String dif) {
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true, dif);
 
         if (ExpInter.charAt(0) == '-') {
             ExpInter = ExpInter.substring(1, ExpInter.length());
@@ -247,11 +247,11 @@ public class Trigonometricas extends CDI {
         return cad;
     }
 
-    private static String logN(String cad) {
+    private static String logN(String cad, String dif) {
 
         String ExpInter = cad.substring(cad.indexOf("(") + 1, cad.lastIndexOf(")"));
 
-        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true);
+        exp = SintaxisExpresiones.Sintaxis(ExpInter, "d", true, dif);
 
         cad = "";
 

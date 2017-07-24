@@ -6,7 +6,9 @@
 package Principal;
 
 import java.awt.Font;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextPane;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -40,10 +42,10 @@ public class GUI extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jtxaFuncion = new javax.swing.JTextPane();
+        jtxpFuncion = new javax.swing.JTextPane();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jPanel1 = new javax.swing.JPanel();
         jbtnIntegrando = new javax.swing.JButton();
         jbtnCuadrado = new javax.swing.JButton();
@@ -77,14 +79,17 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Función:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
-        jtxaFuncion.setBorder(null);
-        jtxaFuncion.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        jtxaFuncion.addKeyListener(new java.awt.event.KeyAdapter() {
+        jtxpFuncion.setBorder(null);
+        jtxpFuncion.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jtxpFuncion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jtxaFuncionKeyPressed(evt);
+                jtxpFuncionKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtxpFuncionKeyReleased(evt);
             }
         });
-        jScrollPane3.setViewportView(jtxaFuncion);
+        jScrollPane3.setViewportView(jtxpFuncion);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -100,23 +105,24 @@ public class GUI extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultado:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         jPanel3.setOpaque(false);
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane2.setViewportView(jTextPane1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operadores:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         jPanel1.setOpaque(false);
 
         jbtnIntegrando.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnIntegrando.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/integrando.png"))); // NOI18N
         jbtnIntegrando.setToolTipText("Integrando");
         jbtnIntegrando.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jbtnIntegrando.setMaximumSize(new java.awt.Dimension(25, 25));
@@ -129,6 +135,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jbtnCuadrado.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnCuadrado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cuadrado.png"))); // NOI18N
         jbtnCuadrado.setToolTipText("Potencia Cuadrado");
         jbtnCuadrado.setEnabled(false);
         jbtnCuadrado.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -142,6 +149,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jbtnCubo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnCubo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cubo.png"))); // NOI18N
         jbtnCubo.setToolTipText("Potencia Cubo");
         jbtnCubo.setEnabled(false);
         jbtnCubo.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -155,6 +163,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jbtnPotencia.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnPotencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/potencia.png"))); // NOI18N
         jbtnPotencia.setToolTipText("Potencia n");
         jbtnPotencia.setEnabled(false);
         jbtnPotencia.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -168,6 +177,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jbtnExponencial.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnExponencial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/exponencial.png"))); // NOI18N
         jbtnExponencial.setToolTipText("Función Exponencial");
         jbtnExponencial.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jbtnExponencial.setMaximumSize(new java.awt.Dimension(25, 25));
@@ -180,6 +190,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jbtnParentecisA.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnParentecisA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ParentecisA.png"))); // NOI18N
         jbtnParentecisA.setToolTipText("Paréntecia Abierto");
         jbtnParentecisA.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jbtnParentecisA.setMaximumSize(new java.awt.Dimension(25, 25));
@@ -192,6 +203,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jbtnParentecisC.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnParentecisC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/ParentecisC.png"))); // NOI18N
         jbtnParentecisC.setToolTipText("Paréntecia Cerrado");
         jbtnParentecisC.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jbtnParentecisC.setMaximumSize(new java.awt.Dimension(25, 25));
@@ -204,6 +216,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jbtnCosiente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnCosiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cosiente.png"))); // NOI18N
         jbtnCosiente.setToolTipText("Cosiente");
         jbtnCosiente.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jbtnCosiente.setMaximumSize(new java.awt.Dimension(25, 25));
@@ -216,6 +229,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jbtnProducto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/producto.png"))); // NOI18N
         jbtnProducto.setToolTipText("Producto");
         jbtnProducto.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jbtnProducto.setMaximumSize(new java.awt.Dimension(25, 25));
@@ -228,6 +242,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jbtnDerivada.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnDerivada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/integrando.png"))); // NOI18N
         jbtnDerivada.setToolTipText("Derivada");
         jbtnDerivada.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jbtnDerivada.setMaximumSize(new java.awt.Dimension(25, 25));
@@ -311,16 +326,24 @@ public class GUI extends javax.swing.JFrame {
         jButton22.setMinimumSize(new java.awt.Dimension(25, 25));
         jButton22.setPreferredSize(new java.awt.Dimension(25, 25));
 
+        jButton23.setBackground(new java.awt.Color(102, 255, 102));
         jButton23.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton23.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jButton23.setText("=");
+        jButton23.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButton23.setMaximumSize(new java.awt.Dimension(25, 25));
         jButton23.setMinimumSize(new java.awt.Dimension(25, 25));
         jButton23.setPreferredSize(new java.awt.Dimension(25, 25));
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
 
         jButton24.setBackground(new java.awt.Color(255, 0, 0));
         jButton24.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton24.setText("N");
         jButton24.setToolTipText("Nuevo");
-        jButton24.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jButton24.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButton24.setMaximumSize(new java.awt.Dimension(25, 25));
         jButton24.setMinimumSize(new java.awt.Dimension(25, 25));
         jButton24.setPreferredSize(new java.awt.Dimension(25, 25));
@@ -480,133 +503,159 @@ public class GUI extends javax.swing.JFrame {
 
     private void jbtnIntegrandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIntegrandoActionPerformed
         dato = JOptionPane.showInputDialog(this, "introduce el Diferencial (una letra)", "Diferencial: ", 2);
-        this.jtxaFuncion.setText("∫()d".concat(String.valueOf(dato.charAt(0)).concat(" ")));
+        this.jtxpFuncion.setText("∫()d".concat(String.valueOf(dato.charAt(0)).concat(" ")));
         integrar = true;
-        this.jtxaFuncion.setCaretPosition(2);
-        this.jtxaFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(2);
+        this.jtxpFuncion.grabFocus();
         this.jbtnDerivada.setEnabled(false);
         this.jbtnIntegrando.setEnabled(false);
     }//GEN-LAST:event_jbtnIntegrandoActionPerformed
 
     private void jbtnParentecisAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnParentecisAActionPerformed
         String sel = Select();
-        this.jtxaFuncion.setText(sel.concat("(".concat(Select2())));
-        this.jtxaFuncion.grabFocus();
-        this.jtxaFuncion.setCaretPosition(sel.length() + 1);
+        this.jtxpFuncion.setText(sel.concat("(".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
     }//GEN-LAST:event_jbtnParentecisAActionPerformed
 
     private void jbtnParentecisCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnParentecisCActionPerformed
         String sel = Select();
-        this.jtxaFuncion.setText(sel.concat(")".concat(Select2())));
-        this.jtxaFuncion.grabFocus();
-        this.jtxaFuncion.setCaretPosition(sel.length() + 1);
+        this.jtxpFuncion.setText(sel.concat(")".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
     }//GEN-LAST:event_jbtnParentecisCActionPerformed
 
     private void jbtnCosienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCosienteActionPerformed
         String sel = Select();
-        this.jtxaFuncion.setText(sel.concat("()/()".concat(Select2())));
-        this.jtxaFuncion.grabFocus();
-        this.jtxaFuncion.setCaretPosition(sel.length() + 1);
+        this.jtxpFuncion.setText(sel.concat("()/()".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
     }//GEN-LAST:event_jbtnCosienteActionPerformed
 
     private void jbtnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnProductoActionPerformed
         String sel = Select();
-        this.jtxaFuncion.setText(sel.concat("()()".concat(Select2())));
-        this.jtxaFuncion.grabFocus();
-        this.jtxaFuncion.setCaretPosition(sel.length() + 1);
+        this.jtxpFuncion.setText(sel.concat("()()".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
     }//GEN-LAST:event_jbtnProductoActionPerformed
 
     private void jbtnCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCuadradoActionPerformed
         String sel = Select();
-        this.jtxaFuncion.setText(sel.concat("^2".concat(Select2())));
-        this.jtxaFuncion.grabFocus();
-        this.jtxaFuncion.setCaretPosition(sel.length() + 2);
+        this.jtxpFuncion.setText(sel.concat("^2".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 2);
     }//GEN-LAST:event_jbtnCuadradoActionPerformed
 
     private void jbtnExponencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExponencialActionPerformed
         String sel = Select();
-        this.jtxaFuncion.setText(sel.concat("e".concat(Select2())));
-        this.jtxaFuncion.grabFocus();
-        this.jtxaFuncion.setCaretPosition(sel.length() + 1);
+        this.jtxpFuncion.setText(sel.concat("e".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
     }//GEN-LAST:event_jbtnExponencialActionPerformed
 
     private void jbtnPotenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPotenciaActionPerformed
         String sel = Select();
-        this.jtxaFuncion.setText(sel.concat("^".concat(Select2())));
-        this.jtxaFuncion.grabFocus();
-        this.jtxaFuncion.setCaretPosition(sel.length() + 1);
+        this.jtxpFuncion.setText(sel.concat("^".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
     }//GEN-LAST:event_jbtnPotenciaActionPerformed
 
     private void jbtnDerivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDerivadaActionPerformed
         dato = JOptionPane.showInputDialog(this, "introduce el Diferencial (una letra)", "Diferencial: ", 2);
-        this.jtxaFuncion.setText(this.jtxaFuncion.getText().concat(" d".concat(" \n──".concat("()\nd".concat(String.valueOf(dato.charAt(0)))))));
+        this.jtxpFuncion.setText(this.jtxpFuncion.getText().concat(" d".concat(" \n──".concat("()\nd".concat(String.valueOf(dato.charAt(0)))))));
         integrar = false;
-        changeLineSpacing(Float.valueOf("-0.5"), false);
+        changeLineSpacing(Float.valueOf("-0.5"), false, this.jtxpFuncion);
         this.jbtnIntegrando.setEnabled(false);
         this.jbtnDerivada.setEnabled(false);
-        this.jtxaFuncion.grabFocus();
-        this.jtxaFuncion.setCaretPosition(7);
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(7);
     }//GEN-LAST:event_jbtnDerivadaActionPerformed
 
     private void jbtnCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCuboActionPerformed
         String sel = Select();
-        this.jtxaFuncion.setText(sel.concat("^3".concat(Select2())));
-        this.jtxaFuncion.grabFocus();
-        this.jtxaFuncion.setCaretPosition(sel.length() + 2);
+        this.jtxpFuncion.setText(sel.concat("^3".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 2);
     }//GEN-LAST:event_jbtnCuboActionPerformed
 
-    private void jtxaFuncionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxaFuncionKeyPressed
-        jtxasetFont();
-        if (!integrar) {
-            int pos = 0;
-            char caracter = evt.getKeyChar();
-            if (this.jtxaFuncion.getText().equals("")) {
-                this.jbtnDerivada.setEnabled(true);
-                this.jbtnIntegrando.setEnabled(true);
-            }
-            if (Character.isLetter(caracter)) {
-                if (!String.valueOf(evt.getKeyChar()).equals(dato)) {
-                    if (JOptionPane.showConfirmDialog(this, "Debe ingresar la misma letra del diferencial \n ¿Deséas Continuar?", "Información", 1)==1) {
-                        
-                        String cadena = this.jtxaFuncion.getText().substring(this.jtxaFuncion.getText().indexOf("(") + 1, this.jtxaFuncion.getText().lastIndexOf(")"));
-                        for (int i = 0; i < cadena.length(); i++) {
-                            if (Character.isLetter(cadena.charAt(i))) {
-                                if (!String.valueOf(cadena.charAt(i)).equals(dato)) {
-                                    pos = i;
-                                    cadena = cadena.substring(0, i).concat(cadena.substring(i + 1, cadena.length()));
-                                }
+    private void jtxpFuncionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxpFuncionKeyPressed
+        jtxasetFont(this.jtxpFuncion);
+        int pos = 0;
+        char caracter = evt.getKeyChar();
+        if (this.jtxpFuncion.getText().equals("")) {
+            this.jbtnDerivada.setEnabled(true);
+            this.jbtnIntegrando.setEnabled(true);
+        }
+        if (Character.isLetter(caracter)) {
+            if (!String.valueOf(evt.getKeyChar()).equals(dato)) {
+                if (JOptionPane.showConfirmDialog(this, "Debe ingresar la misma letra del diferencial \n ¿Deséas Continuar?", "Información", 1) == 1) {
+
+                    String cadena = this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf("(") + 1, this.jtxpFuncion.getText().lastIndexOf(")"));
+                    for (int i = 0; i < cadena.length(); i++) {
+                        if (Character.isLetter(cadena.charAt(i))) {
+                            if (!String.valueOf(cadena.charAt(i)).equals(dato)) {
+                                pos = i;
+                                cadena = cadena.substring(0, i).concat(cadena.substring(i + 1, cadena.length()));
                             }
                         }
-                        cadena = this.jtxaFuncion.getText().substring(0, this.jtxaFuncion.getText().indexOf("(") + 1).concat(cadena.concat(this.jtxaFuncion.getText().substring(this.jtxaFuncion.getText().indexOf(")"))));
-                        this.jtxaFuncion.setText(cadena);
-                        jtxasetFont();
-                        this.jtxaFuncion.grabFocus();
-                        
-                        this.jtxaFuncion.setCaretPosition(pos + 7);
                     }
+                    cadena = this.jtxpFuncion.getText().substring(0, this.jtxpFuncion.getText().indexOf("(") + 1).concat(cadena.concat(this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf(")"))));
+                    this.jtxpFuncion.setText(cadena);
+                    jtxasetFont(this.jtxpFuncion);
+                    this.jtxpFuncion.grabFocus();
 
+                    this.jtxpFuncion.setCaretPosition(pos + 7);
                 }
-            } else {
-                this.jbtnCuadrado.setEnabled(true);
-                this.jbtnCubo.setEnabled(true);
-                this.jbtnPotencia.setEnabled(true);
+
             }
         } else {
-            this.jbtnCuadrado.setEnabled(false);
-            this.jbtnCubo.setEnabled(false);
-            this.jbtnPotencia.setEnabled(false);
+            this.jbtnCuadrado.setEnabled(true);
+            this.jbtnCubo.setEnabled(true);
+            this.jbtnPotencia.setEnabled(true);
         }
 
-
-    }//GEN-LAST:event_jtxaFuncionKeyPressed
+    }//GEN-LAST:event_jtxpFuncionKeyPressed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        this.jtxaFuncion.setText("");
+        this.jtxpFuncion.setText("");
         this.jbtnDerivada.setEnabled(true);
         this.jbtnIntegrando.setEnabled(true);
-        integrar=false;
-        this.jtxaFuncion.grabFocus();
+        this.jTextPane1.setText("");
+        integrar = false;
+        this.jtxpFuncion.grabFocus();
     }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jtxpFuncionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxpFuncionKeyReleased
+
+    }//GEN-LAST:event_jtxpFuncionKeyReleased
+
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        String op, cad;
+        ArrayList resultados = new ArrayList();
+        if (!integrar) {
+            op = "D";
+        } else {
+            op = "I";
+        }
+        cad = this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf("(") + 1, this.jtxpFuncion.getText().lastIndexOf(")"));
+        if (!"".equals(cad)) {
+            resultados = CDI.CDIMaster(cad, op, dato);
+        } else if (integrar) {
+            System.out.println(dato);
+            resultados = CDI.CDIMaster("1", op, dato);
+        } else {
+            JOptionPane.showMessageDialog(this, "Para derivar debe colocar al menos un numero diferente de 0", "Error", JOptionPane.ERROR_MESSAGE);
+            this.jtxpFuncion.grabFocus();
+            if (!integrar) {
+                this.jtxpFuncion.setCaretPosition(7);
+            }
+        }
+        for (Object resultado : resultados) {
+            this.jTextPane1.setText(this.jTextPane1.getText().concat(resultado.toString()));
+            changeLineSpacing(Float.valueOf("1"), false, this.jTextPane1);
+        }
+        resultados.clear();
+    }//GEN-LAST:event_jButton23ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -655,13 +704,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
-    private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JButton jbtnCosiente;
     private javax.swing.JButton jbtnCuadrado;
     private javax.swing.JButton jbtnCubo;
@@ -672,28 +721,36 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jbtnParentecisC;
     private javax.swing.JButton jbtnPotencia;
     private javax.swing.JButton jbtnProducto;
-    private javax.swing.JTextPane jtxaFuncion;
+    private javax.swing.JTextPane jtxpFuncion;
     // End of variables declaration//GEN-END:variables
 
     private String Select() {
-        return this.jtxaFuncion.getText().substring(0, this.jtxaFuncion.getCaretPosition());
+        return this.jtxpFuncion.getText().substring(0, this.jtxpFuncion.getCaretPosition());
     }
 
     private String Select2() {
-        return this.jtxaFuncion.getText().substring(this.jtxaFuncion.getCaretPosition(), this.jtxaFuncion.getText().length());
+        return this.jtxpFuncion.getText().substring(this.jtxpFuncion.getCaretPosition(), this.jtxpFuncion.getText().length());
     }
 
-    private void changeLineSpacing(float factor, boolean replace) {
-        this.jtxaFuncion.selectAll();
-        MutableAttributeSet set = new SimpleAttributeSet(this.jtxaFuncion.getParagraphAttributes());
+    private void changeLineSpacing(float factor, boolean replace, JTextPane jtxpvariable) {
+        jtxpvariable.selectAll();
+        MutableAttributeSet set = new SimpleAttributeSet(jtxpvariable.getParagraphAttributes());
         StyleConstants.setLineSpacing(set, factor);
-        this.jtxaFuncion.setParagraphAttributes(set, replace);
-        jtxasetFont();
+        jtxpvariable.setParagraphAttributes(set, replace);
+        jtxasetFont(jtxpvariable);
     }
 
-    private void jtxasetFont() {
+    private void jtxasetFont(JTextPane jtxpvariable) {
         Font fuente = new Font("Times New Roman", Font.ITALIC, 18);
-        this.jtxaFuncion.setFont(fuente);
+        jtxpvariable.setFont(fuente);
+    }
+
+    private String crearCadena(String cad) {
+        if (cad.indexOf(")(") == 1) {
+            cad = "(".concat(cad).concat(")");
+        }
+        System.out.println(cad + "   yo");
+        return cad;
     }
 
 }

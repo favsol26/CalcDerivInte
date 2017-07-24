@@ -14,7 +14,7 @@ import Principal.ExpresionAlgebraica;
  */
 public class derivadaPotencia extends CDI {
 
-    public static ExpresionAlgebraica[] derivada_Potencia(ExpresionAlgebraica[] deriv) {
+    public static ExpresionAlgebraica[] derivada_Potencia(ExpresionAlgebraica[] deriv, String dif) {
 
         String parte;
         resultado = new ExpresionAlgebraica[deriv.length];
@@ -49,7 +49,7 @@ public class derivadaPotencia extends CDI {
                 mul1 = new ExpresionAlgebraica[1];
                 mul1[0] = new ExpresionAlgebraica(resultado[i].getSimbolo(), resultado[i].getCoeficiente(), resultado[i].getVariable(), "0");
                 exponente = resultado[i].getExponente();
-                ExpresionAlgebraica[] term = derivadaProducto.Derivada_Producto(null);
+                ExpresionAlgebraica[] term = derivadaProducto.Derivada_Producto(null, dif);
                 resultado[i] = new ExpresionAlgebraica(term[0].getSimbolo(), term[0].getCoeficiente(), term[0].getVariable(), term[0].getExponente());
             }
         }
