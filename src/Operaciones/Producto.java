@@ -74,6 +74,7 @@ public class Producto extends CDI {
         if (Signo.get(0).equals("+") && Segmento.size() == Signo.size()) {
             Signo.remove(0);
         }
+        
         return ProcesarFunciones.jeraquia(Segmento, Signo);
     }
 }

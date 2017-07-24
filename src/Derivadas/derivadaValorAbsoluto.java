@@ -15,10 +15,10 @@ import Principal.SintaxisExpresiones;
  */
 public class derivadaValorAbsoluto extends CDI {
 
-    public static ExpresionAlgebraica[] ValorAbsoluto(String Segmentos, String op) {
+    public static ExpresionAlgebraica[] ValorAbsoluto(String Segmentos, String op, String dif) {
         String cad = Segmentos;
         int z = 0, h, s = 0;
-        ExpresionAlgebraica[] valor = SintaxisExpresiones.Sintaxis(cad, op, true);
+        ExpresionAlgebraica[] valor = SintaxisExpresiones.Sintaxis(cad, op, true, dif);
 
         resultado = new ExpresionAlgebraica[valor.length + (llenado.length * 2) + 2];
         for (int i = 0; i < llenado.length; i++) {
