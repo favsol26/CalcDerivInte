@@ -22,7 +22,11 @@ public class derivadaPotencia extends CDI {
 
         float coef;
         for (int i = 0; i < deriv.length; i++) {
-            resultado[i] = new ExpresionAlgebraica(deriv[i].getSimbolo(), deriv[i].getCoeficiente(), deriv[i].getVariable(), deriv[i].getExponente());
+            if (deriv[i].getVariable().equals(dif)) {
+                resultado[i] = new ExpresionAlgebraica(deriv[i].getSimbolo(), deriv[i].getCoeficiente(), deriv[i].getVariable(), deriv[i].getExponente());
+            } else {
+                resultado[i] = new ExpresionAlgebraica("+", 1, "", "0");
+            }
         }
 
         for (int i = 0; i < resultado.length; i++) {

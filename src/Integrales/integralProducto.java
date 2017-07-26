@@ -42,7 +42,7 @@ public class integralProducto extends CDI {
         cad = cad.substring(1, cad.length() - 1);
         System.out.println("***" + cad + "***");
 
-        res = integralPotencia.integral_Potencia(SintaxisExpresiones.Sintaxis(cad, "d", false, Dif));
+        res = integralPotencia.integral_Potencia(SintaxisExpresiones.Sintaxis(cad, "d", false, Dif), Dif);
         return res;
     }
 

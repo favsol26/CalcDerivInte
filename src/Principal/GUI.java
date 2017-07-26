@@ -20,7 +20,7 @@ import javax.swing.text.StyleConstants;
 public class GUI extends javax.swing.JFrame {
 
     boolean integrar;
-    String dato;
+    String dato = "";
 
     /**
      * Creates new form GUI
@@ -45,7 +45,7 @@ public class GUI extends javax.swing.JFrame {
         jtxpFuncion = new javax.swing.JTextPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        jtxpResultado = new javax.swing.JTextPane();
         jPanel1 = new javax.swing.JPanel();
         jbtnIntegrando = new javax.swing.JButton();
         jbtnCuadrado = new javax.swing.JButton();
@@ -105,7 +105,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultado:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         jPanel3.setOpaque(false);
 
-        jScrollPane2.setViewportView(jTextPane1);
+        jScrollPane2.setViewportView(jtxpResultado);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -242,7 +242,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jbtnDerivada.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jbtnDerivada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/integrando.png"))); // NOI18N
+        jbtnDerivada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Derivacion.png"))); // NOI18N
         jbtnDerivada.setToolTipText("Derivada");
         jbtnDerivada.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jbtnDerivada.setMaximumSize(new java.awt.Dimension(25, 25));
@@ -255,52 +255,100 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButton11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Seno.png"))); // NOI18N
         jButton11.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButton11.setMaximumSize(new java.awt.Dimension(25, 25));
         jButton11.setMinimumSize(new java.awt.Dimension(25, 25));
         jButton11.setPreferredSize(new java.awt.Dimension(25, 25));
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Coseno.png"))); // NOI18N
         jButton12.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButton12.setMaximumSize(new java.awt.Dimension(25, 25));
         jButton12.setMinimumSize(new java.awt.Dimension(25, 25));
         jButton12.setPreferredSize(new java.awt.Dimension(25, 25));
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         jButton13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Tangente.png"))); // NOI18N
         jButton13.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButton13.setMaximumSize(new java.awt.Dimension(25, 25));
         jButton13.setMinimumSize(new java.awt.Dimension(25, 25));
         jButton13.setPreferredSize(new java.awt.Dimension(25, 25));
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cotangente.png"))); // NOI18N
         jButton14.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButton14.setMaximumSize(new java.awt.Dimension(25, 25));
         jButton14.setMinimumSize(new java.awt.Dimension(25, 25));
         jButton14.setPreferredSize(new java.awt.Dimension(25, 25));
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         jButton15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Secante.png"))); // NOI18N
         jButton15.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButton15.setMaximumSize(new java.awt.Dimension(25, 25));
         jButton15.setMinimumSize(new java.awt.Dimension(25, 25));
         jButton15.setPreferredSize(new java.awt.Dimension(25, 25));
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
 
         jButton16.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cosecante.png"))); // NOI18N
         jButton16.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButton16.setMaximumSize(new java.awt.Dimension(25, 25));
         jButton16.setMinimumSize(new java.awt.Dimension(25, 25));
         jButton16.setPreferredSize(new java.awt.Dimension(25, 25));
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         jButton17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Logaritmo_Natural.png"))); // NOI18N
         jButton17.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButton17.setMaximumSize(new java.awt.Dimension(25, 25));
         jButton17.setMinimumSize(new java.awt.Dimension(25, 25));
         jButton17.setPreferredSize(new java.awt.Dimension(25, 25));
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         jButton18.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Valor_Absoluto.png"))); // NOI18N
         jButton18.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButton18.setMaximumSize(new java.awt.Dimension(25, 25));
         jButton18.setMinimumSize(new java.awt.Dimension(25, 25));
         jButton18.setPreferredSize(new java.awt.Dimension(25, 25));
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
 
         jButton19.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jButton19.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -503,12 +551,21 @@ public class GUI extends javax.swing.JFrame {
 
     private void jbtnIntegrandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIntegrandoActionPerformed
         dato = JOptionPane.showInputDialog(this, "introduce el Diferencial (una letra)", "Diferencial: ", 2);
-        this.jtxpFuncion.setText("∫()d".concat(String.valueOf(dato.charAt(0)).concat(" ")));
-        integrar = true;
-        this.jtxpFuncion.setCaretPosition(2);
-        this.jtxpFuncion.grabFocus();
-        this.jbtnDerivada.setEnabled(false);
-        this.jbtnIntegrando.setEnabled(false);
+        String dat = String.valueOf(dato.charAt(0));
+        try {
+            if (dat.hashCode()>=0) {
+                this.jtxpFuncion.setText("∫()d".concat(String.valueOf(dato.charAt(0)).concat(" ")));
+                integrar = true;
+                this.jtxpFuncion.setCaretPosition(2);
+                this.jtxpFuncion.grabFocus();
+                this.jbtnDerivada.setEnabled(false);
+                this.jbtnIntegrando.setEnabled(false);
+            } else {
+            }
+        } catch (NullPointerException n) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar una letra", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+
     }//GEN-LAST:event_jbtnIntegrandoActionPerformed
 
     private void jbtnParentecisAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnParentecisAActionPerformed
@@ -562,13 +619,15 @@ public class GUI extends javax.swing.JFrame {
 
     private void jbtnDerivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDerivadaActionPerformed
         dato = JOptionPane.showInputDialog(this, "introduce el Diferencial (una letra)", "Diferencial: ", 2);
-        this.jtxpFuncion.setText(this.jtxpFuncion.getText().concat(" d".concat(" \n──".concat("()\nd".concat(String.valueOf(dato.charAt(0)))))));
-        integrar = false;
-        changeLineSpacing(Float.valueOf("-0.5"), false, this.jtxpFuncion);
-        this.jbtnIntegrando.setEnabled(false);
-        this.jbtnDerivada.setEnabled(false);
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(7);
+        if (!"".equals(dato)) {
+            this.jtxpFuncion.setText(this.jtxpFuncion.getText().concat(" d".concat(" \n──".concat("()\nd".concat(String.valueOf(dato.charAt(0)))))));
+            integrar = false;
+            changeLineSpacing(Float.valueOf("-0.5"), false, this.jtxpFuncion);
+            this.jbtnIntegrando.setEnabled(false);
+            this.jbtnDerivada.setEnabled(false);
+            this.jtxpFuncion.grabFocus();
+            this.jtxpFuncion.setCaretPosition(7);
+        }
     }//GEN-LAST:event_jbtnDerivadaActionPerformed
 
     private void jbtnCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCuboActionPerformed
@@ -620,7 +679,7 @@ public class GUI extends javax.swing.JFrame {
         this.jtxpFuncion.setText("");
         this.jbtnDerivada.setEnabled(true);
         this.jbtnIntegrando.setEnabled(true);
-        this.jTextPane1.setText("");
+        this.jtxpResultado.setText("");
         integrar = false;
         this.jtxpFuncion.grabFocus();
     }//GEN-LAST:event_jButton24ActionPerformed
@@ -641,7 +700,6 @@ public class GUI extends javax.swing.JFrame {
         if (!"".equals(cad)) {
             resultados = CDI.CDIMaster(cad, op, dato);
         } else if (integrar) {
-            System.out.println(dato);
             resultados = CDI.CDIMaster("1", op, dato);
         } else {
             JOptionPane.showMessageDialog(this, "Para derivar debe colocar al menos un numero diferente de 0", "Error", JOptionPane.ERROR_MESSAGE);
@@ -650,12 +708,69 @@ public class GUI extends javax.swing.JFrame {
                 this.jtxpFuncion.setCaretPosition(7);
             }
         }
+        this.jtxpResultado.setText("");
         for (Object resultado : resultados) {
-            this.jTextPane1.setText(this.jTextPane1.getText().concat(resultado.toString()));
-            changeLineSpacing(Float.valueOf("1"), false, this.jTextPane1);
+            this.jtxpResultado.setText(this.jtxpResultado.getText().concat(resultado.toString()));
+            changeLineSpacing(Float.valueOf("1"), false, this.jtxpResultado);
         }
         resultados.clear();
     }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        String sel = Select();
+        this.jtxpFuncion.setText(sel.concat("Sen()".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 4);
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+String sel = Select();
+        this.jtxpFuncion.setText(sel.concat("Cos()".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+String sel = Select();
+        this.jtxpFuncion.setText(sel.concat("Tan()".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+String sel = Select();
+        this.jtxpFuncion.setText(sel.concat("Cot()".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+String sel = Select();
+        this.jtxpFuncion.setText(sel.concat("Sec()".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+String sel = Select();
+        this.jtxpFuncion.setText(sel.concat("Csc()".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+String sel = Select();
+        this.jtxpFuncion.setText(sel.concat("ln()".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 3);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+String sel = Select();
+        this.jtxpFuncion.setText(sel.concat("Sen()".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 1);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton18ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -710,7 +825,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JButton jbtnCosiente;
     private javax.swing.JButton jbtnCuadrado;
     private javax.swing.JButton jbtnCubo;
@@ -722,6 +836,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jbtnPotencia;
     private javax.swing.JButton jbtnProducto;
     private javax.swing.JTextPane jtxpFuncion;
+    private javax.swing.JTextPane jtxpResultado;
     // End of variables declaration//GEN-END:variables
 
     private String Select() {

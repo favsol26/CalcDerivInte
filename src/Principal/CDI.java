@@ -33,12 +33,13 @@ public class CDI {
     static boolean trigo2;
     static boolean expon;
     public static Scanner sc = new Scanner(System.in);
+    private static boolean asterisco;
 
     /**
      * @param cad
      * @param operacion
      * @param Dif
-     * @return 
+     * @return
      */
     public static ArrayList CDIMaster(String cad, String operacion, String Dif) {
         ExpresionAlgebraica[] trigo = null;
@@ -47,7 +48,7 @@ public class CDI {
             cad = cad.substring(1, cad.length());
         }
 
-        resultado = Revisar.revisarFuncion(cad, operacion, Dif);
+        resultado = SintaxisExpresiones.Sintaxis(cad, operacion, true, Dif);
 
         if (operacion.toLowerCase().equals("d")) {
             operacion = "derivar";
@@ -57,16 +58,21 @@ public class CDI {
         resultados.add("\n");
         if (expz.isEmpty()) {
             if (resultado != null) {
-                resultados.add("Al " + operacion + " se obtiene: ");
-                cad = "";
+                resultados.add("\nAl " + operacion + " se obtiene: \n");
+                cad = "\n";
                 for (ExpresionAlgebraica finalizado1 : resultado) {
                     if (finalizado1 != null) {
                         if (finalizado1.getSimbolo().equals("&")) {
                             cad = cad + "*";
+                        } else if (finalizado1.getSimbolo().equals("/")) {
+                            cad = cad + "\n";
+                            int len = cad.length();
+                            for (int i = 0; i < len; i = i + 2) {
+                                cad = cad + "─";
+                            }
+                            cad = cad + "\n";
                         } else if (finalizado1.getCoeficiente() == 0) {
 
-                        } else if (finalizado1.getSimbolo().equals("/")) {
-                            cad = cad + "/";
                         } else if (finalizado1.getExponente().equals("0.0")) {
                             cad = cad + finalizado1.getSimbolo() + finalizado1.getCoeficiente();
                         } else if (finalizado1.getCoeficiente() * 100 == Math.round(finalizado1.getCoeficiente()) * 100) {
@@ -88,12 +94,17 @@ public class CDI {
                 if (trigo != null) {
                     for (ExpresionAlgebraica finalizado1 : trigo) {
                         if (finalizado1 != null) {
+
                             if (finalizado1.getSimbolo().equals("&")) {
                                 cad = cad + "*";
+                            } else if (finalizado1.getSimbolo().equals("/")) {
+                                cad = cad + "\n";
+                                for (int i = 0; i < cad.length(); i++) {
+                                    cad = cad + "─";
+                                }
+                                cad = cad + "\n";
                             } else if (finalizado1.getCoeficiente() == 0) {
 
-                            } else if (finalizado1.getSimbolo().equals("/")) {
-                                cad = cad + "/";
                             } else if (finalizado1.getExponente().equals("0.0")) {
                                 cad = cad + finalizado1.getSimbolo() + finalizado1.getCoeficiente();
                             } else if (finalizado1.getCoeficiente() * 100 == Math.round(finalizado1.getCoeficiente()) * 100) {
@@ -109,7 +120,7 @@ public class CDI {
                 }
 
             }
-            resultados.add("Al " + operacion + " se obtiene: ");
+            resultados.add("\nAl " + operacion + " se obtiene: \n");
         }
         if (cad.equals("")) {
             cad = "0";
@@ -122,6 +133,24 @@ public class CDI {
             resultados.add(cad);
         }
         resultados.add("");
+        for (Object resultado1 : resultados) {
+            for (int j = 0; j < resultado1.toString().length(); j++) {
+                if (resultado1.toString().charAt(j) == '*') {
+                    asterisco = true;
+                    break;
+                }
+            }
+        }
+        if (asterisco) {
+            cad = "";
+            for (Object resultado1 : resultados) {
+                cad = cad.concat(resultado1.toString());
+            }
+            cad = cad.substring(0, cad.lastIndexOf("─")+1).concat(" (").concat(cad.substring(cad.indexOf("*") + 1, cad.length())).concat(")\n|").concat(cad.substring(cad.lastIndexOf("─") + 2, cad.indexOf("*"))).concat("|");
+            resultados.clear();
+            resultados.add(cad);
+        }
+
         return resultados;
     }
 
