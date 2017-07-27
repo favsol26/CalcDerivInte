@@ -319,7 +319,7 @@ public class ProcesarFunciones extends CDI {
         for (int i = 0; i < signo.size(); i++) {
             llenado[i] = new ExpresionAlgebraica(signo.get(i).toString(), Float.valueOf(coeficiente.get(i).toString()), variable.get(i).toString(), exponente.get(i).toString());
         }
-        resultados.add("\n Simplificado: ");
+        resultados.add("\nSimplificado: ");
         for (ExpresionAlgebraica llenado1 : llenado) {
             
             resultados.add(llenado1.getSimbolo() + "" + df.format(llenado1.getCoeficiente()) + "" + llenado1.getVariable() + "^" + llenado1.getExponente());

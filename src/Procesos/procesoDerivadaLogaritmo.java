@@ -9,8 +9,9 @@ import static Principal.CDI.llenado;
 import static Principal.CDI.mul1;
 import Principal.Enrrutar;
 import Principal.ExpresionAlgebraica;
-import Principal.Revisar;
+import Principal.SintaxisExpresiones;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -21,7 +22,7 @@ public class procesoDerivadaLogaritmo extends Enrrutar {
     String logn = "";
     int sig, v = 0, f;
     ExpresionAlgebraica[] terminos;
-    ExpresionAlgebraica[] resultados;
+    ExpresionAlgebraica[] resultados2;
 
     public ExpresionAlgebraica[] proceso(ArrayList Segmentos, ArrayList Signos, String op, String dif) {
         if (Segmentos.size() != 1) {
@@ -47,39 +48,41 @@ public class procesoDerivadaLogaritmo extends Enrrutar {
                     cad = cad + Signos.get(i);
                 }
             }
-            resultados = Revisar.revisarFuncion(cad, op, dif);
-            v = resultados.length + 1;
+            resultados2 = SintaxisExpresiones.Sintaxis(cad, op, true, dif);
+            v = resultados2.length + 1;
         } else {
-            resultados = Revisar.revisarFuncion(logn.substring(3, logn.length() - 1), op, dif);
-            v = resultados.length + llenado.length + 1;
+            resultados2 = SintaxisExpresiones.Sintaxis(logn.substring(3, logn.length() - 1), op,true, dif);
+            v = resultados2.length + llenado.length + 1;
         }
         terminos = new ExpresionAlgebraica[v];
-        for (int j = 0; j < resultados.length; j++) {
-            terminos[j] = new ExpresionAlgebraica(resultados[j].getSimbolo(), resultados[j].getCoeficiente(), resultados[j].getVariable(), resultados[j].getExponente());
+        for (int j = 0; j < resultados2.length; j++) {
+            terminos[j] = new ExpresionAlgebraica(resultados2[j].getSimbolo(), resultados2[j].getCoeficiente(), resultados2[j].getVariable(), resultados2[j].getExponente());
         }
-        terminos[resultados.length] = new ExpresionAlgebraica("/", 0, null, null);
-        f = resultados.length + 1;
+        terminos[resultados2.length] = new ExpresionAlgebraica("/", 0, null, null);
+        f = resultados2.length + 1;
         if (mul1 != null) {
             for (ExpresionAlgebraica termino : terminos) {
                 expz.add(termino.getSimbolo() + termino.getCoeficiente() + termino.getVariable() + "^" + termino.getExponente());
             }
-            for (int i = 0; i < Segmentos.size(); i++) {
-                expz.add(Segmentos.get(i));
-            }
+            Segmentos.stream().forEach((Segmento) -> {
+                expz.add(Segmento);
+            });
         } else {
             for (ExpresionAlgebraica llenado1 : llenado) {
                 terminos[f] = new ExpresionAlgebraica(llenado1.getSimbolo(), llenado1.getCoeficiente(), llenado1.getVariable(), llenado1.getExponente());
                 f++;
             }
         }
-        for (int i = 0; i < expz.size(); i++) {
-            if (expz.get(i).toString().charAt(0) != '/') {
-                System.out.print(expz.get(i));
+        for (Iterator it = expz.iterator(); it.hasNext();) {
+            Object expz1 = it.next();
+            if (expz1.toString().charAt(0) != '/') {
+                System.out.print(expz1);
             } else {
                 System.out.print("/");
             }
         }
         System.out.println("");
+        
         return terminos;
     }
 }

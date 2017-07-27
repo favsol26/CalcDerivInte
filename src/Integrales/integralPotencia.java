@@ -15,7 +15,7 @@ public class integralPotencia {
 
     static ExpresionAlgebraica[] resu;
 
-    public static ExpresionAlgebraica[] integral_Potencia(ExpresionAlgebraica[] integrar) {
+    public static ExpresionAlgebraica[] integral_Potencia(ExpresionAlgebraica[] integrar, String Dif) {
         String signo;
         resu = integrar;
         float exp, coef, res;
@@ -32,7 +32,12 @@ public class integralPotencia {
                     } else {
                         signo = "+";
                     }
-                    resu[i] = new ExpresionAlgebraica(signo, res, resu[i].getVariable(), String.valueOf(exp));
+                    if (resu[i].getVariable().equals(Dif)) {
+                        resu[i] = new ExpresionAlgebraica(signo, res, resu[i].getVariable(), String.valueOf(exp));
+                    } else {
+                        resu[i] = new ExpresionAlgebraica(signo, res, resu[i].getVariable().concat(Dif), String.valueOf(exp));
+
+                    }
                 } else {
                     System.out.println("Imposible hacer esta Operation");
                 }
