@@ -126,7 +126,7 @@ public class Enrrutar extends CDI {
                         resultado = integralProducto.integral_producto(Segmentos, diferencial);
                         break;
                     } else {
-                        resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos));
+                        resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos), diferencial);
 
                         break;
                     }
@@ -161,7 +161,7 @@ public class Enrrutar extends CDI {
                         break;
                     } else {
 
-                        resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos));
+                        resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos),diferencial);
                         break;
                     }
                 }//(10x^4+20x^2)/(5x+2)
