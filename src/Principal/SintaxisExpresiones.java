@@ -53,18 +53,20 @@ public class SintaxisExpresiones extends CDI {
                 parte = parte.concat(String.valueOf(cadena.charAt(i)));
             }
         }
-        if (partes.get(0).toString().charAt(0) == '-') {
-            partes.set(0, partes.get(0).toString().substring(1, partes.get(0).toString().length()));
-            if (!signo.isEmpty()) {
-                signo2.add("-");
-                signo.stream().forEach((signo1) -> {
-                    signo2.add(signo1);
-                });
-                signo.clear();
-                signo = signo2;
-
-            } else {
-                signo.add('-');
+        if (!parte.isEmpty()) {
+            if (partes.get(0).toString().charAt(0) == '-') {
+                partes.set(0, partes.get(0).toString().substring(1, partes.get(0).toString().length()));
+                if (!signo.isEmpty()) {
+                    signo2.add("-");
+                    signo.stream().forEach((signo1) -> {
+                        signo2.add(signo1);
+                    });
+                    signo.clear();
+                    signo = signo2;
+                    
+                } else {
+                    signo.add('-');
+                }
             }
         }
         if (continuar) {

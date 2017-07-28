@@ -13,25 +13,26 @@ import java.util.ArrayList;
  * @author Alexander Batista
  */
 public class ProcesarFunciones extends CDI {
-    
-    public static ExpresionAlgebraica[] jeraquia(ArrayList deriv, ArrayList signo) {
+
+    public static ExpresionAlgebraica[] jeraquia(ArrayList Segmentos, ArrayList signo) {
+        
         int s = 0;
         Boolean letra = false, numero = false, potencia = false;
         String le;
         ArrayList orden = new ArrayList();
-        
-        if (signo.size() == deriv.size()) {
+
+        if (signo.size() == Segmentos.size()) {
             orden.add(signo.get(0));
         }
-        for (int i = 0; i < deriv.size(); i++) {
-            orden.add(deriv.get(i));
+        for (int i = 0; i < Segmentos.size(); i++) {
+            orden.add(Segmentos.get(i));
             if (i < signo.size()) {
                 orden.add(signo.get(i));
             }
         }
-        
-        String[] exponentes = new String[deriv.size()];
-        
+
+        String[] exponentes = new String[Segmentos.size()];
+
         for (Object orden1 : orden) {
             for (int j = 0; j < orden1.toString().length(); j++) {
                 if (orden1.toString().charAt(j) == '^') {
@@ -40,7 +41,7 @@ public class ProcesarFunciones extends CDI {
                     {
                         exponentes[s] = orden1.toString().substring(j + 1, orden1.toString().length());
                     }
-                    
+
                     s++;
                     //t = j;
                 } else if (!potencia) {
@@ -70,9 +71,10 @@ public class ProcesarFunciones extends CDI {
             numero = false;
         }
         exponentes = dividircad.correr(exponentes);
+        
         return Ordenar(exponentes, orden);
     }
-    
+
     public static ExpresionAlgebraica[] Ordenar(String[] exponentes, ArrayList orden) {
         Boolean letra = false, numero = false, potencia = false;
         String le;
@@ -84,8 +86,9 @@ public class ProcesarFunciones extends CDI {
             } else {
                 Completo.add("+" + orden.get(0) + "^" + exponentes[0]);
             }
-            
+
         } else {
+            
             for (String exponente : exponentes) {
                 for (int i = 0; i < orden.size(); i++) {
                     for (int j = 0; j < orden.get(i).toString().length(); j++) {
@@ -106,7 +109,7 @@ public class ProcesarFunciones extends CDI {
                                     orden.set(i, "*");
                                 }
                             }
-                        } else if (!potencia && Double.valueOf(exponente) <= 1) {
+                        } else if (!potencia && Float.valueOf(exponente) <= 1) {
                             le = String.valueOf(orden.get(i).toString().charAt(j));
                             if ((le.hashCode() >= 97 && le.hashCode() <= 122) || (le.hashCode() >= 65 && le.hashCode() <= 90)) {
                                 letra = true;
@@ -162,10 +165,12 @@ public class ProcesarFunciones extends CDI {
         Completo.clear();
         return llenar_exp(Terminos);
     }
-    
+
     public static ExpresionAlgebraica[] llenar_exp(ArrayList Completo) {
+        
         int x = 0, s = 0, p = 0;
         int cont = 0;
+        boolean acentoC = false;
         for (int i = 0; i < Completo.size(); i++) {
             for (int j = 0; j < Completo.get(i).toString().length(); j++) {
                 if (Completo.get(i).toString().charAt(j) == '^') {
@@ -174,9 +179,11 @@ public class ProcesarFunciones extends CDI {
             }
             if (cont > 1) {
                 if (!Completo.get(i).equals("+") && !Completo.get(i).equals("-")) {
-                    Completo.set(i, Completo.get(i).toString().substring(0, Completo.get(i).toString().lastIndexOf("^")));
-                } else{
-                    Completo.set(i, Completo.get(i).toString().substring(0,Completo.get(i).toString().length()));
+
+                    Completo.set(i, Completo.get(i).toString().substring(0, Completo.get(i).toString().length()));
+
+                } else {
+                    Completo.set(i, Completo.get(i).toString().substring(0, Completo.get(i).toString().length()));
                 }
             }
         }
@@ -193,7 +200,7 @@ public class ProcesarFunciones extends CDI {
         for (int i = 0; i < Completo.size(); i++) {
             for (int j = 0; j < Completo.get(i).toString().length(); j++) {
                 if (Completo.get(i).toString().charAt(j) != '+' && Completo.get(i).toString().charAt(j) != '-') {
-                    
+
                     if (Completo.get(i).toString().charAt(j) == '^') {
                         potencia = true;
                         exp = String.valueOf(Completo.get(i).toString().substring(Completo.get(i).toString().indexOf("^") + 1, Completo.get(i).toString().length()));
@@ -254,7 +261,7 @@ public class ProcesarFunciones extends CDI {
             numero = false;
             exp = "";
         }
-        
+
         for (Object Completo1 : Completo) {
             cadena = cadena.concat(Completo1.toString());
         }
@@ -263,7 +270,7 @@ public class ProcesarFunciones extends CDI {
         }
         return semejantes();
     }
-    
+
     public static ExpresionAlgebraica[] semejantes() {
         int p = 0, y = 1;
         float coef = 0;
@@ -289,12 +296,12 @@ public class ProcesarFunciones extends CDI {
                     //prueba.add(aux[j].getSimbolo().concat(String.valueOf(aux[j].getCoeficiente())));
                 }
             }
-            
+
             for (Object prueba1 : prueba) {
-                
+
                 coef = coef + Float.valueOf(prueba1.toString());
             }
-            
+
             coef = Float.valueOf(valor) + coef;
             Exp[i].setCoeficiente(0);
             prueba.clear();
@@ -321,7 +328,7 @@ public class ProcesarFunciones extends CDI {
         }
         resultados.add("\nSimplificado: ");
         for (ExpresionAlgebraica llenado1 : llenado) {
-            
+
             resultados.add(llenado1.getSimbolo() + "" + df.format(llenado1.getCoeficiente()) + "" + llenado1.getVariable() + "^" + llenado1.getExponente());
         }
         resultados.add("");
