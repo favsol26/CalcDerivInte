@@ -8,7 +8,11 @@ package Principal;
 import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -27,7 +31,6 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
-
     }
 
     /**
@@ -45,7 +48,7 @@ public class GUI extends javax.swing.JFrame {
         jtxpFuncion = new javax.swing.JTextPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jtxpResultado = new javax.swing.JTextPane();
+        jtxpProcedimiento = new javax.swing.JTextPane();
         jPanel1 = new javax.swing.JPanel();
         jbtnIntegrando = new javax.swing.JButton();
         jbtnCuadrado = new javax.swing.JButton();
@@ -57,20 +60,23 @@ public class GUI extends javax.swing.JFrame {
         jbtnCosiente = new javax.swing.JButton();
         jbtnProducto = new javax.swing.JButton();
         jbtnDerivada = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
+        jbtnSeno = new javax.swing.JButton();
+        jbtnCoseno = new javax.swing.JButton();
+        jbtnTangente = new javax.swing.JButton();
+        jbtnCotangente = new javax.swing.JButton();
+        jbtnSecante = new javax.swing.JButton();
+        jbtnCosecante = new javax.swing.JButton();
+        jbtnLogaritmoNatural = new javax.swing.JButton();
+        jbtnValorAbsoluto = new javax.swing.JButton();
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
         jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
+        jbtnIgual = new javax.swing.JButton();
+        jbtnNuevo = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtxpResultado = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CDI");
@@ -99,13 +105,13 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resultado:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Procedimiento", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         jPanel3.setOpaque(false);
 
-        jScrollPane2.setViewportView(jtxpResultado);
+        jScrollPane2.setViewportView(jtxpProcedimiento);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -115,7 +121,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operadores:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
@@ -254,99 +260,107 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Seno.png"))); // NOI18N
-        jButton11.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton11.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton11.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton11.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        jbtnSeno.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnSeno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Seno.png"))); // NOI18N
+        jbtnSeno.setToolTipText("Seno");
+        jbtnSeno.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnSeno.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnSeno.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnSeno.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnSeno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                jbtnSenoActionPerformed(evt);
             }
         });
 
-        jButton12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Coseno.png"))); // NOI18N
-        jButton12.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton12.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton12.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton12.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        jbtnCoseno.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnCoseno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Coseno.png"))); // NOI18N
+        jbtnCoseno.setToolTipText("Coseno");
+        jbtnCoseno.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnCoseno.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnCoseno.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnCoseno.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnCoseno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                jbtnCosenoActionPerformed(evt);
             }
         });
 
-        jButton13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Tangente.png"))); // NOI18N
-        jButton13.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton13.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton13.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton13.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        jbtnTangente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnTangente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Tangente.png"))); // NOI18N
+        jbtnTangente.setToolTipText("Tangente");
+        jbtnTangente.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnTangente.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnTangente.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnTangente.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnTangente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                jbtnTangenteActionPerformed(evt);
             }
         });
 
-        jButton14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cotangente.png"))); // NOI18N
-        jButton14.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton14.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton14.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton14.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        jbtnCotangente.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnCotangente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cotangente.png"))); // NOI18N
+        jbtnCotangente.setToolTipText("Cotangente");
+        jbtnCotangente.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnCotangente.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnCotangente.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnCotangente.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnCotangente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                jbtnCotangenteActionPerformed(evt);
             }
         });
 
-        jButton15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Secante.png"))); // NOI18N
-        jButton15.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton15.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton15.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton15.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        jbtnSecante.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnSecante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Secante.png"))); // NOI18N
+        jbtnSecante.setToolTipText("Secante");
+        jbtnSecante.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnSecante.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnSecante.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnSecante.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnSecante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                jbtnSecanteActionPerformed(evt);
             }
         });
 
-        jButton16.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cosecante.png"))); // NOI18N
-        jButton16.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton16.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton16.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton16.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
+        jbtnCosecante.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnCosecante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Cosecante.png"))); // NOI18N
+        jbtnCosecante.setToolTipText("Cosecante");
+        jbtnCosecante.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnCosecante.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnCosecante.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnCosecante.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnCosecante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
+                jbtnCosecanteActionPerformed(evt);
             }
         });
 
-        jButton17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Logaritmo_Natural.png"))); // NOI18N
-        jButton17.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton17.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton17.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton17.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
+        jbtnLogaritmoNatural.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnLogaritmoNatural.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Logaritmo_Natural.png"))); // NOI18N
+        jbtnLogaritmoNatural.setToolTipText("Logaritmo Natural.");
+        jbtnLogaritmoNatural.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnLogaritmoNatural.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnLogaritmoNatural.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnLogaritmoNatural.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnLogaritmoNatural.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+                jbtnLogaritmoNaturalActionPerformed(evt);
             }
         });
 
-        jButton18.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Valor_Absoluto.png"))); // NOI18N
-        jButton18.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton18.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton18.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton18.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
+        jbtnValorAbsoluto.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnValorAbsoluto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Valor_Absoluto.png"))); // NOI18N
+        jbtnValorAbsoluto.setToolTipText("Valor Absoluto");
+        jbtnValorAbsoluto.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnValorAbsoluto.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnValorAbsoluto.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnValorAbsoluto.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnValorAbsoluto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
+                jbtnValorAbsolutoActionPerformed(evt);
             }
         });
 
@@ -374,30 +388,33 @@ public class GUI extends javax.swing.JFrame {
         jButton22.setMinimumSize(new java.awt.Dimension(25, 25));
         jButton22.setPreferredSize(new java.awt.Dimension(25, 25));
 
-        jButton23.setBackground(new java.awt.Color(102, 255, 102));
-        jButton23.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton23.setText("=");
-        jButton23.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButton23.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton23.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton23.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton23.addActionListener(new java.awt.event.ActionListener() {
+        jbtnIgual.setBackground(new java.awt.Color(102, 255, 102));
+        jbtnIgual.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnIgual.setText("=");
+        jbtnIgual.setToolTipText("Iguall");
+        jbtnIgual.setAlignmentY(0.0F);
+        jbtnIgual.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jbtnIgual.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnIgual.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnIgual.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnIgual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton23ActionPerformed(evt);
+                jbtnIgualActionPerformed(evt);
             }
         });
 
-        jButton24.setBackground(new java.awt.Color(255, 0, 0));
-        jButton24.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton24.setText("N");
-        jButton24.setToolTipText("Nuevo");
-        jButton24.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButton24.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton24.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton24.setPreferredSize(new java.awt.Dimension(25, 25));
-        jButton24.addActionListener(new java.awt.event.ActionListener() {
+        jbtnNuevo.setBackground(new java.awt.Color(255, 0, 0));
+        jbtnNuevo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnNuevo.setText("N");
+        jbtnNuevo.setToolTipText("Nuevo");
+        jbtnNuevo.setAlignmentY(0.0F);
+        jbtnNuevo.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jbtnNuevo.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnNuevo.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnNuevo.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton24ActionPerformed(evt);
+                jbtnNuevoActionPerformed(evt);
             }
         });
 
@@ -430,21 +447,21 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbtnDerivada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnSeno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnCoseno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnTangente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnCotangente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnSecante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jbtnCosecante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnLogaritmoNatural, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnValorAbsoluto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -454,9 +471,9 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnIgual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbtnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -476,23 +493,39 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbtnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtnDerivada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbtnSeno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnCoseno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnTangente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnCotangente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnSecante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnCosecante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnLogaritmoNatural, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnValorAbsoluto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnIgual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+        );
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
+
+        jtxpResultado.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jScrollPane1.setViewportView(jtxpResultado);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -500,29 +533,33 @@ public class GUI extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(303, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addContainerGap(306, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(287, Short.MAX_VALUE)))
+                    .addContainerGap(297, Short.MAX_VALUE)))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(18, 18, 18)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
 
@@ -532,164 +569,37 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbtnIntegrandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIntegrandoActionPerformed
-        dato = JOptionPane.showInputDialog(this, "introduce el Diferencial (una letra)", "Diferencial: ", 2);
-        String dat = String.valueOf(dato.charAt(0));
-        try {
-            if (dat.hashCode()>=0) {
-                this.jtxpFuncion.setText("∫()d".concat(String.valueOf(dato.charAt(0)).concat(" ")));
-                integrar = true;
-                this.jtxpFuncion.setCaretPosition(2);
-                this.jtxpFuncion.grabFocus();
-                this.jbtnDerivada.setEnabled(false);
-                this.jbtnIntegrando.setEnabled(false);
-            } else {
-            }
-        } catch (NullPointerException n) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar una letra", "Advertencia", JOptionPane.WARNING_MESSAGE);
-        }
-
-    }//GEN-LAST:event_jbtnIntegrandoActionPerformed
-
-    private void jbtnParentecisAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnParentecisAActionPerformed
-        String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("(".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
-    }//GEN-LAST:event_jbtnParentecisAActionPerformed
-
-    private void jbtnParentecisCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnParentecisCActionPerformed
-        String sel = Select();
-        this.jtxpFuncion.setText(sel.concat(")".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
-    }//GEN-LAST:event_jbtnParentecisCActionPerformed
-
-    private void jbtnCosienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCosienteActionPerformed
-        String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("()/()".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
-    }//GEN-LAST:event_jbtnCosienteActionPerformed
-
-    private void jbtnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnProductoActionPerformed
-        String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("()()".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
-    }//GEN-LAST:event_jbtnProductoActionPerformed
-
-    private void jbtnCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCuadradoActionPerformed
-        String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("^2".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 2);
-    }//GEN-LAST:event_jbtnCuadradoActionPerformed
-
-    private void jbtnExponencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExponencialActionPerformed
-        String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("e".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
-    }//GEN-LAST:event_jbtnExponencialActionPerformed
-
-    private void jbtnPotenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPotenciaActionPerformed
-        String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("^".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
-    }//GEN-LAST:event_jbtnPotenciaActionPerformed
-
-    private void jbtnDerivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDerivadaActionPerformed
-        dato = JOptionPane.showInputDialog(this, "introduce el Diferencial (una letra)", "Diferencial: ", 2);
-        if (!"".equals(dato)) {
-            this.jtxpFuncion.setText(this.jtxpFuncion.getText().concat(" d".concat(" \n──".concat("()\nd".concat(String.valueOf(dato.charAt(0)))))));
-            integrar = false;
-            changeLineSpacing(Float.valueOf("-0.5"), false, this.jtxpFuncion);
-            this.jbtnIntegrando.setEnabled(false);
-            this.jbtnDerivada.setEnabled(false);
-            this.jtxpFuncion.grabFocus();
-            this.jtxpFuncion.setCaretPosition(7);
-        }
-    }//GEN-LAST:event_jbtnDerivadaActionPerformed
-
-    private void jbtnCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCuboActionPerformed
-        String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("^3".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 2);
-    }//GEN-LAST:event_jbtnCuboActionPerformed
-
-    private void jtxpFuncionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxpFuncionKeyPressed
-        jtxasetFont(this.jtxpFuncion);
-        int pos = 0;
-        char caracter = evt.getKeyChar();
-        if (this.jtxpFuncion.getText().equals("")) {
-            this.jbtnDerivada.setEnabled(true);
-            this.jbtnIntegrando.setEnabled(true);
-        }
-        if (Character.isLetter(caracter)) {
-            if (!String.valueOf(evt.getKeyChar()).equals(dato)) {
-                if (JOptionPane.showConfirmDialog(this, "Debe ingresar la misma letra del diferencial \n ¿Deséas Continuar?", "Información", 1) == 1) {
-
-                    String cadena = this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf("(") + 1, this.jtxpFuncion.getText().lastIndexOf(")"));
-                    for (int i = 0; i < cadena.length(); i++) {
-                        if (Character.isLetter(cadena.charAt(i))) {
-                            if (!String.valueOf(cadena.charAt(i)).equals(dato)) {
-                                pos = i;
-                                cadena = cadena.substring(0, i).concat(cadena.substring(i + 1, cadena.length()));
-                            }
-                        }
-                    }
-                    cadena = this.jtxpFuncion.getText().substring(0, this.jtxpFuncion.getText().indexOf("(") + 1).concat(cadena.concat(this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf(")"))));
-                    this.jtxpFuncion.setText(cadena);
-                    jtxasetFont(this.jtxpFuncion);
-                    this.jtxpFuncion.grabFocus();
-
-                    this.jtxpFuncion.setCaretPosition(pos + 7);
-                }
-
-            }
-        } else {
-            this.jbtnCuadrado.setEnabled(true);
-            this.jbtnCubo.setEnabled(true);
-            this.jbtnPotencia.setEnabled(true);
-        }
-
-    }//GEN-LAST:event_jtxpFuncionKeyPressed
-
-    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+    private void jbtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNuevoActionPerformed
+        Border borde = new TitledBorder("");
+        this.jPanel5.setBorder(borde);
         this.jtxpFuncion.setText("");
+        this.jtxpResultado.setText("");
         this.jbtnDerivada.setEnabled(true);
         this.jbtnIntegrando.setEnabled(true);
-        this.jtxpResultado.setText("");
+        this.jbtnCuadrado.setEnabled(false);
+        this.jbtnCubo.setEnabled(false);
+        this.jbtnPotencia.setEnabled(false);
+        this.jtxpProcedimiento.setText("");
         integrar = false;
         this.jtxpFuncion.grabFocus();
-    }//GEN-LAST:event_jButton24ActionPerformed
+    }//GEN-LAST:event_jbtnNuevoActionPerformed
 
-    private void jtxpFuncionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxpFuncionKeyReleased
-
-    }//GEN-LAST:event_jtxpFuncionKeyReleased
-
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+    private void jbtnIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIgualActionPerformed
         String op, cad;
+        int pos = 0;
         ArrayList resultados = new ArrayList();
         if (!integrar) {
             op = "D";
@@ -708,69 +618,224 @@ public class GUI extends javax.swing.JFrame {
                 this.jtxpFuncion.setCaretPosition(7);
             }
         }
-        this.jtxpResultado.setText("");
-        for (Object resultado : resultados) {
-            this.jtxpResultado.setText(this.jtxpResultado.getText().concat(resultado.toString()));
-            changeLineSpacing(Float.valueOf("1"), false, this.jtxpResultado);
+        this.jtxpProcedimiento.setText("");
+        for (int i = 0; i < resultados.size(); i++) {
+            if (resultados.get(i).toString().equals("&&&")) {
+                pos = i;
+                break;
+            }
+        }
+        for (int i = 0; i < pos; i++) {
+            this.jtxpProcedimiento.setText(this.jtxpProcedimiento.getText().concat(resultados.get(i).toString()));
+            changeLineSpacing(Float.valueOf("1"), false, this.jtxpProcedimiento);
+        }
+        pos++;
+        for (int i = pos; i < resultados.size(); i++) {
+            this.jtxpResultado.setText(this.jtxpResultado.getText().concat(resultados.get(i).toString()));
+            changeLineSpacing(Float.valueOf("-0.5"), false, this.jtxpResultado);
         }
         resultados.clear();
-    }//GEN-LAST:event_jButton23ActionPerformed
+    }//GEN-LAST:event_jbtnIgualActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("Sen()".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 4);
-    }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("Cos()".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("Tan()".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
-
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("Cot()".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("Sec()".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
-
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("Csc()".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton16ActionPerformed
-
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("ln()".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(sel.length() + 3);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton17ActionPerformed
-
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-String sel = Select();
-        this.jtxpFuncion.setText(sel.concat("Sen()".concat(Select2())));
+    private void jbtnValorAbsolutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnValorAbsolutoActionPerformed
+        String sel = Select(false);
+        this.jtxpFuncion.setText(sel.concat(arregloParentecis(false)).concat(Select2()));
         this.jtxpFuncion.grabFocus();
         this.jtxpFuncion.setCaretPosition(sel.length() + 1);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton18ActionPerformed
+    }//GEN-LAST:event_jbtnValorAbsolutoActionPerformed
+
+    private void jbtnLogaritmoNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLogaritmoNaturalActionPerformed
+        String sel = Select(false);
+        this.jtxpFuncion.setText(sel.concat("ln".concat(arregloParentecis(true)).concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 3);        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnLogaritmoNaturalActionPerformed
+
+    private void jbtnCosecanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCosecanteActionPerformed
+        String sel = Select(false);
+        this.jtxpFuncion.setText(sel.concat("Csc".concat(arregloParentecis(true)).concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnCosecanteActionPerformed
+
+    private void jbtnSecanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSecanteActionPerformed
+        String sel = Select(false);
+        this.jtxpFuncion.setText(sel.concat("Sec".concat(arregloParentecis(true)).concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnSecanteActionPerformed
+
+    private void jbtnCotangenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCotangenteActionPerformed
+        String sel = Select(false);
+        this.jtxpFuncion.setText(sel.concat("Cot".concat(arregloParentecis(true)).concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnCotangenteActionPerformed
+
+    private void jbtnTangenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnTangenteActionPerformed
+        String sel = Select(false);
+        this.jtxpFuncion.setText(sel.concat("Tan".concat(arregloParentecis(true)).concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnTangenteActionPerformed
+
+    private void jbtnCosenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCosenoActionPerformed
+        String sel = Select(false);
+        this.jtxpFuncion.setText(sel.concat("Cos".concat(arregloParentecis(true)).concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 4);        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnCosenoActionPerformed
+
+    private void jbtnSenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSenoActionPerformed
+        String sel = Select(false);
+        this.jtxpFuncion.setText(sel.concat("Sen".concat(arregloParentecis(true)).concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 4);
+    }//GEN-LAST:event_jbtnSenoActionPerformed
+
+    private void jbtnDerivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDerivadaActionPerformed
+        dato = JOptionPane.showInputDialog(this, "introduce el Diferencial (una letra)", "Diferencial: ", 2);
+        Border borde = new TitledBorder("Al Derivar resulta:");
+        if (!"".equals(dato)) {
+            this.jtxpFuncion.setText(this.jtxpFuncion.getText().concat(" d".concat(" \n──".concat("()\nd".concat(String.valueOf(dato.charAt(0)))))));
+            integrar = false;
+            this.jPanel5.setBorder(borde);
+            changeLineSpacing(Float.valueOf("-0.5"), false, this.jtxpFuncion);
+            this.jbtnIntegrando.setEnabled(false);
+            this.jbtnDerivada.setEnabled(false);
+            this.jtxpFuncion.grabFocus();
+            this.jtxpFuncion.setCaretPosition(7);
+        }
+    }//GEN-LAST:event_jbtnDerivadaActionPerformed
+
+    private void jbtnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnProductoActionPerformed
+        String sel = Select(false);
+        this.jtxpFuncion.setText(sel.concat(arregloParentecis(true)).concat("()".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(this.jtxpFuncion.getText().lastIndexOf("(") + 1);
+    }//GEN-LAST:event_jbtnProductoActionPerformed
+
+    private void jbtnCosienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCosienteActionPerformed
+        String sel = Select(false);
+        this.jtxpFuncion.setText(sel.concat(arregloParentecis(true)).concat("/()".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(this.jtxpFuncion.getText().lastIndexOf("(") + 1);
+    }//GEN-LAST:event_jbtnCosienteActionPerformed
+
+    private void jbtnParentecisCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnParentecisCActionPerformed
+        String sel = Select(true);
+        this.jtxpFuncion.setText(sel.concat(")".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
+    }//GEN-LAST:event_jbtnParentecisCActionPerformed
+
+    private void jbtnParentecisAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnParentecisAActionPerformed
+        String sel = Select(true);
+        this.jtxpFuncion.setText(sel.concat("()".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
+    }//GEN-LAST:event_jbtnParentecisAActionPerformed
+
+    private void jbtnExponencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExponencialActionPerformed
+        String sel = Select(true);
+        this.jtxpFuncion.setText(sel.concat("e".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
+    }//GEN-LAST:event_jbtnExponencialActionPerformed
+
+    private void jbtnPotenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPotenciaActionPerformed
+        String sel = Select(true);
+        this.jtxpFuncion.setText(sel.concat("^".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 1);
+    }//GEN-LAST:event_jbtnPotenciaActionPerformed
+
+    private void jbtnCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCuboActionPerformed
+        String sel = Select(true);
+        this.jtxpFuncion.setText(sel.concat("^3".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 2);
+    }//GEN-LAST:event_jbtnCuboActionPerformed
+
+    private void jbtnCuadradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCuadradoActionPerformed
+        String sel = Select(true);
+        this.jtxpFuncion.setText(sel.concat("^2".concat(Select2())));
+        this.jtxpFuncion.grabFocus();
+        this.jtxpFuncion.setCaretPosition(sel.length() + 2);
+    }//GEN-LAST:event_jbtnCuadradoActionPerformed
+
+    private void jbtnIntegrandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIntegrandoActionPerformed
+        dato = JOptionPane.showInputDialog(this, "introduce el Diferencial (una letra)", "Diferencial: ", 2);
+        Border borde = new TitledBorder("Al integrar resulta:");
+        String dat = String.valueOf(dato.charAt(0));
+        try {
+            if (dat.hashCode() >= 0) {
+                this.jtxpFuncion.setText("∫()d".concat(String.valueOf(dato.charAt(0)).concat(" ")));
+                this.jPanel5.setBorder(borde);
+                integrar = true;
+                this.jtxpFuncion.setCaretPosition(2);
+                this.jtxpFuncion.grabFocus();
+                this.jbtnDerivada.setEnabled(false);
+                this.jbtnIntegrando.setEnabled(false);
+            } else {
+            }
+        } catch (NullPointerException n) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar una letra", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jbtnIntegrandoActionPerformed
+
+    private void jtxpFuncionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxpFuncionKeyReleased
+
+    }//GEN-LAST:event_jtxpFuncionKeyReleased
+
+    private void jtxpFuncionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxpFuncionKeyPressed
+        jtxasetFont(this.jtxpFuncion);
+        int pos = 0;
+        char caracter = evt.getKeyChar();
+        if (this.jtxpFuncion.getText().equals("")) {
+            this.jbtnDerivada.setEnabled(true);
+            this.jbtnIntegrando.setEnabled(true);
+        }
+        if (evt.getKeyCode() == 127 || evt.getKeyCode() == 8) {
+            if (!integrar) {
+                if (this.jtxpFuncion.getCaretPosition() == 7) {
+                    this.jtxpFuncion.setText(this.jtxpFuncion.getText().substring(0, 7).concat(" ").concat(this.jtxpFuncion.getText().substring(this.jtxpFuncion.getCaretPosition(), this.jtxpFuncion.getText().length())));
+                    this.jtxpFuncion.setCaretPosition(8);
+                }
+                if (this.jtxpFuncion.getCaretPosition() == this.jtxpFuncion.getText().lastIndexOf(")")) {
+                    int p = this.jtxpFuncion.getCaretPosition();
+                    this.jtxpFuncion.setText(this.jtxpFuncion.getText().substring(0, p).concat(" ").concat(this.jtxpFuncion.getText().substring(p, this.jtxpFuncion.getText().length())));
+                    this.jtxpFuncion.setCaretPosition(p);
+                }
+            } else {
+                if (this.jtxpFuncion.getCaretPosition() == 2) {
+                    this.jtxpFuncion.setText(this.jtxpFuncion.getText().substring(0, 2).concat(" ").concat(this.jtxpFuncion.getText().substring(this.jtxpFuncion.getCaretPosition(), this.jtxpFuncion.getText().length())));
+                    this.jtxpFuncion.setCaretPosition(8);
+                }
+                if (this.jtxpFuncion.getCaretPosition() == this.jtxpFuncion.getText().lastIndexOf(")")) {
+                    int p = this.jtxpFuncion.getCaretPosition();
+                    this.jtxpFuncion.setText(this.jtxpFuncion.getText().substring(0, p).concat(" ").concat(this.jtxpFuncion.getText().substring(p, this.jtxpFuncion.getText().length())));
+                    this.jtxpFuncion.setCaretPosition(p);
+                }
+            }
+        }
+        if (Character.isLetter(caracter)) {
+            if (!String.valueOf(evt.getKeyChar()).equals(dato)) {
+                if (JOptionPane.showConfirmDialog(this, "Debe ingresar la misma letra del diferencial \n ¿Deséas Continuar?", "Información", 1) == 1) {
+                    int Position = this.jtxpFuncion.getCaretPosition();
+                    this.jtxpFuncion.setText(this.jtxpFuncion.getText().substring(0, Position - 1).concat(this.jtxpFuncion.getText().substring(Position, this.jtxpFuncion.getText().length())));
+                    jtxasetFont(this.jtxpFuncion);
+                    this.jtxpFuncion.grabFocus();
+                    this.jtxpFuncion.setCaretPosition(Position - 1);
+                }
+
+            }
+        } else {
+            this.jbtnCuadrado.setEnabled(true);
+            this.jbtnCubo.setEnabled(true);
+            this.jbtnPotencia.setEnabled(true);
+        }
+    }//GEN-LAST:event_jtxpFuncionKeyPressed
 
     /**
      * @param args the command line arguments
@@ -805,42 +870,49 @@ String sel = Select();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton jbtnCosecante;
+    private javax.swing.JButton jbtnCoseno;
     private javax.swing.JButton jbtnCosiente;
+    private javax.swing.JButton jbtnCotangente;
     private javax.swing.JButton jbtnCuadrado;
     private javax.swing.JButton jbtnCubo;
     private javax.swing.JButton jbtnDerivada;
     private javax.swing.JButton jbtnExponencial;
+    private javax.swing.JButton jbtnIgual;
     private javax.swing.JButton jbtnIntegrando;
+    private javax.swing.JButton jbtnLogaritmoNatural;
+    private javax.swing.JButton jbtnNuevo;
     private javax.swing.JButton jbtnParentecisA;
     private javax.swing.JButton jbtnParentecisC;
     private javax.swing.JButton jbtnPotencia;
     private javax.swing.JButton jbtnProducto;
+    private javax.swing.JButton jbtnSecante;
+    private javax.swing.JButton jbtnSeno;
+    private javax.swing.JButton jbtnTangente;
+    private javax.swing.JButton jbtnValorAbsoluto;
     private javax.swing.JTextPane jtxpFuncion;
+    private javax.swing.JTextPane jtxpProcedimiento;
     private javax.swing.JTextPane jtxpResultado;
     // End of variables declaration//GEN-END:variables
 
-    private String Select() {
-        return this.jtxpFuncion.getText().substring(0, this.jtxpFuncion.getCaretPosition());
+    private String Select(boolean tipo) {
+        if (tipo) {
+            return this.jtxpFuncion.getText().substring(0, this.jtxpFuncion.getCaretPosition());
+        } else {
+            return this.jtxpFuncion.getText().substring(0, this.jtxpFuncion.getText().indexOf("(") + 1);
+        }
     }
 
     private String Select2() {
@@ -860,12 +932,15 @@ String sel = Select();
         jtxpvariable.setFont(fuente);
     }
 
-    private String crearCadena(String cad) {
-        if (cad.indexOf(")(") == 1) {
-            cad = "(".concat(cad).concat(")");
+    public String arregloParentecis(boolean Prentesis) {
+        String cadena;
+        if (Prentesis) {
+            cadena = "(".concat(this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf("(") + 1, this.jtxpFuncion.getText().lastIndexOf(")"))).concat(")");
+            return cadena;
+        } else {
+            cadena = "|".concat(this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf("(") + 1, this.jtxpFuncion.getText().lastIndexOf(")"))).concat("|");
+            return cadena;
         }
-        System.out.println(cad + "   yo");
-        return cad;
     }
 
 }

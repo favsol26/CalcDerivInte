@@ -10,7 +10,6 @@ import Principal.ExpresionAlgebraica;
 //import Principal.ProcesarFunciones;
 import Principal.SintaxisExpresiones;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *

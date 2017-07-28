@@ -86,17 +86,16 @@ public class derivadaCosiente extends CDI {
         }
 
         int t = 0;
-        Division = new ExpresionAlgebraica[(resultado.length * mult2C.length)];
+        Division = new ExpresionAlgebraica[(resultado.length + mult2C.length) + 1];
         for (ExpresionAlgebraica resultado1 : resultado) {
-            for (ExpresionAlgebraica mul2C1 : mult2C) {
-                if (resultado1.getSimbolo().equals(mul2C1.getSimbolo())) {
-                    signo = "+";
-                } else {
-                    signo = "-";
-                }
-                Division[t] = new ExpresionAlgebraica(signo, resultado1.getCoeficiente() / mul2C1.getCoeficiente(), resultado1.getVariable(), String.valueOf(Float.valueOf(resultado1.getExponente()) - Float.valueOf(mul2C1.getExponente())));
-                t++;
-            }
+            Division[t] = new ExpresionAlgebraica(resultado1.getSimbolo(), resultado1.getCoeficiente(), resultado1.getVariable(), resultado1.getExponente());
+            t++;
+        }
+        Division[t]= new ExpresionAlgebraica("/", 0, null, null);
+        t++;
+        for (ExpresionAlgebraica mul2C1 : mult2C) {
+            Division[t] = new ExpresionAlgebraica(mul2C1.getSimbolo(), mul2C1.getCoeficiente(), mul2C1.getVariable(), mul2C1.getExponente());
+            t++;
         }
         return Division;
     }
