@@ -58,7 +58,7 @@ public class CDI {
         resultados.add("\n");
         if (expz.isEmpty()) {
             if (resultado != null) {
-                resultados.add("\nAl " + operacion + " se obtiene: \n");
+                resultados.add("&&&");
                 cad = "\n";
                 for (ExpresionAlgebraica finalizado1 : resultado) {
                     if (finalizado1 != null) {
@@ -120,7 +120,7 @@ public class CDI {
                 }
 
             }
-            resultados.add("\nAl " + operacion + " se obtiene: \n");
+            resultados.add("&&&");
         }
         if (cad.equals("")) {
             cad = "0";

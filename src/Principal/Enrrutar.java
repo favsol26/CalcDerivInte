@@ -16,7 +16,6 @@ import Integrales.integralProducto;
 import Procesos.procesoDerivadaCociente;
 import Procesos.procesoDerivadaLogaritmo;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  *
@@ -33,13 +32,8 @@ public class Enrrutar extends CDI {
         ArrayList Signos;
         boolean parentesis = false;
         Segmentos = partes;
-        ExpresionAlgebraica[] terminos;
         Signos = delimitador;
-        int v, sig = 0;
-        int f;
-        String logn = "";
-        String cad = "";
-        Scanner sc1 = new Scanner(System.in);
+         String cad = "";
         if (!op.toUpperCase().equals("D")) {
             for (int i = 0; i < Segmentos.size(); i++) {
                 for (int j = 0; j < Segmentos.get(i).toString().length(); j++) {
@@ -123,6 +117,7 @@ public class Enrrutar extends CDI {
                         break;
                     } else if (")".equals(Segmentos.get(0).toString().substring(Segmentos.get(0).toString().length() - 1))
                             && "(".equals(Segmentos.get(1).toString().substring(0, 1)) && Signos.isEmpty()) {
+                        
                         resultado = integralProducto.integral_producto(Segmentos, diferencial);
                         break;
                     } else {

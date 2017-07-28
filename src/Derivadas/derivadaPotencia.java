@@ -22,11 +22,7 @@ public class derivadaPotencia extends CDI {
 
         float coef;
         for (int i = 0; i < deriv.length; i++) {
-            if (deriv[i].getVariable().equals(dif)) {
-                resultado[i] = new ExpresionAlgebraica(deriv[i].getSimbolo(), deriv[i].getCoeficiente(), deriv[i].getVariable(), deriv[i].getExponente());
-            } else {
-                resultado[i] = new ExpresionAlgebraica("+", 1, "", "0");
-            }
+            resultado[i] = new ExpresionAlgebraica(deriv[i].getSimbolo(), deriv[i].getCoeficiente(), deriv[i].getVariable(), deriv[i].getExponente());
         }
 
         for (int i = 0; i < resultado.length; i++) {
@@ -44,7 +40,10 @@ public class derivadaPotencia extends CDI {
                 if (coef < 0) {
                     resultado[i].setCoeficiente(coef * -1);
                     resultado[i].setSimbolo("-");
-                } else {
+                } else if (coef == 0) {
+                    resultado[i].setCoeficiente(0);
+                    resultado[i].setSimbolo("+");
+                }else{
                     resultado[i].setCoeficiente(coef);
                     resultado[i].setSimbolo("+");
                 }

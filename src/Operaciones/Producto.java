@@ -10,6 +10,7 @@ import Principal.ExpresionAlgebraica;
 import Principal.ProcesarFunciones;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -41,10 +42,17 @@ public class Producto extends CDI {
                         expAUX = String.valueOf(Float.valueOf(mult11.getExponente()) + Float.valueOf(mult21.getExponente()));
                         coefAUX = mult11.getCoeficiente() * mult21.getCoeficiente();
                         varAUX = mult11.getVariable();
+
                         expreAUX[v] = new ExpresionAlgebraica(signAUX, coefAUX, varAUX, expAUX);
                     } else {
                         coefAUX = mult11.getCoeficiente() * mult21.getCoeficiente();
-                        expreAUX[v] = new ExpresionAlgebraica(signAUX, coefAUX, mult11.getVariable() + mult21.getVariable(), mult11.getExponente() + mult21.getExponente());
+                        String var;
+                        if ("".equals(mult11.getVariable())) {
+                            var = mult21.getVariable();
+                        } else {
+                            var = mult11.getVariable();
+                        }
+                        expreAUX[v] = new ExpresionAlgebraica(signAUX, coefAUX, var, String.valueOf(Float.valueOf(mult11.getExponente()) + Float.valueOf(mult21.getExponente())));
                     }
                 } else {
                     signAUX = "-";
@@ -55,7 +63,13 @@ public class Producto extends CDI {
                         expreAUX[v] = new ExpresionAlgebraica(signAUX, coefAUX, varAUX, expAUX);
                     } else {
                         coefAUX = mult11.getCoeficiente() * mult21.getCoeficiente();
-                        expreAUX[v] = new ExpresionAlgebraica(signAUX, coefAUX, mult11.getVariable() + mult21.getVariable(), mult11.getExponente() + mult21.getExponente());
+                        String var;
+                        if ("".equals(mult11.getVariable())) {
+                            var = mult21.getVariable();
+                        } else {
+                            var = mult11.getVariable();
+                        }
+                        expreAUX[v] = new ExpresionAlgebraica(signAUX, coefAUX, var, String.valueOf(Float.valueOf(mult11.getExponente()) + Float.valueOf(mult21.getExponente())));
                     }
 
                 }
@@ -74,7 +88,6 @@ public class Producto extends CDI {
         if (Signo.get(0).equals("+") && Segmento.size() == Signo.size()) {
             Signo.remove(0);
         }
-        
         return ProcesarFunciones.jeraquia(Segmento, Signo);
     }
 }

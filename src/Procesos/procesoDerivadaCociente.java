@@ -44,13 +44,7 @@ public class procesoDerivadaCociente extends Enrrutar {
         resultado = derivadaCosiente.Cosiente(op, Dif);
         Segmentos.clear();
         Signos.clear();
-        for (int j = 0; j < resultado.length; j++) {
-            Segmentos.add(resultado[j].getCoeficiente() + resultado[j].getVariable() + "^" + resultado[j].getExponente());
-            if (j != 0) {
-                Signos.add(resultado[j].getSimbolo());
-            }
-        }
-        ProcesarFunciones.jeraquia(Segmentos, Signos);
+        
         return llenado;
     }
 }
