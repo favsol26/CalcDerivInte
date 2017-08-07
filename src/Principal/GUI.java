@@ -8,10 +8,10 @@ package Principal;
 import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+//import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
+//import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
@@ -861,12 +861,7 @@ public class GUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new GUI().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(new RunnableImpl());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -940,6 +935,17 @@ public class GUI extends javax.swing.JFrame {
         } else {
             cadena = "|".concat(this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf("(") + 1, this.jtxpFuncion.getText().lastIndexOf(")"))).concat("|");
             return cadena;
+        }
+    }
+
+    private static class RunnableImpl implements Runnable {
+
+        public RunnableImpl() {
+        }
+
+        @Override
+        public void run() {
+            new GUI().setVisible(true);
         }
     }
 
