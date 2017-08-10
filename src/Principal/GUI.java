@@ -8,10 +8,8 @@ package Principal;
 import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
@@ -85,6 +83,10 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Función:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
+        jScrollPane3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
         jtxpFuncion.setBorder(null);
         jtxpFuncion.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jtxpFuncion.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -111,6 +113,8 @@ public class GUI extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Procedimiento", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
         jPanel3.setOpaque(false);
 
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         jScrollPane2.setViewportView(jtxpProcedimiento);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -514,6 +518,9 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         jtxpResultado.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jScrollPane1.setViewportView(jtxpResultado);
 
@@ -694,7 +701,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnSenoActionPerformed
 
     private void jbtnDerivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDerivadaActionPerformed
-        dato = JOptionPane.showInputDialog(this, "introduce el Diferencial (una letra)", "Diferencial: ", 2);
+        dato = JOptionPane.showInputDialog(this, "Introduce el Diferencial (una letra)", "Diferencial: ", 2);
         Border borde = new TitledBorder("Al Derivar resulta:");
         if (!"".equals(dato)) {
             this.jtxpFuncion.setText(this.jtxpFuncion.getText().concat(" d".concat(" \n──".concat("()\nd".concat(String.valueOf(dato.charAt(0)))))));
@@ -765,7 +772,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnCuadradoActionPerformed
 
     private void jbtnIntegrandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIntegrandoActionPerformed
-        dato = JOptionPane.showInputDialog(this, "introduce el Diferencial (una letra)", "Diferencial: ", 2);
+        dato = JOptionPane.showInputDialog(this, "Introduce el Diferencial (una letra)", "Diferencial: ", 2);
         Border borde = new TitledBorder("Al integrar resulta:");
         String dat = String.valueOf(dato.charAt(0));
         try {
