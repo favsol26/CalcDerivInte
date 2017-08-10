@@ -31,6 +31,8 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        estado(false);
+        
     }
 
     /**
@@ -587,11 +589,6 @@ public class GUI extends javax.swing.JFrame {
         this.jPanel5.setBorder(borde);
         this.jtxpFuncion.setText("");
         this.jtxpResultado.setText("");
-        this.jbtnDerivada.setEnabled(true);
-        this.jbtnIntegrando.setEnabled(true);
-        this.jbtnCuadrado.setEnabled(false);
-        this.jbtnCubo.setEnabled(false);
-        this.jbtnPotencia.setEnabled(false);
         this.jtxpProcedimiento.setText("");
         integrar = false;
         this.jtxpFuncion.grabFocus();
@@ -705,6 +702,7 @@ public class GUI extends javax.swing.JFrame {
             this.jbtnDerivada.setEnabled(false);
             this.jtxpFuncion.grabFocus();
             this.jtxpFuncion.setCaretPosition(7);
+            estado(true);
         }
     }//GEN-LAST:event_jbtnDerivadaActionPerformed
 
@@ -777,6 +775,7 @@ public class GUI extends javax.swing.JFrame {
                 this.jtxpFuncion.grabFocus();
                 this.jbtnDerivada.setEnabled(false);
                 this.jbtnIntegrando.setEnabled(false);
+                estado(true);
             } else {
             }
         } catch (NullPointerException n) {
@@ -937,6 +936,27 @@ public class GUI extends javax.swing.JFrame {
             return cadena;
         }
     }
+
+    private void estado(boolean b) {
+        this.jbtnCosecante.setEnabled(b);
+        this.jbtnCoseno.setEnabled(b);
+        this.jbtnCosiente.setEnabled(b);
+        this.jbtnCotangente.setEnabled(b);
+        this.jbtnCuadrado.setEnabled(b);
+        this.jbtnCubo.setEnabled(b);
+        this.jbtnExponencial.setEnabled(b);
+        this.jbtnIgual.setEnabled(b);
+        this.jbtnLogaritmoNatural.setEnabled(b);
+        this.jbtnNuevo.setEnabled(b);
+        this.jbtnParentecisA.setEnabled(b);
+        this.jbtnParentecisC.setEnabled(b);
+        this.jbtnPotencia.setEnabled(b);
+        this.jbtnProducto.setEnabled(b);
+        this.jbtnSecante.setEnabled(b);
+        this.jbtnSeno.setEnabled(b);
+        this.jbtnTangente.setEnabled(b);
+        this.jbtnValorAbsoluto.setEnabled(b);
+     }
 
     private static class RunnableImpl implements Runnable {
 
