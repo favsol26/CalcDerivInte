@@ -14,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author fav_0
  */
-public class Trigonometricas extends CDI {
+public class DerivadasTrigonometricas extends CDI {
 
     static ExpresionAlgebraica[] exp;
 

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author fav_0
  */
-public class Trigonometricas {
+public class IntegralesTrigonometricas {
 
     /**
      * @param args the command line arguments
