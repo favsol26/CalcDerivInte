@@ -966,6 +966,8 @@ public class GUI extends javax.swing.JFrame {
     private void Parentesis(String texto) {
         String sel = Select(true);
         String sel2 = Select2();
+                //hol.az jmundcoç
+        boolean bol = true;
         boolean parentesis = false;
         for (int i = 0; i < sel.length(); i++) {
             parentesis = sel.charAt(i) == '(';
