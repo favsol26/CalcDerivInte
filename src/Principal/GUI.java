@@ -87,6 +87,8 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Función:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
+        jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         jtxpFuncion.setBorder(null);
         jtxpFuncion.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jtxpFuncion.addKeyListener(new java.awt.event.KeyAdapter() {
