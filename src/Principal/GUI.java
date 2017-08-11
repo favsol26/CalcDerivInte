@@ -32,7 +32,6 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         estado(false);
-        
     }
 
     /**
@@ -716,10 +715,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnDerivadaActionPerformed
 
     private void jbtnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnProductoActionPerformed
-        String sel = Select(false);
-        this.jtxpFuncion.setText(sel.concat(arregloParentecis(true)).concat("()".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(this.jtxpFuncion.getText().lastIndexOf("(") + 1);
+        Parentesis(this.jtxpFuncion.getText());
     }//GEN-LAST:event_jbtnProductoActionPerformed
 
     private void jbtnCosienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCosienteActionPerformed
@@ -965,7 +961,25 @@ public class GUI extends javax.swing.JFrame {
         this.jbtnSeno.setEnabled(b);
         this.jbtnTangente.setEnabled(b);
         this.jbtnValorAbsoluto.setEnabled(b);
-     }
+    }
+
+    private void Parentesis(String texto) {
+        String sel = Select(true);
+        String sel2 = Select2();
+        boolean parentesis = false;
+        for (int i = 0; i < sel.length(); i++) {
+            parentesis = sel.charAt(i) == '(';
+        }
+        if (parentesis) {
+            this.jtxpFuncion.setText(sel.concat("()()").concat(sel2));
+            this.jtxpFuncion.grabFocus();
+            this.jtxpFuncion.setCaretPosition(sel.length() + 1);
+        } else {
+            this.jtxpFuncion.setText(this.jtxpFuncion.getText().substring(0, this.jtxpFuncion.getText().indexOf("(")).concat("(").concat(this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf("("),this.jtxpFuncion.getCaretPosition())).concat(")").concat("()").concat(sel2));
+            this.jtxpFuncion.grabFocus();
+            this.jtxpFuncion.setCaretPosition(sel.length() + 3);
+        }
+    }
 
     private static class RunnableImpl implements Runnable {
 
