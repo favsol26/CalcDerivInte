@@ -35,6 +35,7 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         estado(false);
+        this.jbtnHistorial.setVisible(false);
     }
 
     /**
@@ -811,6 +812,7 @@ public class GUI extends javax.swing.JFrame {
                     this.jbtnDerivada.setEnabled(false);
                     this.jbtnIntegrando.setEnabled(false);
                     estado(true);
+                    this.jbtnLogaritmoNatural.setEnabled(false);
                 } else {
                 }
             } catch (NullPointerException n) {
