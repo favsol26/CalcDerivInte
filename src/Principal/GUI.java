@@ -6,7 +6,10 @@
 package Principal;
 
 import java.awt.Font;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JOptionPane;
 //import javax.swing.JPanel;
 import javax.swing.JTextPane;
@@ -69,15 +72,14 @@ public class GUI extends javax.swing.JFrame {
         jbtnCosecante = new javax.swing.JButton();
         jbtnLogaritmoNatural = new javax.swing.JButton();
         jbtnValorAbsoluto = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
         jbtnIgual = new javax.swing.JButton();
         jbtnNuevo = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtxpResultado = new javax.swing.JTextPane();
+        jbtnComentario = new javax.swing.JButton();
+        jbtnHistorial = new javax.swing.JButton();
+        jbtnImprimir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CDI");
@@ -371,30 +373,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton19.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton19.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton19.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton19.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton19.setPreferredSize(new java.awt.Dimension(25, 25));
-
-        jButton20.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton20.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton20.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton20.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton20.setPreferredSize(new java.awt.Dimension(25, 25));
-
-        jButton21.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton21.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton21.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton21.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton21.setPreferredSize(new java.awt.Dimension(25, 25));
-
-        jButton22.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jButton22.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton22.setMaximumSize(new java.awt.Dimension(25, 25));
-        jButton22.setMinimumSize(new java.awt.Dimension(25, 25));
-        jButton22.setPreferredSize(new java.awt.Dimension(25, 25));
-
         jbtnIgual.setBackground(new java.awt.Color(102, 255, 102));
         jbtnIgual.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jbtnIgual.setText("=");
@@ -469,15 +447,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jbtnLogaritmoNatural, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbtnValorAbsoluto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                         .addComponent(jbtnIgual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbtnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -510,12 +480,8 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbtnLogaritmoNatural, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtnValorAbsoluto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnIgual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbtnIgual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -527,15 +493,66 @@ public class GUI extends javax.swing.JFrame {
         jtxpResultado.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jScrollPane1.setViewportView(jtxpResultado);
 
+        jbtnComentario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnComentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Descripción.png"))); // NOI18N
+        jbtnComentario.setToolTipText("Descripción del Resultado");
+        jbtnComentario.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnComentario.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnComentario.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnComentario.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnComentario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnComentarioActionPerformed(evt);
+            }
+        });
+
+        jbtnHistorial.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnHistorial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/historial.png"))); // NOI18N
+        jbtnHistorial.setToolTipText("Historial");
+        jbtnHistorial.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnHistorial.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnHistorial.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnHistorial.setOpaque(false);
+        jbtnHistorial.setPreferredSize(new java.awt.Dimension(25, 25));
+
+        jbtnImprimir.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jbtnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/impresora.png"))); // NOI18N
+        jbtnImprimir.setToolTipText("Imprimir");
+        jbtnImprimir.setDoubleBuffered(true);
+        jbtnImprimir.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jbtnImprimir.setMaximumSize(new java.awt.Dimension(25, 25));
+        jbtnImprimir.setMinimumSize(new java.awt.Dimension(25, 25));
+        jbtnImprimir.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnImprimirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtnComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jbtnComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -543,11 +560,11 @@ public class GUI extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(306, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(26, 26, 26))
+                .addContainerGap(303, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addContainerGap()
@@ -600,10 +617,15 @@ public class GUI extends javax.swing.JFrame {
         this.jtxpProcedimiento.setText("");
         integrar = false;
         this.jtxpFuncion.grabFocus();
+        estado(false);
+        this.jbtnIntegrando.setEnabled(true);
+        this.jbtnDerivada.setEnabled(true);
+        this.jbtnImprimir.setEnabled(false);
     }//GEN-LAST:event_jbtnNuevoActionPerformed
 
     private void jbtnIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIgualActionPerformed
         if (!"".equals(this.jtxpFuncion.getText())) {
+            this.jbtnImprimir.setEnabled(true);
             String op, cad;
             int pos = 0;
             ArrayList resultados = new ArrayList();
@@ -625,7 +647,7 @@ public class GUI extends javax.swing.JFrame {
                 }
             }
             this.jtxpProcedimiento.setText("");
-            if (resultados!=null) {
+            if (resultados != null) {
                 for (int i = 0; i < resultados.size(); i++) {
                     if (resultados.get(i).toString().equals("&&&")) {
                         pos = i;
@@ -642,10 +664,10 @@ public class GUI extends javax.swing.JFrame {
                     changeLineSpacing(Float.valueOf("-0.5"), false, this.jtxpResultado);
                 }
                 resultados.clear();
-            }else{
-                JOptionPane.showMessageDialog(this, "Debe Introducir una función válida para el sistema. /n Revise su función e intente de nuevo.","Error",JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe Introducir una función válida para el sistema. /n Revise su función e intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Debe Introducir una función antes de dar clic a este botón. /n Intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jbtnIgualActionPerformed
@@ -725,14 +747,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnDerivadaActionPerformed
 
     private void jbtnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnProductoActionPerformed
-        Parentesis(this.jtxpFuncion.getText());
+        Parentesis(this.jtxpFuncion.getText(),false);
     }//GEN-LAST:event_jbtnProductoActionPerformed
 
     private void jbtnCosienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCosienteActionPerformed
-        String sel = Select(false);
-        this.jtxpFuncion.setText(sel.concat(arregloParentecis(true)).concat("/()".concat(Select2())));
-        this.jtxpFuncion.grabFocus();
-        this.jtxpFuncion.setCaretPosition(this.jtxpFuncion.getText().lastIndexOf("(") + 1);
+        Parentesis(this.jtxpFuncion.getText(), true);
     }//GEN-LAST:event_jbtnCosienteActionPerformed
 
     private void jbtnParentecisCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnParentecisCActionPerformed
@@ -779,7 +798,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void jbtnIntegrandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIntegrandoActionPerformed
         dato = JOptionPane.showInputDialog(this, "Introduce el Diferencial (una letra)", "Diferencial: ", 2);
-        if (dato!=null) {
+        if (dato != null) {
             Border borde = new TitledBorder("Al integrar resulta:");
             String dat = String.valueOf(dato.charAt(0));
             try {
@@ -853,6 +872,52 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jtxpFuncionKeyPressed
 
+    private void jbtnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImprimirActionPerformed
+        FileWriter fichero;
+        String Nombre = "";
+        try {
+            Nombre = getSaltString();
+            fichero = new FileWriter("c:/Resultados/" + Nombre + ".doc");
+            fichero.write(this.jtxpFuncion.getText());
+            fichero.write("\n");
+            fichero.write(this.jtxpProcedimiento.getText());
+            fichero.write("\n");
+            fichero.write("Resultado: ");
+            fichero.write("\n");
+            fichero.write(this.jtxpResultado.getText());
+            fichero.write("\n");
+            fichero.close();
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "No se pudo guardar el Archivo.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        try {
+            Runtime obj = Runtime.getRuntime();
+            //La instrucción es notepad para abrir el bloc de notas, espacio
+            //y la ruta donde esta el archivo
+            obj.exec("cmd /c start notepad " + "\"c:/Resultados/" + Nombre + ".doc\"");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Este archivo no existe.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jbtnImprimirActionPerformed
+
+    private void jbtnComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnComentarioActionPerformed
+        String Texto = "";
+        for (int i = 0; i < CDI.Descripcion.size(); i++) {
+            for (int j = 1; j < CDI.Descripcion.size(); j++) {
+                if (CDI.Descripcion.get(i).equals(CDI.Descripcion.get(j))) {
+                    CDI.Descripcion.set(j, "$$$");
+                }
+            }
+        }
+        for (Object Descripcion : CDI.Descripcion) {
+            if (!"$$$".equals(Descripcion.toString())) {
+                Texto = Texto.concat(Descripcion.toString()).concat("\n");
+            }
+        }
+        JOptionPane.showMessageDialog(this, "En esta función se aplicó lo siguiente: \n" + Texto, "Información", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jbtnComentarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -881,10 +946,6 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -893,6 +954,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton jbtnComentario;
     private javax.swing.JButton jbtnCosecante;
     private javax.swing.JButton jbtnCoseno;
     private javax.swing.JButton jbtnCosiente;
@@ -901,7 +963,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jbtnCubo;
     private javax.swing.JButton jbtnDerivada;
     private javax.swing.JButton jbtnExponencial;
+    private javax.swing.JButton jbtnHistorial;
     private javax.swing.JButton jbtnIgual;
+    private javax.swing.JButton jbtnImprimir;
     private javax.swing.JButton jbtnIntegrando;
     private javax.swing.JButton jbtnLogaritmoNatural;
     private javax.swing.JButton jbtnNuevo;
@@ -928,6 +992,18 @@ public class GUI extends javax.swing.JFrame {
 
     private String Select2() {
         return this.jtxpFuncion.getText().substring(this.jtxpFuncion.getCaretPosition(), this.jtxpFuncion.getText().length());
+    }
+
+    public String getSaltString() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 18) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
     }
 
     private void changeLineSpacing(float factor, boolean replace, JTextPane jtxpvariable) {
@@ -975,23 +1051,33 @@ public class GUI extends javax.swing.JFrame {
         this.jbtnValorAbsoluto.setEnabled(b);
     }
 
-    private void Parentesis(String texto) {
+    private void Parentesis(String texto, boolean Cosiente) {
         String sel = Select(true);
         String sel2 = Select2();
-                //hol.az jmundcoç
+        //hol.az jmundcoç
         boolean bol = true;
         boolean parentesis = false;
         for (int i = 0; i < sel.length(); i++) {
             parentesis = sel.charAt(i) == '(';
         }
         if (parentesis) {
-            this.jtxpFuncion.setText(sel.concat("()()").concat(sel2));
+            if (!Cosiente) {
+                this.jtxpFuncion.setText(sel.concat("()()").concat(sel2));
+            } else {
+                this.jtxpFuncion.setText(sel.concat("()/()").concat(sel2));
+            }
             this.jtxpFuncion.grabFocus();
             this.jtxpFuncion.setCaretPosition(sel.length() + 1);
         } else {
-            this.jtxpFuncion.setText(this.jtxpFuncion.getText().substring(0, this.jtxpFuncion.getText().indexOf("(")).concat("(").concat(this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf("("),this.jtxpFuncion.getCaretPosition())).concat(")").concat("()").concat(sel2));
-            this.jtxpFuncion.grabFocus();
-            this.jtxpFuncion.setCaretPosition(sel.length() + 3);
+            if (!Cosiente) {
+                this.jtxpFuncion.setText(this.jtxpFuncion.getText().substring(0, this.jtxpFuncion.getText().indexOf("(")).concat("(").concat(this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf("("), this.jtxpFuncion.getCaretPosition())).concat(")").concat("()").concat(sel2));
+                this.jtxpFuncion.grabFocus();
+                this.jtxpFuncion.setCaretPosition(sel.length() + 3);
+            } else {
+                this.jtxpFuncion.setText(this.jtxpFuncion.getText().substring(0, this.jtxpFuncion.getText().indexOf("(")).concat("(").concat(this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf("("), this.jtxpFuncion.getCaretPosition())).concat(")").concat("/()").concat(sel2));
+                this.jtxpFuncion.grabFocus();
+                this.jtxpFuncion.setCaretPosition(sel.length() + 4);
+            }
         }
     }
 
