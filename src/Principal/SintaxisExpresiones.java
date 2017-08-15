@@ -69,11 +69,18 @@ public class SintaxisExpresiones extends CDI {
                 }
             }
         }
+        for (int i = 0; i < partes.size(); i++) {
+            if (partes.get(i).toString().length()!=0) {
+                if (partes.get(i).toString().charAt(0) == '-' || partes.get(i).toString().charAt(0) == '+') {
+                    partes.set(i, partes.get(i).toString().substring(1));
+                }
+            }
+        }
         if (Simplificando) {
             
             return Enrrutar.Enrrutador(partes, signo, op, dif);
         } else {
-            
+            System.out.println(partes.get(0));
             return ProcesarFunciones.jeraquia(partes, signo);
         }
     }

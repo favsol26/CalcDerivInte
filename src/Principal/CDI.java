@@ -50,11 +50,11 @@ public class CDI {
 
         resultado = SintaxisExpresiones.Sintaxis(cad, operacion, true, Dif);
 
-        if (operacion.toLowerCase().equals("d")) {
-            operacion = "derivar";
-        } else {
-            operacion = "integrar";
-        }
+//        if (operacion.toLowerCase().equals("d")) {
+//            operacion = "derivar";
+//        } else {
+//            operacion = "integrar";
+//        }
         resultados.add("\n");
         if (expz.isEmpty()) {
             if (resultado != null) {
@@ -125,12 +125,16 @@ public class CDI {
         if (cad.equals("")) {
             cad = "0";
         }
-        if (cad.charAt(0) == '-') {
-            resultados.add(cad);
-        } else if (cad.charAt(0) == '+') {
-            resultados.add(cad.substring(1, cad.length()));
-        } else {
-            resultados.add(cad);
+        switch (cad.charAt(0)) {
+            case '-':
+                resultados.add(cad);
+                break;
+            case '+':
+                resultados.add(cad.substring(1, cad.length()));
+                break;
+            default:
+                resultados.add(cad);
+                break;
         }
         resultados.add("");
         for (Object resultado1 : resultados) {
@@ -153,5 +157,4 @@ public class CDI {
 
         return resultados;
     }
-
 }
