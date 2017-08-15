@@ -603,43 +603,51 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnNuevoActionPerformed
 
     private void jbtnIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIgualActionPerformed
-        String op, cad;
-        int pos = 0;
-        ArrayList resultados = new ArrayList();
-        if (!integrar) {
-            op = "D";
-        } else {
-            op = "I";
-        }
-        cad = this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf("(") + 1, this.jtxpFuncion.getText().lastIndexOf(")"));
-        if (!"".equals(cad)) {
-            resultados = CDI.CDIMaster(cad, op, dato);
-        } else if (integrar) {
-            resultados = CDI.CDIMaster("1", op, dato);
-        } else {
-            JOptionPane.showMessageDialog(this, "Para derivar debe colocar al menos un numero diferente de 0", "Error", JOptionPane.ERROR_MESSAGE);
-            this.jtxpFuncion.grabFocus();
+        if (!"".equals(this.jtxpFuncion.getText())) {
+            String op, cad;
+            int pos = 0;
+            ArrayList resultados = new ArrayList();
             if (!integrar) {
-                this.jtxpFuncion.setCaretPosition(7);
+                op = "D";
+            } else {
+                op = "I";
             }
-        }
-        this.jtxpProcedimiento.setText("");
-        for (int i = 0; i < resultados.size(); i++) {
-            if (resultados.get(i).toString().equals("&&&")) {
-                pos = i;
-                break;
+            cad = this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf("(") + 1, this.jtxpFuncion.getText().lastIndexOf(")"));
+            if (!"".equals(cad)) {
+                resultados = CDI.CDIMaster(cad, op, dato);
+            } else if (integrar) {
+                resultados = CDI.CDIMaster("1", op, dato);
+            } else {
+                JOptionPane.showMessageDialog(this, "Para derivar debe colocar al menos un numero diferente de 0", "Error", JOptionPane.ERROR_MESSAGE);
+                this.jtxpFuncion.grabFocus();
+                if (!integrar) {
+                    this.jtxpFuncion.setCaretPosition(7);
+                }
             }
+            this.jtxpProcedimiento.setText("");
+            if (resultados!=null) {
+                for (int i = 0; i < resultados.size(); i++) {
+                    if (resultados.get(i).toString().equals("&&&")) {
+                        pos = i;
+                        break;
+                    }
+                }
+                for (int i = 0; i < pos; i++) {
+                    this.jtxpProcedimiento.setText(this.jtxpProcedimiento.getText().concat(resultados.get(i).toString()));
+                    changeLineSpacing(Float.valueOf("1"), false, this.jtxpProcedimiento);
+                }
+                pos++;
+                for (int i = pos; i < resultados.size(); i++) {
+                    this.jtxpResultado.setText(this.jtxpResultado.getText().concat(resultados.get(i).toString()));
+                    changeLineSpacing(Float.valueOf("-0.5"), false, this.jtxpResultado);
+                }
+                resultados.clear();
+            }else{
+                JOptionPane.showMessageDialog(this, "Debe Introducir una función válida para el sistema. /n Revise su función e intente de nuevo.","Error",JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Debe Introducir una función antes de dar clic a este botón. /n Intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        for (int i = 0; i < pos; i++) {
-            this.jtxpProcedimiento.setText(this.jtxpProcedimiento.getText().concat(resultados.get(i).toString()));
-            changeLineSpacing(Float.valueOf("1"), false, this.jtxpProcedimiento);
-        }
-        pos++;
-        for (int i = pos; i < resultados.size(); i++) {
-            this.jtxpResultado.setText(this.jtxpResultado.getText().concat(resultados.get(i).toString()));
-            changeLineSpacing(Float.valueOf("-0.5"), false, this.jtxpResultado);
-        }
-        resultados.clear();
     }//GEN-LAST:event_jbtnIgualActionPerformed
 
     private void jbtnValorAbsolutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnValorAbsolutoActionPerformed
@@ -700,17 +708,19 @@ public class GUI extends javax.swing.JFrame {
 
     private void jbtnDerivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDerivadaActionPerformed
         dato = JOptionPane.showInputDialog(this, "Introduce el Diferencial (una letra)", "Diferencial: ", 2);
-        Border borde = new TitledBorder("Al Derivar resulta:");
-        if (!"".equals(dato)) {
-            this.jtxpFuncion.setText(this.jtxpFuncion.getText().concat(" d".concat(" \n──".concat("()\nd".concat(String.valueOf(dato.charAt(0)))))));
-            integrar = false;
-            this.jPanel5.setBorder(borde);
-            changeLineSpacing(Float.valueOf("-0.5"), false, this.jtxpFuncion);
-            this.jbtnIntegrando.setEnabled(false);
-            this.jbtnDerivada.setEnabled(false);
-            this.jtxpFuncion.grabFocus();
-            this.jtxpFuncion.setCaretPosition(7);
-            estado(true);
+        if (dato != null) {
+            Border borde = new TitledBorder("Al Derivar resulta:");
+            if (!"".equals(dato)) {
+                this.jtxpFuncion.setText(this.jtxpFuncion.getText().concat(" d".concat(" \n──".concat("()\nd".concat(String.valueOf(dato.charAt(0)))))));
+                integrar = false;
+                this.jPanel5.setBorder(borde);
+                changeLineSpacing(Float.valueOf("-0.5"), false, this.jtxpFuncion);
+                this.jbtnIntegrando.setEnabled(false);
+                this.jbtnDerivada.setEnabled(false);
+                this.jtxpFuncion.grabFocus();
+                this.jtxpFuncion.setCaretPosition(7);
+                estado(true);
+            }
         }
     }//GEN-LAST:event_jbtnDerivadaActionPerformed
 
@@ -769,22 +779,24 @@ public class GUI extends javax.swing.JFrame {
 
     private void jbtnIntegrandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIntegrandoActionPerformed
         dato = JOptionPane.showInputDialog(this, "Introduce el Diferencial (una letra)", "Diferencial: ", 2);
-        Border borde = new TitledBorder("Al integrar resulta:");
-        String dat = String.valueOf(dato.charAt(0));
-        try {
-            if (dat.hashCode() >= 0) {
-                this.jtxpFuncion.setText("∫()d".concat(String.valueOf(dato.charAt(0)).concat(" ")));
-                this.jPanel5.setBorder(borde);
-                integrar = true;
-                this.jtxpFuncion.setCaretPosition(2);
-                this.jtxpFuncion.grabFocus();
-                this.jbtnDerivada.setEnabled(false);
-                this.jbtnIntegrando.setEnabled(false);
-                estado(true);
-            } else {
+        if (dato!=null) {
+            Border borde = new TitledBorder("Al integrar resulta:");
+            String dat = String.valueOf(dato.charAt(0));
+            try {
+                if (dat.hashCode() >= 0) {
+                    this.jtxpFuncion.setText("∫()d".concat(String.valueOf(dato.charAt(0)).concat(" ")));
+                    this.jPanel5.setBorder(borde);
+                    integrar = true;
+                    this.jtxpFuncion.setCaretPosition(2);
+                    this.jtxpFuncion.grabFocus();
+                    this.jbtnDerivada.setEnabled(false);
+                    this.jbtnIntegrando.setEnabled(false);
+                    estado(true);
+                } else {
+                }
+            } catch (NullPointerException n) {
+                JOptionPane.showMessageDialog(this, "Debe ingresar una letra", "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
-        } catch (NullPointerException n) {
-            JOptionPane.showMessageDialog(this, "Debe ingresar una letra", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jbtnIntegrandoActionPerformed
 
