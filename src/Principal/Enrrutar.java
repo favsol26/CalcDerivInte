@@ -33,7 +33,7 @@ public class Enrrutar extends CDI {
         boolean parentesis = false;
         Segmentos = partes;
         Signos = delimitador;
-         String cad = "";
+        String cad = "";
         if (!op.toUpperCase().equals("D")) {
             for (int i = 0; i < Segmentos.size(); i++) {
                 for (int j = 0; j < Segmentos.get(i).toString().length(); j++) {
@@ -46,7 +46,12 @@ public class Enrrutar extends CDI {
                         }
                         String Cadena = "";
                         for (ExpresionAlgebraica ccc1 : ccc) {
-                            Cadena = Cadena + ccc1.getSimbolo() + ccc1.getCoeficiente() + ccc1.getVariable() + "^" + ccc1.getExponente();
+                            Cadena = Cadena
+                                    + ccc1.getSimbolo()
+                                    + ccc1.getCoeficiente()
+                                    + ccc1.getVariable()
+                                    + "^"
+                                    + ccc1.getExponente();
                         }
                         if (Cadena.charAt(0) == '+') {
                             Cadena = Cadena.substring(1, Cadena.length());
@@ -64,7 +69,6 @@ public class Enrrutar extends CDI {
                     Segmentos.set(i, Segmentos.get(i).toString().concat(diferencial.substring(0) + "^0"));
                 }
             }
-            
 
             for (int i = 0; i < Segmentos.size(); i++) {
                 for (int l = 2; l < Segmentos.get(i).toString().length(); l++) {
@@ -76,30 +80,32 @@ public class Enrrutar extends CDI {
                 if (Signos.isEmpty()) {
                     if (Segmentos.get(0).toString().length() > 3 && parentesis) {
                         switch (Segmentos.get(0).toString().toLowerCase().substring(0, Segmentos.get(0).toString().indexOf("("))) {
-                            case "e^":
+                            case "csc^2":
                                 //resultado = Exponencial.exponencial(Segmentos.get(0).toString());
                                 //expon = true;
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
                                 break;
-                            case "ln":
+                            case "sec^2":
                                 //resultado = PDL.proceso(Segmentos, Signos, op);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
                                 break;
                             case "sen":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
                                 break;
                             case "cos":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
                                 break;
                             case "tan":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
                                 break;
                             case "cot":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
                                 break;
                             case "sec":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
                                 break;
                             case "csc":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
                                 break;
                         }
                         break;
@@ -117,7 +123,7 @@ public class Enrrutar extends CDI {
                         break;
                     } else if (")".equals(Segmentos.get(0).toString().substring(Segmentos.get(0).toString().length() - 1))
                             && "(".equals(Segmentos.get(1).toString().substring(0, 1)) && Signos.isEmpty()) {
-                        
+
                         resultado = integralProducto.integral_producto(Segmentos, diferencial);
                         break;
                     } else {
@@ -127,7 +133,7 @@ public class Enrrutar extends CDI {
                     }
                 } else if (!Signos.isEmpty()) {
                     if (Signos.get(0).toString().equals("/")) {
-                        if (Segmentos.get(0).toString().equals("(1.0x^0)")&&Segmentos.get(1).toString().substring(Segmentos.get(1).toString().indexOf("^")+1,Segmentos.get(i).toString().length()-1).equals("1")) {
+                        if (Segmentos.get(0).toString().equals("(1.0x^0)") && Segmentos.get(1).toString().substring(Segmentos.get(1).toString().indexOf("^") + 1, Segmentos.get(i).toString().length() - 1).equals("1")) {
                             resultado = integralCosiente.cosiente(Segmentos, true, diferencial);
                             break;
                         } else {
@@ -156,7 +162,7 @@ public class Enrrutar extends CDI {
                         break;
                     } else {
 
-                        resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos),diferencial);
+                        resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos), diferencial);
                         break;
                     }
                 }//(10x^4+20x^2)/(5x+2)
