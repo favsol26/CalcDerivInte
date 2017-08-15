@@ -79,22 +79,22 @@ public class Enrrutar extends CDI {
                                 //expon = true;
                                 break;
                             case "sen":
-                                expz = Integrales.Trigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
                                 break;
                             case "cos":
-                                expz = Integrales.Trigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
                                 break;
                             case "tan":
-                                expz = Integrales.Trigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
                                 break;
                             case "cot":
-                                expz = Integrales.Trigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
                                 break;
                             case "sec":
-                                expz = Integrales.Trigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
                                 break;
                             case "csc":
-                                expz = Integrales.Trigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
                                 break;
                         }
                         break;
@@ -181,22 +181,22 @@ public class Enrrutar extends CDI {
                                 resultado = PDL.proceso(Segmentos, Signos, op, diferencial);
                                 break;
                             case "sen":
-                                expz = Derivadas.Trigonometricas.correr(Segmentos, diferencial);
+                                expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
                                 break;
                             case "cos":
-                                expz = Derivadas.Trigonometricas.correr(Segmentos, diferencial);
+                                expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
                                 break;
                             case "tan":
-                                expz = Derivadas.Trigonometricas.correr(Segmentos, diferencial);
+                                expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
                                 break;
                             case "cot":
-                                expz = Derivadas.Trigonometricas.correr(Segmentos, diferencial);
+                                expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
                                 break;
                             case "sec":
-                                expz = Derivadas.Trigonometricas.correr(Segmentos, diferencial);
+                                expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
                                 break;
                             case "csc":
-                                expz = Derivadas.Trigonometricas.correr(Segmentos, diferencial);
+                                expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
                                 break;
                         }
                         break;
