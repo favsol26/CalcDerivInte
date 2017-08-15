@@ -33,26 +33,28 @@ public class dividircad extends OrdenarString {
         String let;
         boolean letra = false, signo = false;
         for (String exponente : exponentes) {
-            for (int j = 0; j < exponente.length(); j++) {
-                let = String.valueOf(exponente.charAt(j));
-                signo = exponente.substring(0, 1).equals("-");
-                letra = (let.hashCode() >= 65 && let.hashCode() <= 90) || (let.hashCode() >= 97 && let.hashCode() <= 122);
+            if (exponente!=null) {
+                for (int j = 0; j < exponente.length(); j++) {
+                    let = String.valueOf(exponente.charAt(j));
+                    signo = exponente.substring(0, 1).equals("-");
+                    letra = (let.hashCode() >= 65 && let.hashCode() <= 90) || (let.hashCode() >= 97 && let.hashCode() <= 122);
+                }
+                if (signo && letra) {
+                    negalet[a] = exponente;
+                    a++;
+                } else if (signo && !letra) {
+                    nega[b] = exponente;
+                    b++;
+                } else if (!signo && letra) {
+                    posilet[c] = exponente;
+                    c++;
+                } else if (!signo && !letra) {
+                    posi[d] = exponente;
+                    d++;
+                }
+                letra = false;
+                signo = false;
             }
-            if (signo && letra) {
-                negalet[a] = exponente;
-                a++;
-            } else if (signo && !letra) {
-                nega[b] = exponente;
-                b++;
-            } else if (!signo && letra) {
-                posilet[c] = exponente;
-                c++;
-            } else if (!signo && !letra) {
-                posi[d] = exponente;
-                d++;
-            }
-            letra = false;
-            signo = false;
         }
         a = 0;
         b = 0;

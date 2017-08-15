@@ -46,7 +46,12 @@ public class Enrrutar extends CDI {
                         }
                         String Cadena = "";
                         for (ExpresionAlgebraica ccc1 : ccc) {
-                            Cadena = Cadena + ccc1.getSimbolo() + ccc1.getCoeficiente() + ccc1.getVariable() + "^" + ccc1.getExponente();
+                            Cadena = Cadena
+                                    + ccc1.getSimbolo()
+                                    + ccc1.getCoeficiente()
+                                    + ccc1.getVariable()
+                                    + "^"
+                                    + ccc1.getExponente();
                         }
                         if (Cadena.charAt(0) == '+') {
                             Cadena = Cadena.substring(1, Cadena.length());
@@ -74,32 +79,40 @@ public class Enrrutar extends CDI {
                 if (Signos.isEmpty()) {
                     if (Segmentos.get(0).toString().length() > 3 && parentesis) {
                         switch (Segmentos.get(0).toString().toLowerCase().substring(0, Segmentos.get(0).toString().indexOf("("))) {
+                            case "csc^2":
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Integral Trigonométrica de Cosecante al cuadrado");
+                                break;
+                            case "sec^2":
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Integral Trigonométrica de Secante al cuadrado");
+                                break;
                             case "e^":
                                 expz.add(Segmentos.get(0).toString());
                                 Descripcion.add("- Integral de la Función Exponencial");
                                 break;
                             case "sen":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos,diferencial);
                                 Descripcion.add("- Integral Trigonometrica del Seno");
                                 break;
                             case "cos":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos,diferencial);
                                 Descripcion.add("- Integral Trigonometrica del Coseno");
                                 break;
                             case "tan":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos,diferencial);
                                 Descripcion.add("- Integral Trigonometrica de la Tangente");
                                 break;
                             case "cot":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos,diferencial);
                                 Descripcion.add("- Integral Trigonometrica de la Cotangente");
                                 break;
                             case "sec":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos,diferencial);
                                 Descripcion.add("- Integral Trigonometrica de la Secante");
                                 break;
                             case "csc":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos,diferencial);
                                 Descripcion.add("- Integral Trigonometrica de la Cosecante");
                                 break;
                         }
