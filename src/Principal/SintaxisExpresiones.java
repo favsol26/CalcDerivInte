@@ -17,40 +17,45 @@ public class SintaxisExpresiones extends CDI {
         ArrayList partes = new ArrayList();
         ArrayList signo = new ArrayList();
         ArrayList signo2 = new ArrayList();
+        cad = cad.replace(",", "");
+        cad = cad.replace("[", "");
+        cad = cad.replace("]", "");
+        cad = cad.replace("{", "");
+        cad = cad.replace("}", "");
         String cadena = cad;
         String parte = "";
         boolean parentesis = false;
         for (int i = 0; i < cadena.length(); i++) {
-            if ((cadena.charAt(i) == '+' || (cadena.charAt(i) == '-' && !parte.isEmpty())
-                    || cadena.charAt(i) == '*' || cadena.charAt(i) == '/'
-                    || i == cadena.length() - 1 || (cadena.charAt(i) == ')' && cadena.charAt(i + 1) == '('))) {
-                if (cadena.charAt(i) == ')') {
+            if ((cad.charAt(i) == '+' || (cad.charAt(i) == '-' && !parte.isEmpty())
+                    || cad.charAt(i) == '*' || cad.charAt(i) == '/'
+                    || i == cad.length() - 1 || (cad.charAt(i) == ')' && cad.charAt(i + 1) == '('))) {
+                if (cad.charAt(i) == ')') {
                     parentesis = false;
-                    parte = parte.concat(String.valueOf(cadena.charAt(i)));
-                } else if (i == cadena.length() - 1) {
-                    parte = parte.concat(String.valueOf(cadena.charAt(i)));
-                } else if (i > 0 && cadena.charAt(i - 1) == '^') {
-                    parte = parte.concat(String.valueOf(cadena.charAt(i)));
+                    parte = parte.concat(String.valueOf(cad.charAt(i)));
+                } else if (i == cad.length() - 1) {
+                    parte = parte.concat(String.valueOf(cad.charAt(i)));
+                } else if (i > 0 && cad.charAt(i - 1) == '^') {
+                    parte = parte.concat(String.valueOf(cad.charAt(i)));
                     continue;
                 }
                 if (!parentesis) {
-                    if (i != cadena.length() - 1) {
-                        if (cadena.charAt(i) != ')' && cadena.charAt(i) != '(') {
-                            signo.add(cadena.charAt(i));
+                    if (i != cad.length() - 1) {
+                        if (cad.charAt(i) != ')' && cad.charAt(i) != '(') {
+                            signo.add(cad.charAt(i));
                         }
                     }
                     partes.add(parte);
                     parte = "";
                 } else {
-                    parte = parte.concat(String.valueOf(cadena.charAt(i)));
+                    parte = parte.concat(String.valueOf(cad.charAt(i)));
                 }
             } else {
-                if (cadena.charAt(i) == '(') {
+                if (cad.charAt(i) == '(') {
                     parentesis = true;
-                } else if (cadena.charAt(i) == ')') {
+                } else if (cad.charAt(i) == ')') {
                     parentesis = false;
                 }
-                parte = parte.concat(String.valueOf(cadena.charAt(i)));
+                parte = parte.concat(String.valueOf(cad.charAt(i)));
             }
         }
         if (!parte.isEmpty()) {
@@ -63,7 +68,7 @@ public class SintaxisExpresiones extends CDI {
                     });
                     signo.clear();
                     signo = signo2;
-                    
+
                 } else {
                     signo.add('-');
                 }
@@ -77,7 +82,6 @@ public class SintaxisExpresiones extends CDI {
             }
         }
         if (Simplificando) {
-            
             return Enrrutar.Enrrutador(partes, signo, op, dif);
         } else {
             System.out.println(partes.get(0));

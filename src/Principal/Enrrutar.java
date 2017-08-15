@@ -81,27 +81,39 @@ public class Enrrutar extends CDI {
                         switch (Segmentos.get(0).toString().toLowerCase().substring(0, Segmentos.get(0).toString().indexOf("("))) {
                             case "csc^2":
                                 expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Integral Trigonométrica de Cosecante al cuadrado");
                                 break;
                             case "sec^2":
                                 expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Integral Trigonométrica de Secante al cuadrado");
+                                break;
+                            case "e^":
+                                expz.add(Segmentos.get(0).toString());
+                                Descripcion.add("- Integral de la Función Exponencial");
                                 break;
                             case "sen":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos,diferencial);
+                                Descripcion.add("- Integral Trigonometrica del Seno");
                                 break;
                             case "cos":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos,diferencial);
+                                Descripcion.add("- Integral Trigonometrica del Coseno");
                                 break;
                             case "tan":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos,diferencial);
+                                Descripcion.add("- Integral Trigonometrica de la Tangente");
                                 break;
                             case "cot":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos,diferencial);
+                                Descripcion.add("- Integral Trigonometrica de la Cotangente");
                                 break;
                             case "sec":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos,diferencial);
+                                Descripcion.add("- Integral Trigonometrica de la Secante");
                                 break;
                             case "csc":
-                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
+                                expz = Integrales.IntegralesTrigonometricas.correr(Segmentos,diferencial);
+                                Descripcion.add("- Integral Trigonometrica de la Cosecante");
                                 break;
                         }
                         break;
@@ -110,6 +122,7 @@ public class Enrrutar extends CDI {
                         if (Segmentos.size() == 1) {
                         } else {
                             cad = "";
+                            Descripcion.add("- Integral del Valor Absoluto");
                             for (Object Segmento : Segmentos) {
                                 cad = cad + (Segmento.toString());
                             }
@@ -118,9 +131,11 @@ public class Enrrutar extends CDI {
                     } else if (")".equals(Segmentos.get(0).toString().substring(Segmentos.get(0).toString().length() - 1))
                             && "(".equals(Segmentos.get(1).toString().substring(0, 1)) && Signos.isEmpty()) {
                         resultado = integralProducto.integral_producto(Segmentos, diferencial);
+                        Descripcion.add("- Integral del Producto");
                         break;
                     } else {
                         resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos), diferencial);
+                        Descripcion.add("- Integral de la Potencia");
                         break;
                     }
                 } else if (!Signos.isEmpty()) {
@@ -141,6 +156,7 @@ public class Enrrutar extends CDI {
                         }
                         if (Segmentos.get(0).toString().equals(cadena)) {
                             expz.add(integralCosiente.cosiente(Segmentos, true, diferencial));
+                            Descripcion.add("- Integral de la derivada sobre su Integral");
                             break;
                         }
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
@@ -161,9 +177,11 @@ public class Enrrutar extends CDI {
                             }
                         }
                         resultado = SintaxisExpresiones.Sintaxis(cad, op, false, diferencial);
+                        Descripcion.add("- Integral del Valor Absoluto");
                         break;
                     } else {
                         resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos), diferencial);
+                        Descripcion.add("- Integral de la Potencia");
                         break;
                     }
                 }
@@ -183,27 +201,35 @@ public class Enrrutar extends CDI {
                             case "e^":
                                 resultado = Exponencial.exponencial(Segmentos.get(0).toString(), diferencial);
                                 expon = true;
+                                Descripcion.add("- Derivada de la Función Exponencial");
                                 break;
                             case "ln":
                                 resultado = PDL.proceso(Segmentos, Signos, op, diferencial);
+                                Descripcion.add("- Derivada del Logaritmo Natural");
                                 break;
                             case "sen":
                                 expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Derivada Trigonometrica del Seno");
                                 break;
                             case "cos":
                                 expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Derivada Trigonometrica del Coseno");
                                 break;
                             case "tan":
                                 expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Derivada Trigonometrica de la Tangente");
                                 break;
                             case "cot":
                                 expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Derivada Trigonometrica de la Cotangente");
                                 break;
                             case "sec":
                                 expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Derivada Trigonometrica de la Secante");
                                 break;
                             case "csc":
                                 expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Derivada Trigonometrica de la Cosecante");
                                 break;
                         }
                         break;
@@ -216,20 +242,23 @@ public class Enrrutar extends CDI {
                                 cad = cad + (Segmento.toString());
                             }
                             derivadaValorAbsoluto.ValorAbsoluto(cad.substring(1, cad.length() - 1), op, diferencial);
+                            Descripcion.add("- Derivada del Valor Absoluto");
                         }
                         break;
                     } else if (")".equals(Segmentos.get(0).toString().substring(Segmentos.get(0).toString().length() - 1))
                             && "(".equals(Segmentos.get(1).toString().substring(0, 1)) && Signos.isEmpty()) {
                         resultado = derivadaProducto.Derivada_Producto(Segmentos, diferencial);
+                        Descripcion.add("- Derivada del Producto");
                         break;
                     } else {
                         resultado = derivadaPotencia.derivada_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos), diferencial);
-
+                        Descripcion.add("- Derivada de la Potencia");
                         break;
                     }
                 } else if (!Signos.isEmpty()) {
                     if (Signos.get(0).toString().equals("/")) {
                         resultado = PDC.proceso(Segmentos, Signos, op, diferencial);
+                        Descripcion.add("- Derivada del Cosiente");
                         break;
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
 
@@ -250,9 +279,11 @@ public class Enrrutar extends CDI {
                             }
                         }
                         derivadaValorAbsoluto.ValorAbsoluto(cad, op, diferencial);
+                        Descripcion.add("- Derivada del Valor Absoluto");
                         break;
                     } else {
                         resultado = derivadaPotencia.derivada_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos), diferencial);
+                        Descripcion.add("- Derivada de la Potencia");
                         break;
                     }
                 }
