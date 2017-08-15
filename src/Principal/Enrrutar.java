@@ -69,7 +69,10 @@ public class Enrrutar extends CDI {
                     Segmentos.set(i, Segmentos.get(i).toString().concat(diferencial.substring(0) + "^0"));
                 }
             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 611e4ae7fd1e0de4243f01d2e111474ea738c7a0
             for (int i = 0; i < Segmentos.size(); i++) {
                 for (int l = 2; l < Segmentos.get(i).toString().length(); l++) {
                     if (Segmentos.get(i).toString().charAt(l) == '(') {
@@ -85,10 +88,13 @@ public class Enrrutar extends CDI {
                                 //expon = true;
                                 expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
                                 break;
+<<<<<<< HEAD
                             case "sec^2":
                                 //resultado = PDL.proceso(Segmentos, Signos, op);
                                 expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
                                 break;
+=======
+>>>>>>> 611e4ae7fd1e0de4243f01d2e111474ea738c7a0
                             case "sen":
                                 expz = Integrales.IntegralesTrigonometricas.correr(Segmentos, diferencial);
                                 break;
@@ -112,36 +118,54 @@ public class Enrrutar extends CDI {
 
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
                         if (Segmentos.size() == 1) {
-                            //derivadaValorAbsoluto.ValorAbsoluto(Segmentos.get(i).toString().substring(1, Segmentos.get(i).toString().length() - 1), op);
                         } else {
                             cad = "";
                             for (Object Segmento : Segmentos) {
                                 cad = cad + (Segmento.toString());
                             }
-                            //derivadaValorAbsoluto.ValorAbsoluto(cad.substring(1, cad.length() - 1), op);
                         }
                         break;
                     } else if (")".equals(Segmentos.get(0).toString().substring(Segmentos.get(0).toString().length() - 1))
                             && "(".equals(Segmentos.get(1).toString().substring(0, 1)) && Signos.isEmpty()) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 611e4ae7fd1e0de4243f01d2e111474ea738c7a0
                         resultado = integralProducto.integral_producto(Segmentos, diferencial);
                         break;
                     } else {
                         resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos), diferencial);
-
                         break;
                     }
                 } else if (!Signos.isEmpty()) {
                     if (Signos.get(0).toString().equals("/")) {
+<<<<<<< HEAD
                         if (Segmentos.get(0).toString().equals("(1.0x^0)") && Segmentos.get(1).toString().substring(Segmentos.get(1).toString().indexOf("^") + 1, Segmentos.get(i).toString().length() - 1).equals("1")) {
                             resultado = integralCosiente.cosiente(Segmentos, true, diferencial);
                             break;
                         } else {
                             resultado = integralCosiente.cosiente(Segmentos, false, diferencial);
+=======
+                        for (int j = 0; j < Segmentos.size(); j++) {
+                            Segmentos.set(j, Segmentos.get(j).toString().substring(1, Segmentos.get(j).toString().length()-1));                                                                        
+                        }
+                        ExpresionAlgebraica[] cosiente = SintaxisExpresiones.Sintaxis(Segmentos.get(1).toString(), "D", true, diferencial);
+                        String cadena = "";
+                        for (ExpresionAlgebraica cosiente1 : cosiente) {
+                            cosiente1.setExponente(cosiente1.getExponente().replaceAll(".0", ""));
+                        }
+                        for (ExpresionAlgebraica cosiente1 : cosiente) {
+                            cadena = cadena.concat(cosiente1.getSimbolo() + cosiente1.getCoeficiente() + cosiente1.getVariable() + "^" + cosiente1.getExponente());
+                        }
+                        if (cadena.charAt(0)=='+') {
+                            cadena=cadena.substring(1,cadena.length());
+                        }
+                        if (Segmentos.get(0).toString().equals(cadena)) {
+                            expz.add(integralCosiente.cosiente(Segmentos, true, diferencial));
+>>>>>>> 611e4ae7fd1e0de4243f01d2e111474ea738c7a0
                             break;
                         }
                     } else if ("|".equals(Segmentos.get(i).toString().substring(0, 1))) {
-
                         if (Segmentos.size() == Signos.size()) {
                             cad = cad + (Signos.get(0).toString());
                         } else {
@@ -161,11 +185,15 @@ public class Enrrutar extends CDI {
                         resultado = SintaxisExpresiones.Sintaxis(cad, op, false, diferencial);
                         break;
                     } else {
+<<<<<<< HEAD
 
                         resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos), diferencial);
+=======
+                        resultado = integralPotencia.integral_Potencia(ProcesarFunciones.jeraquia(Segmentos, Signos),diferencial);
+>>>>>>> 611e4ae7fd1e0de4243f01d2e111474ea738c7a0
                         break;
                     }
-                }//(10x^4+20x^2)/(5x+2)
+                }
             }
         } else {
 
