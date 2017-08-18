@@ -34,7 +34,7 @@ public class CDI {
     static boolean expon;
     public static Scanner sc = new Scanner(System.in);
     private static boolean asterisco;
-    public static ArrayList Descripcion = new ArrayList();
+    public static ArrayList Comentario = new ArrayList();
 
     /**
      * @param cad
@@ -48,10 +48,9 @@ public class CDI {
         if (cad.charAt(0) == '+') {
             cad = cad.substring(1, cad.length());
         }
-        
+
         resultado = SintaxisExpresiones.Sintaxis(cad, operacion, true, Dif);
 
-        
         resultados.add("\n");
         if (expz.isEmpty()) {
             if (resultado != null) {
@@ -119,7 +118,7 @@ public class CDI {
             }
             resultados.add("&&&");
         }
-        cad=cad+"+c";
+        cad = cad + "+c";
         if (cad.equals("")) {
             cad = "0";
         }
@@ -148,9 +147,9 @@ public class CDI {
             for (Object resultado1 : resultados) {
                 cad = cad.concat(resultado1.toString());
             }
-            cad = cad.substring(0, cad.lastIndexOf("─")+1).concat(" (").concat(cad.substring(cad.indexOf("*") + 1, cad.length())).concat(")\n|").concat(cad.substring(cad.lastIndexOf("─") + 2, cad.indexOf("*"))).concat("|");
+            cad = cad.substring(0, cad.lastIndexOf("─") + 1).concat(" (").concat(cad.substring(cad.indexOf("*") + 1, cad.length())).concat(")\n|").concat(cad.substring(cad.lastIndexOf("─") + 2, cad.indexOf("*"))).concat("|");
             resultados.clear();
-            
+
             resultados.add(cad);
         }
 
