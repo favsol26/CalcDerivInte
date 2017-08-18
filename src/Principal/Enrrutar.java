@@ -256,7 +256,44 @@ public class Enrrutar extends CDI {
                         break;
                     }
                 } else if (!Signos.isEmpty()) {
-                    if (Signos.get(0).toString().equals("/")) {
+                    if (Segmentos.get(0).toString().length() > 3 && parentesis) {
+                        switch (Segmentos.get(0).toString().toLowerCase().substring(0, Segmentos.get(0).toString().indexOf("("))) {
+                            case "e^":
+                                resultado = Exponencial.exponencial(Segmentos.get(0).toString(), diferencial);
+                                expon = true;
+                                Descripcion.add("- Derivada de la Función Exponencial");
+                                break;
+                            case "ln":
+                                resultado = PDL.proceso(Segmentos, Signos, op, diferencial);
+                                Descripcion.add("- Derivada del Logaritmo Natural");
+                                break;
+                            case "sen":
+                                expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Derivada Trigonometrica del Seno");
+                                break;
+                            case "cos":
+                                expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Derivada Trigonometrica del Coseno");
+                                break;
+                            case "tan":
+                                expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Derivada Trigonometrica de la Tangente");
+                                break;
+                            case "cot":
+                                expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Derivada Trigonometrica de la Cotangente");
+                                break;
+                            case "sec":
+                                expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Derivada Trigonometrica de la Secante");
+                                break;
+                            case "csc":
+                                expz = Derivadas.DerivadasTrigonometricas.correr(Segmentos, diferencial);
+                                Descripcion.add("- Derivada Trigonometrica de la Cosecante");
+                                break;
+                        }
+                        break;
+                    } else if (Signos.get(0).toString().equals("/")) {
                         resultado = PDC.proceso(Segmentos, Signos, op, diferencial);
                         Descripcion.add("- Derivada del Cosiente");
                         break;
