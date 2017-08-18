@@ -5,16 +5,18 @@
  */
 package Principal;
 
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.DefaultListModel;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-//import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.border.Border;
-//import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
@@ -28,6 +30,9 @@ public class GUI extends javax.swing.JFrame {
 
     boolean integrar;
     String dato = "";
+    int cont;
+    public static ArrayList[] Historial;
+    DefaultListModel<String> ModeloHistorial = new DefaultListModel<>();
 
     /**
      * Creates new form GUI
@@ -35,7 +40,8 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         estado(false);
-        this.jbtnHistorial.setVisible(false);
+        Historial = new ArrayList[10];
+        cont = 9;
     }
 
     /**
@@ -47,6 +53,10 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jdalHistorial = new javax.swing.JDialog();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jlitHistorial = new javax.swing.JList();
+        jbtnMostrar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -81,6 +91,40 @@ public class GUI extends javax.swing.JFrame {
         jbtnComentario = new javax.swing.JButton();
         jbtnHistorial = new javax.swing.JButton();
         jbtnImprimir = new javax.swing.JButton();
+
+        jdalHistorial.setTitle("Historial de Resultados");
+
+        jScrollPane5.setViewportView(jlitHistorial);
+
+        jbtnMostrar.setText("Mostrar");
+        jbtnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnMostrarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jdalHistorialLayout = new javax.swing.GroupLayout(jdalHistorial.getContentPane());
+        jdalHistorial.getContentPane().setLayout(jdalHistorialLayout);
+        jdalHistorialLayout.setHorizontalGroup(
+            jdalHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdalHistorialLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jdalHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdalHistorialLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jbtnMostrar)))
+                .addContainerGap())
+        );
+        jdalHistorialLayout.setVerticalGroup(
+            jdalHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdalHistorialLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                .addGap(4, 4, 4)
+                .addComponent(jbtnMostrar)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CDI");
@@ -497,6 +541,7 @@ public class GUI extends javax.swing.JFrame {
         jbtnComentario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jbtnComentario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Descripción.png"))); // NOI18N
         jbtnComentario.setToolTipText("Descripción del Resultado");
+        jbtnComentario.setEnabled(false);
         jbtnComentario.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jbtnComentario.setMaximumSize(new java.awt.Dimension(25, 25));
         jbtnComentario.setMinimumSize(new java.awt.Dimension(25, 25));
@@ -515,11 +560,17 @@ public class GUI extends javax.swing.JFrame {
         jbtnHistorial.setMinimumSize(new java.awt.Dimension(25, 25));
         jbtnHistorial.setOpaque(false);
         jbtnHistorial.setPreferredSize(new java.awt.Dimension(25, 25));
+        jbtnHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnHistorialActionPerformed(evt);
+            }
+        });
 
         jbtnImprimir.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jbtnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/impresora.png"))); // NOI18N
         jbtnImprimir.setToolTipText("Imprimir");
         jbtnImprimir.setDoubleBuffered(true);
+        jbtnImprimir.setEnabled(false);
         jbtnImprimir.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jbtnImprimir.setMaximumSize(new java.awt.Dimension(25, 25));
         jbtnImprimir.setMinimumSize(new java.awt.Dimension(25, 25));
@@ -536,12 +587,17 @@ public class GUI extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbtnComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbtnHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbtnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtnComentario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -561,7 +617,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(303, Short.MAX_VALUE)
+                .addContainerGap(293, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -619,14 +675,17 @@ public class GUI extends javax.swing.JFrame {
         integrar = false;
         this.jtxpFuncion.grabFocus();
         estado(false);
+        CDI.Comentario.clear();
         this.jbtnIntegrando.setEnabled(true);
         this.jbtnDerivada.setEnabled(true);
         this.jbtnImprimir.setEnabled(false);
+        this.jbtnComentario.setEnabled(false);
     }//GEN-LAST:event_jbtnNuevoActionPerformed
 
     private void jbtnIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIgualActionPerformed
         if (!"".equals(this.jtxpFuncion.getText())) {
             this.jbtnImprimir.setEnabled(true);
+            this.jbtnComentario.setEnabled(true);
             String op, cad;
             int pos = 0;
             ArrayList resultados = new ArrayList();
@@ -665,6 +724,7 @@ public class GUI extends javax.swing.JFrame {
                     changeLineSpacing(Float.valueOf("-0.5"), false, this.jtxpResultado);
                 }
                 resultados.clear();
+                GuardarHistorial();
             } else {
                 JOptionPane.showMessageDialog(this, "Debe Introducir una función válida para el sistema. /n Revise su función e intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -730,7 +790,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnSenoActionPerformed
 
     private void jbtnDerivadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDerivadaActionPerformed
-        dato = JOptionPane.showInputDialog(this, "Introduce el Diferencial (una letra)", "Diferencial: ", 2);
+        LeerDiferencial();
         if (dato != null) {
             Border borde = new TitledBorder("Al Derivar resulta:");
             if (!"".equals(dato)) {
@@ -748,7 +808,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnDerivadaActionPerformed
 
     private void jbtnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnProductoActionPerformed
-        Parentesis(this.jtxpFuncion.getText(),false);
+        Parentesis(this.jtxpFuncion.getText(), false);
     }//GEN-LAST:event_jbtnProductoActionPerformed
 
     private void jbtnCosienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCosienteActionPerformed
@@ -798,7 +858,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnCuadradoActionPerformed
 
     private void jbtnIntegrandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIntegrandoActionPerformed
-        dato = JOptionPane.showInputDialog(this, "Introduce el Diferencial (una letra)", "Diferencial: ", 2);
+        LeerDiferencial();
         if (dato != null) {
             Border borde = new TitledBorder("Al integrar resulta:");
             String dat = String.valueOf(dato.charAt(0));
@@ -905,20 +965,68 @@ public class GUI extends javax.swing.JFrame {
 
     private void jbtnComentarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnComentarioActionPerformed
         String Texto = "";
-        for (int i = 0; i < CDI.Descripcion.size(); i++) {
-            for (int j = 1; j < CDI.Descripcion.size(); j++) {
-                if (CDI.Descripcion.get(i).equals(CDI.Descripcion.get(j))) {
-                    CDI.Descripcion.set(j, "$$$");
+
+        for (int i = 0; i < CDI.Comentario.size(); i++) {
+            for (int j = 1; j < CDI.Comentario.size(); j++) {
+                if (CDI.Comentario.get(i).equals(CDI.Comentario.get(j)) && j != i) {
+                    CDI.Comentario.set(j, "$$$");
                 }
             }
         }
-        for (Object Descripcion : CDI.Descripcion) {
+        for (Object Descripcion : CDI.Comentario) {
             if (!"$$$".equals(Descripcion.toString())) {
                 Texto = Texto.concat(Descripcion.toString()).concat("\n");
             }
         }
         JOptionPane.showMessageDialog(this, "En esta función se aplicó lo siguiente: \n" + Texto, "Información", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jbtnComentarioActionPerformed
+
+    private void jbtnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnHistorialActionPerformed
+        int contador = 0;
+        ModeloHistorial.clear();
+        if (Historial!=null) {
+            for (ArrayList Historial1 : Historial) {
+                if (Historial1!=null) {
+                    ModeloHistorial.add(contador, Historial1.get(0).toString());
+                    contador++;
+                }
+            }
+            this.jlitHistorial.setModel(ModeloHistorial);
+            CentrarVentana(jdalHistorial);
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay operaciones guardadas.\n Debe de resolver al menos una (1)", "Información", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jbtnHistorialActionPerformed
+
+    private void jbtnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMostrarActionPerformed
+        if (!this.jlitHistorial.isSelectionEmpty()) {
+            String seleccion = this.jlitHistorial.getSelectedValue().toString();
+            System.out.println(seleccion);
+            ArrayList lista = null;
+            for (int i = 9; i > 0; i--) {
+                lista = Historial[i];
+                if (lista.get(0)==seleccion) {
+                    break;
+                }
+            }
+            this.jtxpFuncion.setText(lista.get(0).toString());
+            this.jtxpProcedimiento.setText(lista.get(2).toString());
+            this.jtxpResultado.setText(lista.get(4).toString());
+            this.jdalHistorial.setVisible(false);
+            CDI.Comentario.clear();
+            for (int i = 6; i < lista.size(); i++) {
+                CDI.Comentario.add(lista.get(i));
+            }
+            estado(true);
+            this.jbtnComentario.setEnabled(true);
+            this.jbtnImprimir.setEnabled(true);
+            this.jbtnIntegrando.setEnabled(false);
+            this.jbtnDerivada.setEnabled(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un ejercicio antes de mostrarlo.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jbtnMostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -956,6 +1064,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JButton jbtnComentario;
     private javax.swing.JButton jbtnCosecante;
     private javax.swing.JButton jbtnCoseno;
@@ -970,6 +1079,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jbtnImprimir;
     private javax.swing.JButton jbtnIntegrando;
     private javax.swing.JButton jbtnLogaritmoNatural;
+    private javax.swing.JButton jbtnMostrar;
     private javax.swing.JButton jbtnNuevo;
     private javax.swing.JButton jbtnParentecisA;
     private javax.swing.JButton jbtnParentecisC;
@@ -979,6 +1089,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jbtnSeno;
     private javax.swing.JButton jbtnTangente;
     private javax.swing.JButton jbtnValorAbsoluto;
+    private javax.swing.JDialog jdalHistorial;
+    private javax.swing.JList jlitHistorial;
     private javax.swing.JTextPane jtxpFuncion;
     private javax.swing.JTextPane jtxpProcedimiento;
     private javax.swing.JTextPane jtxpResultado;
@@ -1056,7 +1168,6 @@ public class GUI extends javax.swing.JFrame {
     private void Parentesis(String texto, boolean Cosiente) {
         String sel = Select(true);
         String sel2 = Select2();
-        //hol.az jmundcoç
         boolean bol = true;
         boolean parentesis = false;
         for (int i = 0; i < sel.length(); i++) {
@@ -1081,6 +1192,62 @@ public class GUI extends javax.swing.JFrame {
                 this.jtxpFuncion.setCaretPosition(sel.length() + 4);
             }
         }
+    }
+
+    private void LeerDiferencial() {
+        int Diferencial = 0;
+        do {
+            dato = JOptionPane.showInputDialog(this, "Introduce el Diferencial (una letra)", "Diferencial: ", 2);
+            if (dato != null) {
+                if (dato.substring(0, 1).toUpperCase().hashCode() > 90 || dato.substring(0, 1).toUpperCase().hashCode() < 65) {
+                    JOptionPane.showMessageDialog(this, "Para poder admitirse como diferencial es necesario que sea una letra. \n Revise su función e intente de nuevo.", "Error", JOptionPane.ERROR_MESSAGE);
+                    Diferencial = 0;
+                } else {
+                    Diferencial = 1;
+                }
+            }
+        } while (Diferencial != 1);
+    }
+
+    private void GuardarHistorial() {
+        ArrayList his = new ArrayList();
+        his.add(this.jtxpFuncion.getText());
+        his.add("&&&");
+        his.add(this.jtxpProcedimiento.getText());
+        his.add("$$$");
+        his.add(this.jtxpResultado.getText());
+        his.add("%%%");
+        CDI.Comentario.stream().forEach((Comentario) -> {
+            his.add(Comentario);
+        });
+        Historial[cont]=his;
+        if (cont == 0) {
+            Historial[9].clear();
+            for (int i = 9; i > 0; i--) {
+                Historial[i - 1] = Historial[i];
+            }
+        } else {
+            cont--;
+        }
+    }
+
+    public void CentrarVentana(JDialog dialogos) {
+        dialogos.setSize(520, 270);
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = dialogos.getSize(), dm = new Dimension();
+
+        if (frameSize.height > screenSize.height) {
+            frameSize.height = screenSize.height;
+        }
+
+        if (frameSize.width > screenSize.width) {
+            frameSize.width = screenSize.width;
+        }
+        dm = dialogos.getSize();
+        dialogos.setVisible(true);
+        dialogos.setLocation((screenSize.width - frameSize.width) / 2,
+                (screenSize.height - frameSize.height) / 2);
     }
 
     private static class RunnableImpl implements Runnable {
