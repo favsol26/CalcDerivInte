@@ -87,7 +87,6 @@ public class SintaxisExpresiones extends CDI {
         if (Simplificando) {
             return Enrrutar.Enrrutador(partes, signo, op, dif);
         } else {
-            System.out.println(partes.get(0));
             return ProcesarFunciones.jeraquia(partes, signo);
         }
     }
