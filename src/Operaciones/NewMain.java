@@ -27,7 +27,7 @@ public class NewMain {
 
         ArrayList resueltocdi;
         String expesion = ""
-                + "-cos(x)"
+                + "+cos(x)"
                 + "+3x^5"
                 + "-tan(x)"
                 + "-ln(4x^3)"
@@ -38,16 +38,17 @@ public class NewMain {
         for (int i = 0; i < expesion.length(); i++) {//43  45
 
             if (expesion.charAt(i) == '+' || expesion.charAt(i) == '-') {
-
-                cad[cont] = expesion.charAt(i)+expesion.substring(cont2, i);
+//                simbolos[cont] = expesion.charAt(i);
+                cad[cont] = /*expesion.charAt(i) +*/ expesion.substring(cont2, i);
                 //            System.out.println(CDI.CDIMaster(cad[cont], "d", "x"));
                 cont++;
 
-                cont2 = i+1;
+                cont2 = i;//+ 1;
             }
 
-            if (!expesion.substring(cont2, expesion.length()).contains("+") && !expesion.substring(cont2, expesion.length()).contains("-")) {
-                cad[cont] = /*expesion.charAt(cont2)+*/expesion.substring(cont2, expesion.length());
+            if (!expesion.substring(cont2 + 1, expesion.length()).contains("+") && !expesion.substring(cont2 + 1, expesion.length()).contains("-")) {
+//                simbolos[cont] = expesion.charAt(i);
+                cad[cont] = /*expesion.charAt(cont2)+*/ expesion.substring(cont2, expesion.length());
             }
         }
         for (String cad1 : cad) {
@@ -62,12 +63,18 @@ public class NewMain {
             cadena[i] = componentes.get(i).toString();
         }
         for (int i = 0; i < cadena.length; i++) {
-            if (cadena[i].charAt(0)=='+') {
-                cadena[i]=cadena[i].substring(1);
+            System.out.println(">>" + cadena[i]);
+        }
+
+        System.out.println("\n\n\n");
+
+        for (int i = 0; i < cadena.length; i++) {
+            if (cadena[i].charAt(0) == '+') {
+                cadena[i] = cadena[i].substring(1);
             }
         }
         for (int i = 0; i < cadena.length; i++) {
-            System.out.println(cadena[i]);
+            System.out.println(">>" + cadena[i]);
         }
         for (String cad1 : cadena) {
             resueltocdi = CDI.CDIMaster(cad1, "d", "x");
@@ -92,8 +99,8 @@ public class NewMain {
         }
         System.out.println("\n\n\n");
         for (int i = 0; i < Resultado.size(); i++) {
-            if (Resultado.get(i)!="&&&") {
-                System.out.print(Resultado.get(i)+" ");
+            if (Resultado.get(i) != "&&&") {
+                System.out.print(Resultado.get(i) + " ");
             }
         }
 
