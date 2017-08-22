@@ -51,7 +51,9 @@ public class Segmentador extends CDI {
                 } else {//si no
                     int c = j++;//tomamos la posicion j incrementada en 1
                     for (int k = c; k < resultadosFinales.size(); k++) {//recorremos el arreglo desde c hasta el final
-                        Resultado.add(resultadosFinales.get(k));//y se le agrega al resultado
+                        if (!resultadosFinales.get(k).toString().equals("&&&")) {
+                            Resultado.add(resultadosFinales.get(k));//y se le agrega al resultado
+                        }
                     }
                     break;//rompemos
                 }
@@ -59,6 +61,7 @@ public class Segmentador extends CDI {
             CDI.expz.clear();//limpiamos los arreglos de resulrados en CDI
             CDI.resultados.clear();
         }
+        
         for (int i = 0; i < Resultado.size(); i++) {//recorremos el arreglo del resultado
             if (Resultado.get(i).toString().contains("─")) {//si existe el indicador del cosiente
                 Cosientes.add(Resultado.get(i));//se almacenan en el arreglo cosientes
@@ -112,6 +115,7 @@ public class Segmentador extends CDI {
             }
         });
         Retorno.add("&&&");
+        
         Retorno.add(cosientes);
         return Retorno;
     }
