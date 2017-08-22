@@ -12,12 +12,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.DefaultListModel;
+import java.util.Vector;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -32,7 +33,7 @@ public class GUI extends javax.swing.JFrame {
     String dato = "";
     int cont;
     public static ArrayList[] Historial;
-    DefaultListModel<String> ModeloHistorial = new DefaultListModel<>();
+    DefaultTableModel ModeloHistorial = new DefaultTableModel();
 
     /**
      * Creates new form GUI
@@ -42,6 +43,9 @@ public class GUI extends javax.swing.JFrame {
         estado(false);
         Historial = new ArrayList[10];
         cont = 9;
+        ModeloHistorial.addColumn("Función");
+        ModeloHistorial.addColumn("Resultado");
+        
     }
 
     /**
@@ -54,9 +58,9 @@ public class GUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jdalHistorial = new javax.swing.JDialog();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jlitHistorial = new javax.swing.JList();
         jbtnMostrar = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jlitHistorial = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -94,8 +98,6 @@ public class GUI extends javax.swing.JFrame {
 
         jdalHistorial.setTitle("Historial de Resultados");
 
-        jScrollPane5.setViewportView(jlitHistorial);
-
         jbtnMostrar.setText("Mostrar");
         jbtnMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,25 +105,38 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jlitHistorial.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(jlitHistorial);
+
         javax.swing.GroupLayout jdalHistorialLayout = new javax.swing.GroupLayout(jdalHistorial.getContentPane());
         jdalHistorial.getContentPane().setLayout(jdalHistorialLayout);
         jdalHistorialLayout.setHorizontalGroup(
             jdalHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jdalHistorialLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdalHistorialLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jdalHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdalHistorialLayout.createSequentialGroup()
+                .addGroup(jdalHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jdalHistorialLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jbtnMostrar)))
                 .addContainerGap())
         );
         jdalHistorialLayout.setVerticalGroup(
             jdalHistorialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jdalHistorialLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                .addGap(4, 4, 4)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdalHistorialLayout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(jbtnMostrar)
                 .addContainerGap())
         );
@@ -139,6 +154,7 @@ public class GUI extends javax.swing.JFrame {
 
         jtxpFuncion.setBorder(null);
         jtxpFuncion.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
+        jtxpFuncion.setEnabled(false);
         jtxpFuncion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jtxpFuncionKeyPressed(evt);
@@ -165,6 +181,8 @@ public class GUI extends javax.swing.JFrame {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        jtxpProcedimiento.setEditable(false);
         jScrollPane2.setViewportView(jtxpProcedimiento);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -533,8 +551,10 @@ public class GUI extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 12))); // NOI18N
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setToolTipText("");
 
+        jtxpResultado.setEditable(false);
         jtxpResultado.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         jScrollPane1.setViewportView(jtxpResultado);
 
@@ -669,6 +689,7 @@ public class GUI extends javax.swing.JFrame {
     private void jbtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNuevoActionPerformed
         Border borde = new TitledBorder("");
         this.jPanel5.setBorder(borde);
+        this.jtxpFuncion.setEnabled(false);
         this.jtxpFuncion.setText("");
         this.jtxpResultado.setText("");
         this.jtxpProcedimiento.setText("");
@@ -696,9 +717,11 @@ public class GUI extends javax.swing.JFrame {
             }
             cad = this.jtxpFuncion.getText().substring(this.jtxpFuncion.getText().indexOf("(") + 1, this.jtxpFuncion.getText().lastIndexOf(")"));
             if (!"".equals(cad)) {
-                resultados = CDI.CDIMaster(cad, op, dato);
+                CDI.CDIMaster(cad, op, dato);
+                resultados=Segmentador.Retorno;
             } else if (integrar) {
-                resultados = CDI.CDIMaster("1", op, dato);
+                CDI.CDIMaster("1", op, dato);
+                resultados=Segmentador.Retorno;
             } else {
                 JOptionPane.showMessageDialog(this, "Para derivar debe colocar al menos un numero diferente de 0", "Error", JOptionPane.ERROR_MESSAGE);
                 this.jtxpFuncion.grabFocus();
@@ -797,6 +820,7 @@ public class GUI extends javax.swing.JFrame {
                 this.jtxpFuncion.setText(this.jtxpFuncion.getText().concat(" d".concat(" \n──".concat("()\nd".concat(String.valueOf(dato.charAt(0)))))));
                 integrar = false;
                 this.jPanel5.setBorder(borde);
+                this.jtxpFuncion.setEnabled(true);
                 changeLineSpacing(Float.valueOf("-0.5"), false, this.jtxpFuncion);
                 this.jbtnIntegrando.setEnabled(false);
                 this.jbtnDerivada.setEnabled(false);
@@ -867,6 +891,7 @@ public class GUI extends javax.swing.JFrame {
                     this.jtxpFuncion.setText("∫()d".concat(String.valueOf(dato.charAt(0)).concat(" ")));
                     this.jPanel5.setBorder(borde);
                     integrar = true;
+                    this.jtxpFuncion.setEnabled(true);
                     this.jtxpFuncion.setCaretPosition(2);
                     this.jtxpFuncion.grabFocus();
                     this.jbtnDerivada.setEnabled(false);
@@ -886,6 +911,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxpFuncionKeyReleased
 
     private void jtxpFuncionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxpFuncionKeyPressed
+        boolean Potencia = true;
         jtxasetFont(this.jtxpFuncion);
         int pos = 0;
         char caracter = evt.getKeyChar();
@@ -924,14 +950,33 @@ public class GUI extends javax.swing.JFrame {
                     jtxasetFont(this.jtxpFuncion);
                     this.jtxpFuncion.grabFocus();
                     this.jtxpFuncion.setCaretPosition(Position - 1);
+                    this.jbtnCuadrado.setEnabled(false);
+                    this.jbtnCubo.setEnabled(false);
+                    this.jbtnPotencia.setEnabled(false);
                 }
-
+            } else {
+                this.jbtnCuadrado.setEnabled(true);
+                this.jbtnCubo.setEnabled(true);
+                this.jbtnPotencia.setEnabled(true);
             }
         } else {
-            this.jbtnCuadrado.setEnabled(true);
-            this.jbtnCubo.setEnabled(true);
-            this.jbtnPotencia.setEnabled(true);
+            this.jbtnCuadrado.setEnabled(false);
+            this.jbtnCubo.setEnabled(false);
+            this.jbtnPotencia.setEnabled(false);
         }
+        if (evt.getKeyChar() == '^') {
+            Potencia = true;
+        } else if (evt.getKeyChar() == '+' || evt.getKeyChar() == '-' || evt.getKeyChar() == '(' 
+                || ((evt.getKeyCode() >= 97 && evt.getKeyCode() <= 122) 
+                || (evt.getKeyCode() >= 65 && evt.getKeyCode() <= 90))) {
+            Potencia = false;
+        } else if (Potencia) {
+            System.out.println("no se acepta letra");
+        }
+        if (Potencia) {
+            System.out.println("hola");
+        }
+
     }//GEN-LAST:event_jtxpFuncionKeyPressed
 
     private void jbtnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnImprimirActionPerformed
@@ -983,30 +1028,35 @@ public class GUI extends javax.swing.JFrame {
 
     private void jbtnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnHistorialActionPerformed
         int contador = 0;
-        ModeloHistorial.clear();
-        if (Historial!=null) {
+        Vector Datos = new Vector();
+        for (int i = 0; i < ModeloHistorial.getRowCount(); i++) {
+            ModeloHistorial.removeRow(i);
+        }
+        if (Historial[9]!=null) {
             for (ArrayList Historial1 : Historial) {
-                if (Historial1!=null) {
-                    ModeloHistorial.add(contador, Historial1.get(0).toString());
+                if (Historial1 != null) {
+                    Datos.add(Historial1.get(0).toString());
+                    Datos.add(Historial1.get(4).toString());
+                    ModeloHistorial.addRow(Datos);
                     contador++;
                 }
             }
             this.jlitHistorial.setModel(ModeloHistorial);
             CentrarVentana(jdalHistorial);
         } else {
-            JOptionPane.showMessageDialog(this, "No hay operaciones guardadas.\n Debe de resolver al menos una (1)", "Información", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No hay operaciones guardadas.\nDebe de resolver al menos una (1)", "Información", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }//GEN-LAST:event_jbtnHistorialActionPerformed
 
     private void jbtnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMostrarActionPerformed
-        if (!this.jlitHistorial.isSelectionEmpty()) {
-            String seleccion = this.jlitHistorial.getSelectedValue().toString();
+        if (this.jlitHistorial.getSelectedRows().length!=0) {
+            String seleccion = this.jlitHistorial.getValueAt(0,this.jlitHistorial.getSelectedRow()).toString();
             System.out.println(seleccion);
-            ArrayList lista = null;
+            ArrayList lista = new ArrayList();
             for (int i = 9; i > 0; i--) {
                 lista = Historial[i];
-                if (lista.get(0)==seleccion) {
+                if (lista.get(0) == seleccion) {
                     break;
                 }
             }
@@ -1064,7 +1114,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton jbtnComentario;
     private javax.swing.JButton jbtnCosecante;
     private javax.swing.JButton jbtnCoseno;
@@ -1090,7 +1140,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jbtnTangente;
     private javax.swing.JButton jbtnValorAbsoluto;
     private javax.swing.JDialog jdalHistorial;
-    private javax.swing.JList jlitHistorial;
+    private javax.swing.JTable jlitHistorial;
     private javax.swing.JTextPane jtxpFuncion;
     private javax.swing.JTextPane jtxpProcedimiento;
     private javax.swing.JTextPane jtxpResultado;
@@ -1220,7 +1270,7 @@ public class GUI extends javax.swing.JFrame {
         CDI.Comentario.stream().forEach((Comentario) -> {
             his.add(Comentario);
         });
-        Historial[cont]=his;
+        Historial[cont] = his;
         if (cont == 0) {
             Historial[9].clear();
             for (int i = 9; i > 0; i--) {
@@ -1232,7 +1282,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     public void CentrarVentana(JDialog dialogos) {
-        dialogos.setSize(520, 270);
+        dialogos.setSize(520, 320);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = dialogos.getSize(), dm = new Dimension();
