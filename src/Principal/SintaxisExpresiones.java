@@ -58,9 +58,8 @@ public class SintaxisExpresiones extends CDI {
                 parte = parte.concat(String.valueOf(cad.charAt(i)));
             }
         }
-        System.out.println(partes.get(0));
         if (!partes.isEmpty()) {
-            if (partes.get(0).toString().length()>1) {
+            if (partes.get(0).toString().length() > 1) {
                 if (partes.get(0).toString().charAt(0) == '-') {
                     partes.set(0, partes.get(0).toString().substring(1, partes.get(0).toString().length()));
                     if (!signo.isEmpty()) {
@@ -70,7 +69,7 @@ public class SintaxisExpresiones extends CDI {
                         });
                         signo.clear();
                         signo = signo2;
-                        
+
                     } else {
                         signo.add('-');
                     }
@@ -78,12 +77,17 @@ public class SintaxisExpresiones extends CDI {
             }
         }
         for (int i = 0; i < partes.size(); i++) {
-            if (partes.get(i).toString().length()!=0) {
+            if (partes.get(i).toString().length() != 0) {
                 if (partes.get(i).toString().charAt(0) == '-' || partes.get(i).toString().charAt(0) == '+') {
                     partes.set(i, partes.get(i).toString().substring(1));
                 }
             }
         }
+
+        if (Segmentador.segmentar) {
+            Segmentador.Segmentar(cad, partes, signo, dif, op);
+        }
+
         if (Simplificando) {
             return Enrrutar.Enrrutador(partes, signo, op, dif);
         } else {

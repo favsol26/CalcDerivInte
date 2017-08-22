@@ -14,65 +14,59 @@ import java.util.ArrayList;
  */
 public class ProcesarFunciones extends CDI {
 
-    public static ExpresionAlgebraica[] jeraquia(ArrayList Segmentos, ArrayList signo) {
-        
-        int s = 0;
-        Boolean letra = false, numero = false, potencia = false;
-        String le;
-        ArrayList orden = new ArrayList();
+    public static ExpresionAlgebraica[] jeraquia(ArrayList Segmentos, ArrayList signo) {//creamos el método que nos separa al exponente de la expresion algebráica
+        int s = 0;//declaramos el control de posiciones para el arreglo exponentes
+        Boolean letra = false, numero = false, potencia = false;//variables booleanas para determinar que tipo de expresion es
+        String le;//variable para almecenar la letra de la expresion
+        ArrayList orden = new ArrayList();//arreglo para almacenar las expresiones
 
-        if (signo.size() == Segmentos.size()) {
-            orden.add(signo.get(0));
+        if (signo.size() == Segmentos.size()) {//en caso de que los arreglos signo y gegmentos sean del mismo tamaño
+            orden.add(signo.get(0));//se agega el primer signo del arreglo
         }
-        for (int i = 0; i < Segmentos.size(); i++) {
-            orden.add(Segmentos.get(i));
-            if (i < signo.size()) {
-                orden.add(signo.get(i));
+        for (int i = 0; i < Segmentos.size(); i++) {//recorremos el arreglo de segmentos
+            orden.add(Segmentos.get(i));//agregamos el primer segmento a la
+            if (i < signo.size()) {//si aún quedan signos en el arreglo
+                orden.add(signo.get(i));//agrega el signo en orden
             }
         }
 
-        String[] exponentes = new String[Segmentos.size()];
+        String[] exponentes = new String[Segmentos.size()];//arreglo de exponentes
 
-        for (Object orden1 : orden) {
-            for (int j = 0; j < orden1.toString().length(); j++) {
-                if (orden1.toString().charAt(j) == '^') {
-                    potencia = true;
-                    // if (true) 
-                    {
-                        exponentes[s] = orden1.toString().substring(j + 1, orden1.toString().length());
-                    }
-
-                    s++;
-                    //t = j;
-                } else if (!potencia) {
-                    le = String.valueOf(orden1.toString().charAt(j));
-                    if ((le.hashCode() >= 97 && le.hashCode() <= 122) || (le.hashCode() >= 65 && le.hashCode() <= 90)) {
-                        letra = true;
-                        numero = false;
-                    } else if ((le.hashCode() >= 48 && le.hashCode() <= 57)) {
-                        letra = false;
-                        numero = true;
+        for (Object orden1 : orden) {//recorremos el arreglo orden
+            for (int j = 0; j < orden1.toString().length(); j++) {//recorremos la cadena que esta en la posicion seleccionada
+                if (orden1.toString().charAt(j) == '^') {//si se encuentra el acento circunflejo
+                    potencia = true;//afirmamos que hay una potencia
+                    exponentes[s] = orden1.toString().substring(j + 1, orden1.toString().length());//almacenamos el exponente en el arreglo de exponentes
+                    s++;//incrementamos la posicion del arreglo
+                } else if (!potencia) {//si potencia continúa siendo false
+                    le = String.valueOf(orden1.toString().charAt(j));//se almacena el caracter en la posicion j
+                    if ((le.hashCode() >= 97 && le.hashCode() <= 122) || (le.hashCode() >= 65 && le.hashCode() <= 90)) {//identificamoos si es una letra
+                        letra = true;//afirmamos que es una letra
+                        numero = false;//se descarta que sea un número
+                    } else if ((le.hashCode() >= 48 && le.hashCode() <= 57)) {//de no ser una letra se evalúa que sea un número
+                        letra = false;//se descarta que sea una letra
+                        numero = true;//se afirma que es un número
                     }
                 }
-                if (potencia) {
-                    letra = false;
-                    numero = false;
+                if (potencia) {//si potencia es verdadero
+                    letra = false;//se descarta que sea letra
+                    numero = false;//se descarta que sea número
                 }
             }
-            if (letra) {
-                exponentes[s] = "1";
-                s++;
-            } else if (numero) {
-                exponentes[s] = "0";
-                s++;
+            if (letra) {//si no tenía exponente y eya una letra el último caracter de la expresion algebráica
+                exponentes[s] = "1";//el exponente pasa a ser 1 por razones de reglas algebráicas
+                s++;//y aumentamos el contador de posi9ciones para el exponente
+            } else if (numero) {//si solo era un número
+                exponentes[s] = "0";//por reglas algebráicas esto indica que la variable estaba con potencia 0
+                s++;//incrementamos el contador de posiciones
             }
-            potencia = false;
+            potencia = false;//se reinician en false todas las variables
             letra = false;
             numero = false;
         }
-        exponentes = dividircad.correr(exponentes);
-        
-        return Ordenar(exponentes, orden);
+        exponentes = dividircad.correr(exponentes);//enviamos a dividir cadena
+
+        return Ordenar(exponentes, orden);//retornamos el valor que devuelva ordenar
     }
 
     public static ExpresionAlgebraica[] Ordenar(String[] exponentes, ArrayList orden) {
@@ -88,7 +82,7 @@ public class ProcesarFunciones extends CDI {
             }
 
         } else {
-            
+
             for (String exponente : exponentes) {
                 for (int i = 0; i < orden.size(); i++) {
                     for (int j = 0; j < orden.get(i).toString().length(); j++) {
@@ -167,7 +161,7 @@ public class ProcesarFunciones extends CDI {
     }
 
     public static ExpresionAlgebraica[] llenar_exp(ArrayList Completo) {
-        
+
         int x = 0, s = 0, p = 0;
         int cont = 0;
         boolean acentoC = false;
